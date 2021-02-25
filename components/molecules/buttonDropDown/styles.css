@@ -1,0 +1,109 @@
+@import '../../../styles/occ-atomic/colors.css';
+@import '../../../styles/occ-atomic/spacing.css';
+
+.divDefault { width: fit-content }
+
+.divText {
+  cursor: pointer;
+  width: fit-content;
+}
+
+.noMenu {
+  right: auto !important;
+}
+
+.showElementActive {
+    height: auto;
+    max-height: 2000px;
+    margin: 16px 0px 0px -46px;
+    padding: 0px 0px 46px 46px;
+    width: fit-content;
+    transition: all .6s ease, margin-top .8s;
+    position: absolute;
+    right: 0;
+    z-index: 9999;
+    transform: translateZ(0);
+    overflow: hidden;
+}
+
+.showElementDisable {
+    height: auto;
+    max-height: 0px;
+    margin: 0px 0px 0px -16px;
+    padding: 0px 0px 46px 16px;
+    overflow: hidden;
+    width: auto;
+    transition: all .3s ease, margin-top .5s;
+    position: absolute;
+    right: 0;
+    z-index: 9999;
+  }
+
+.divDefaultMov { width: 100%; }
+
+.showElementActiveMov {
+    height: auto;
+    max-height: 1000px;
+    margin-top: 8px;
+    width: 100%;
+    max-width: 540px;
+    transition: all .3s ease;
+    position: fixed;
+    right: 0;
+    z-index: 9999;
+  }
+
+.showElementActiveMovScroll {
+    height: auto;
+    max-height: 1000px;
+    max-width: 540px;
+    width: 100%;
+    transition: all .3s ease;
+    top: 0px;
+    position: fixed;
+    right: 0;
+    z-index: 9999;
+  }
+
+.showElementDisableMov {
+    height: auto;
+    max-height: 0px;
+    margin-top: 0px;
+    max-width: 540px;
+    overflow: hidden;
+    width: 100%;
+    transition: all .3s ease;
+    position: fixed;
+    right: 0;
+    z-index: 9999;
+  }
+
+.showElementDisableMovScroll {
+    height: auto;
+    max-height: 0px;
+    top: 0px;
+    margin-top: 0px;
+    max-width: 540px;
+    overflow: hidden;
+    width: 100%;
+    transition: all .3s ease;
+    position: fixed;
+    right: 0;
+    z-index: 9999;
+  }
+
+  .divFlex {
+    display: flex;
+    cursor: pointer;
+    width: auto;
+    align-items: center;
+  }
+
+  .iconStyleActive {
+    transition: transform 200ms ease;
+    transform: rotate(180deg);
+  }
+
+  .iconStyleDisable {
+    transition: transform 200ms ease;
+  }
