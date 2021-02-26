@@ -11,7 +11,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://occmundial.github.io/recruiters-atomic-library/">Recruiters-Atomic-Library</a>
+          Welcome to my <a href="https://occmundial.github.io/recruiters-atomic-library/">Recruiters-Atomic-Library</a>
         </h1>
       </main>
     </div>
