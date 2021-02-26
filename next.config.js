@@ -1,9 +1,10 @@
+const debug = process.env.NODE_ENV !== "production";
+
 module.exports = {
   exportPathMap: function () {
     return {
       "/": { page: "/" },
     }
   },
-  assetPrefix: '/recruiters-atomic-library/',
-  basePath: '/recruiters-atomic-library',
+  assetPrefix: !debug ? '/recruiters-atomic-library/' : '',
 }

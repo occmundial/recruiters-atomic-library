@@ -1,4 +1,4 @@
-# [Recruiters-Atomic-Library](https://github.com/occmundial/recruiters-atomic-library) • [![npm version]
+# [Recruiters-Atomic-Library](https://github.com/occmundial/recruiters-atomic-library) • 
 
 This library contains a collection of shareable styled React components, ready to use for the applications developed by OCC.
 
