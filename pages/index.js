@@ -2,6 +2,7 @@ import styles from '../styles/Home.module.css'
 import {
   Grid, Text,
 } from '@occmundial/occ-atomic';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -13,10 +14,10 @@ export default function Home() {
               Repo: <a href="https://github.com/occmundial/recruiters-atomic-library/">Recruiters-Atomic-Library</a>
             </Text>
             <Text subheading>
-              <a href="/headerUnlogged">Header Unlogged</a>
+              <Link href="/headerUnlogged">Header Unlogged</Link>
             </Text>
             <Text subheading>
-              <a href="/headerLogged">Header Logged</a>
+              <Link href="/headerLogged">Header Logged</Link>
             </Text>
           </div>
         </Grid.Col>
