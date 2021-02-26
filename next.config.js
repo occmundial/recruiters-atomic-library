@@ -7,6 +7,5 @@ module.exports = {
     }
   },
   assetPrefix: !debug ? '/recruiters-atomic-library/' : '',
-  useFileSystemPublicRoutes: false,
   basePath: !debug ? '/recruiters-atomic-library' : '',
 }
