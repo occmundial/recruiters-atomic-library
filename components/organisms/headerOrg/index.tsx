@@ -11,31 +11,29 @@ import { getCookie, setCookie, cookieBanner } from './config/cookies';
 import { top } from './config/top';
 import { center, centerMobile } from './config/center';
 import { right, loggedMenu } from './config/right';
+import Proptypes from 'prop-types';
 
 import windowSize from '../../common/useWindowSize';
 import HeaderMenu from '../../molecules/menu';
 
 const contingencyModal: string = 'https://cdn-shop.occ.com.mx/recruiters-home-page/img/contingencyModal.png';
 export interface HeaderProps {
-  showCartCount?: boolean;
+  showCounts?: boolean;
   showCenter?: boolean;
   logged?: boolean;
-  showContingency: boolean;
+  showContingency?: boolean;
   logout: Function;
   cartItems: number;
   chatItems: number;
   userName?: string;
   userPhoto?: string;
   email?: string;
-  showLoggedMenu?: boolean;
-  setLoggedMenu: Function;
-  loggedMenu: Array<object>;
   isMobile?: boolean;
   tabSelected?: number;
   rightTabSelected?: number;
-  local: boolean;
-  dev: boolean;
-  prod: boolean;
+  local?: boolean;
+  dev?: boolean;
+  prod?: boolean;
   orgMenu?: boolean;
   organizationName?: string;
   teamName?: string;
@@ -50,7 +48,7 @@ export interface HeaderProps {
 
 const HeaderOrg: FC<HeaderProps> = ({
   showCenter = false,
-  showCartCount = false,
+  showCounts = false,
   logged = false,
   showContingency = false,
   cartItems = 0,
@@ -78,7 +76,6 @@ const HeaderOrg: FC<HeaderProps> = ({
 }: HeaderProps) => {
   const [scroll, toggleScroll] = useState(false);
   const [contingency, setContingency] = useState(false);
-  const [cartCount, setCartCount] = useState(0);
   const width: number = windowSize();
   const [showModal, toggleContigencyModal] = useState(false);
   const [asideMenu, setAsideMenu] = useState(false);
@@ -109,10 +106,6 @@ const HeaderOrg: FC<HeaderProps> = ({
     }
   }, [showContingency]);
 
-  useEffect(() => {
-    if (showCartCount) setCartCount(cartItems);
-  }, [cartItems]);
-
   return (
     <Fragment>
       <NavTab
@@ -126,13 +119,14 @@ const HeaderOrg: FC<HeaderProps> = ({
           showMenu,
           userName,
           userPhoto,
-          loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator),
+          loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts),
           logout,
           referral,
           cartItems,
           chatItems,
           getRoot(local, dev, prod),
           rightTabSelected,
+          showCounts,
         )}
         fixed
         hideOnScroll
@@ -160,8 +154,7 @@ const HeaderOrg: FC<HeaderProps> = ({
       >
         <HeaderMenu
           mobile={isMobile}
-          cartHasItems={cartCount > 0}
-          linksH={loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator)}
+          linksH={loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts)}
           logout={logout}
         />
       </NavAside>
@@ -235,6 +228,61 @@ const HeaderOrg: FC<HeaderProps> = ({
       </Modal>
     </Fragment>
   );
+};
+
+HeaderOrg.propTypes = {
+  /** Shows Cart or Chat counts */
+  showCounts: Proptypes.bool,
+  /** Shows middle navigation menu */
+  showCenter: Proptypes.bool,
+  /** user is logged or not */
+  logged: Proptypes.bool,
+  /** Shows Covid contingency banner */
+  showContingency: Proptypes.bool,
+  /** Shows Covid contingency banner */
+  logout: Proptypes.func.isRequired,
+  /** Determines cart items */
+  cartItems: Proptypes.number.isRequired,
+  /** Determines chat items */
+  chatItems: Proptypes.number.isRequired,
+  /** user's userName  */
+  userName: Proptypes.string,
+  /** user's photo  */
+  userPhoto: Proptypes.string,
+   /** user's email  */
+  email: Proptypes.string,
+  /** Determines if isMobile */
+  isMobile: Proptypes.bool,
+  /** Determines what tab is selected in the left/center navigation */
+  tabSelected: Proptypes.number,
+  /** Determines what tab is selected in the right navigation */
+  rightTabSelected: Proptypes.number,
+  /** Determines if the env is local for links */
+  local: Proptypes.bool,
+  /** Determines if the env is dev for links */
+  dev: Proptypes.bool,
+  /** Determines if the env is prod for links */
+  prod: Proptypes.bool,
+  /** External toggle for the orgMenu */
+  orgMenu: Proptypes.bool,
+  /** Determines name of the organization */
+  organizationName: Proptypes.string,
+  /** Determines name of the team */
+  teamName: Proptypes.string,
+  /** Determines links of the organization menu */
+  orgMenuLinks: Proptypes.array,
+  /** Determines referral name for the checkout analytics */
+  referral: Proptypes.string,
+  /** Determines if the account is an admin */
+  isAdmin: Proptypes.bool,
+  /** Determines if the account has a valid email */
+  validEmail: Proptypes.bool,
+  /** Determines if the account can return to R11 sections */
+  canReturn: Proptypes.bool,
+  /** Determines if the levelAccount is an admin*/
+  typeAdministrator: Proptypes.bool,
+  /** Determines if the levelAccount is a subAdmin*/
+  typeSubAdministrator: Proptypes.bool,
 };
 
 export default HeaderOrg;

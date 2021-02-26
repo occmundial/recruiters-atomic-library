@@ -24,15 +24,15 @@ const goTo = (url) => {
 };
 
 
-export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, referral = '', cartHasItems = false, chatHasItems = false, organizationLinks=[{}], isAdmin = false, validEmail = false, canReturn = false, typeAdministrator = false, typeSubadministrator = false) => {
+export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, referral = '', cartHasItems = false, chatHasItems = false, organizationLinks=[{}], isAdmin = false, validEmail = false, canReturn = false, typeAdministrator = false, typeSubadministrator = false, showCounts = false) => {
   const cartLink = `${root.checkout}/${links.checkout}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
   const planLink = `${root.checkout}/${links.quotation}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
   const menu: Array<link> = [
     {
-      url: cartHasItems ? cartLink : planLink, text: 'Carrito', visible: mobile, alert: cartHasItems, selected: tabSelected === 1,
+      url: cartHasItems ? cartLink : planLink, text: 'Carrito', visible: mobile, alert: cartHasItems && showCounts, selected: tabSelected === 1,
     },
     {
-      url: `${root.r11}/${r11links.chat}`, text: 'Chat', visible: mobile, alert: chatHasItems, selected: tabSelected === 2,
+      url: `${root.r11}/${r11links.chat}`, text: 'Chat', visible: mobile, alert: chatHasItems && showCounts, selected: tabSelected === 2,
     },
     { separator: true, hide: !mobile },
   ];
@@ -107,7 +107,7 @@ const buttonMenu = (menu = false, username = '', userPhoto = '', MenuMobile = tr
   </Fragment>
 );
 
-const cart = (cartCount = 0, referral = '', root=localRoot, tabSelected = 0) => (
+const cart = (cartCount = 0, referral = '', root=localRoot, tabSelected = 0, showCounts = false,) => (
   <Fragment>
     <a
       href={cartCount > 0 ? `${root.checkout}/${links.checkout}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`
@@ -124,7 +124,7 @@ const cart = (cartCount = 0, referral = '', root=localRoot, tabSelected = 0) => 
           id="lblCartCount"
           className={classNames(
             'labelCount',
-            cartCount > 0 && 'labelCountShow',
+            cartCount > 0 && showCounts && 'labelCountShow',
           )}
         >
           {cartCount < 100 ? cartCount : '99'}
@@ -135,12 +135,12 @@ const cart = (cartCount = 0, referral = '', root=localRoot, tabSelected = 0) => 
   </Fragment>
 );
 
-const getChatItem = (chatItems = 0, root=localRoot, tabSelected = 0) => {
+const getChatItem = (chatItems = 0, root=localRoot, tabSelected = 0, showCounts = false) => {
   const hasChats = chatItems > 0;
   const messagesContent = (
     <Fragment>
       <NavIcon iconName="messages" selected={tabSelected === 2} showBar={tabSelected === 2} />
-      {hasChats && (
+      {hasChats && showCounts && (
         <span className="unread">
           <Text micro white center strong>
             {chatItems > 99 ? '99+' : chatItems}
@@ -160,7 +160,7 @@ const getChatItem = (chatItems = 0, root=localRoot, tabSelected = 0) => {
   );
 };
 
-export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root= localRoot, tabSelected = 0) => (
+export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root= localRoot, tabSelected = 0, showCounts = false,) => (
   mobile ? (
     logged ? (
       [
@@ -188,12 +188,12 @@ export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto
         {
           key: 0,
           type: 'logo',
-          logo: cart(cartItems, referral, root, tabSelected),
+          logo: cart(cartItems, referral, root, tabSelected, showCounts),
         },
         {
           key: 1,
           type: 'custom',
-          custom: getChatItem(chatItems, root, tabSelected),
+          custom: getChatItem(chatItems, root, tabSelected, showCounts),
         },
         {
           key: 2,

@@ -87,6 +87,9 @@ storiesOf('Header/Logged/Desktop', module)
   .add('Logged Cart and Chat Items', () => {
     return <Header {...defaultPropsLoggedOrganization} teamName='Equipo 1' orgMenuLinks={dummyOrganizationsAndTeams()} cartItems={2} chatItems={2} />;
   })
+  .add('Logged Cart and Chat Items showCounts', () => {
+    return <Header {...defaultPropsLoggedOrganization} teamName='Equipo 1' orgMenuLinks={dummyOrganizationsAndTeams()} cartItems={2} chatItems={2} showCounts />;
+  })
   .add('Logged Select Center Menu', () => {
     return <Header {...defaultPropsLoggedOrganization} tabSelected={1} teamName='Equipo 1' orgMenuLinks={dummyOrganizationsAndTeams()} />;
   })
@@ -136,6 +139,9 @@ storiesOf('Header/Logged/Mobile', module)
   })
   .add('Logged Mobile Chat and Cart items', () => {
     return <Header {...defaultPropsLoggedOrganization} isMobile cartItems={2} chatItems={2} />;
+  })
+  .add('Logged Mobile Chat and Cart items showCounts', () => {
+    return <Header {...defaultPropsLoggedOrganization} isMobile cartItems={2} chatItems={2} showCounts />;
   })
   .add('Logged Mobile Center Selected', () => {
     return <Header {...defaultPropsLoggedOrganization} isMobile tabSelected={2} />;

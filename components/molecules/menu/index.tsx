@@ -16,7 +16,6 @@ interface link {
 }
 
 export interface MenuProps {
-  cartHasItems?: boolean;
   mobile?: boolean;
   linksH: Array<link>;
   logout?: Function;

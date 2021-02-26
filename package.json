@@ -1,7 +1,7 @@
 {
-  "name": "recruiters-atomic-library",
+  "name": "@occmundial/recruiters-atomic-library",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "next dev -p 1000",
     "build": "next build",
@@ -14,12 +14,14 @@
     "classnames": "^2.2.6",
     "file-loader": "^6.2.0",
     "next": "10.0.6",
+    "prop-types": "^15.7.2",
     "react": "17.0.1",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "17.0.1",
     "react-uuid": "^1.0.2",
     "ts-loader": "^8.0.17",
-    "universal-cookie": "^4.0.4"
+    "universal-cookie": "^4.0.4",
+    "fsevents": "^2.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -32,5 +34,17 @@
   },
   "optionalDependencies": {
     "fsevents": "^2.1.3"
-  }
+  },
+  "description": "Collection of shareable styled React components for OCC Recruiters applications.",
+  "main": "components/index",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/occmundial/recruiters-atomic-library.git"
+  },
+  "author": "OCCMundial",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/occmundial/recruiters-atomic-library/issues"
+  },
+  "homepage": "https://github.com/occmundial/recruiters-atomic-library#readme"
 }
