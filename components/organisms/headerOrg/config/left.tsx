@@ -5,9 +5,8 @@ import {
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
 import { localRoot, r12links, links } from '../config/links';
-import '../styles.css';
 
-const asideMenuUnLogged = (menuUnlogged = false, setMenuUnlogged, root = localRoot, tabSelected = 0) => (
+const asideMenuUnLogged = (menuUnlogged = false, setMenuUnlogged, root = localRoot, tabSelected = 0, styles) => (
   <Fragment>
     <Icon iconName="bars" onClick={() => setMenuUnlogged(true)} />
     <NavAside
@@ -20,8 +19,8 @@ const asideMenuUnLogged = (menuUnlogged = false, setMenuUnlogged, root = localRo
       )}
     >
       <div>
-        <div className="divButtons">
-          <div className="leftElement">
+        <div className={styles.divButtons}>
+          <div className={styles.leftElement}>
             <Button theme="ghostPink" size="sm" href={`${root.accounts}/${links.newAccount}`}>CREAR CUENTA</Button>
           </div>
           <Button
@@ -32,19 +31,19 @@ const asideMenuUnLogged = (menuUnlogged = false, setMenuUnlogged, root = localRo
             INICIAR SESIÓN
           </Button>
         </div>
-        <div className="verticalSeparator" />
-        <NavItem selected={tabSelected === 0} className="topTiny" link={`${root.home}/`}>Inicio</NavItem>
-        <NavItem selected={tabSelected === 1} className="topTiny" link={`${root.home}/${links.sSight}`}>Productos</NavItem>
-        <NavItem selected={tabSelected === 2} className="topTiny" link={`${root.home}/${links.prices}`}>Precios y paquetes</NavItem>
-        <NavItem selected={tabSelected === 3} className="topTiny" link={`${root.home}/${links.aboutUs}`}>Acerca de OCCMundial</NavItem>
-        <NavItem selected={tabSelected === 4} className="topTiny" link={`${root.home}/${links.faqs}`}>Preguntas Frecuentes</NavItem>
-        <NavItem selected={tabSelected === 5} className="topTiny" link={`${links.buscoEmpleo}`}>Busco Empleo</NavItem>
+        <div className={styles.verticalSeparator} />
+        <NavItem selected={tabSelected === 0} className={styles.topTiny} link={`${root.home}/`}>Inicio</NavItem>
+        <NavItem selected={tabSelected === 1} className={styles.topTiny} link={`${root.home}/${links.sSight}`}>Productos</NavItem>
+        <NavItem selected={tabSelected === 2} className={styles.topTiny} link={`${root.home}/${links.prices}`}>Precios y paquetes</NavItem>
+        <NavItem selected={tabSelected === 3} className={styles.topTiny} link={`${root.home}/${links.aboutUs}`}>Acerca de OCCMundial</NavItem>
+        <NavItem selected={tabSelected === 4} className={styles.topTiny} link={`${root.home}/${links.faqs}`}>Preguntas Frecuentes</NavItem>
+        <NavItem selected={tabSelected === 5} className={styles.topTiny} link={`${links.buscoEmpleo}`}>Busco Empleo</NavItem>
       </div>
     </NavAside>
   </Fragment>
 );
 
-const organizationMenu = (menu = false, organization = '', team = '', MenuMobile = false, Menulinks) => (
+const organizationMenu = (menu = false, organization = '', team = '', MenuMobile = false, Menulinks, styles) => (
   <Fragment>
     {organization !== '' && (
       <div>
@@ -60,7 +59,7 @@ const organizationMenu = (menu = false, organization = '', team = '', MenuMobile
           noMenu
           renderComp={(
             <Fragment>
-              <Card raised className="cardMenu">
+              <Card raised className={styles.cardMenu}>
                 <Menu mobile={MenuMobile} linksH={Menulinks} />
               </Card>
             </Fragment>
@@ -71,7 +70,7 @@ const organizationMenu = (menu = false, organization = '', team = '', MenuMobile
   </Fragment>
 );
 
-export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideMenu, orgMenu = false, organizationName = '', teamName = '', orgMenuLinks = [{}]) => (
+export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideMenu, orgMenu = false, organizationName = '', teamName = '', orgMenuLinks = [{}], styles) => (
   mobile ? (
     logged ? (
       [
@@ -91,7 +90,7 @@ export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideM
             key: 0,
             type: 'logo',
             logo: (
-              asideMenuUnLogged(asideMenu, setAsideMenu, root, tabSelected)
+              asideMenuUnLogged(asideMenu, setAsideMenu, root, tabSelected, styles)
             ),
           },
         ]
@@ -111,7 +110,7 @@ export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideM
           {
             key: 1,
             type: 'custom',
-            custom: organizationMenu(orgMenu, organizationName, teamName, mobile, orgMenuLinks),
+            custom: organizationMenu(orgMenu, organizationName, teamName, mobile, orgMenuLinks, styles),
           },
         ]
       ) : (

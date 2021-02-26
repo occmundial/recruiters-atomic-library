@@ -1,19 +1,26 @@
-import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import {
+  Grid, Text,
+} from '@occmundial/occ-atomic';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to my <a href="https://occmundial.github.io/recruiters-atomic-library/">Recruiters-Atomic-Library</a>
-        </h1>
-      </main>
-    </div>
+    <Grid>
+      <Grid.Row>
+        <Grid.Col>
+          <div className={styles.main}>
+            <Text subheading>
+              Repo: <a href="https://github.com/occmundial/recruiters-atomic-library/">Recruiters-Atomic-Library</a>
+            </Text>
+            <Text subheading>
+              <a href="/headerUnlogged">Header Unlogged</a>
+            </Text>
+            <Text subheading>
+              <a href="/headerLogged">Header Logged</a>
+            </Text>
+          </div>
+        </Grid.Col>
+      </Grid.Row>
+    </Grid>
   )
 }

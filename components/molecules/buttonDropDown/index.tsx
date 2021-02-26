@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { Button, Icon, colors } from '@occmundial/occ-atomic';
 import classNames from 'classnames';
-import './styles.css';
+import styles from '../../../styles/ButtonDropDown.module.css';
 
 export interface ButtonDropDownProps {
   buttonText: string | ReactElement;
@@ -76,20 +76,20 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
   }, []);
 
   return (
-    <div className="divDefault" ref={myRef}>
+    <div className={styles.divDefault} ref={myRef}>
       <div
-        className={classNames('divText', 'ButtonDropDown')}
+        className={styles.divText}
         onClick={(): void => rotate(show)}
         role="presentation"
       >
-        <div className="divFlex">
+        <div className={styles.divFlex}>
           <Button theme={type === 'white' ? 'ghostGrey' : 'tertiaryWhite'} size="sm">{buttonText}</Button>
           {arrow && (
             <Icon
               style={{ marginLeft: arrowLeft }}
               iconName="arrowDown"
               colors={[colors.black]}
-              className={show ? 'iconStyleActive' : 'iconStyleDisable'}
+              className={show ? styles.iconStyleActive : styles.iconStyleDisable}
               width={arrowWidth}
               height={arrowHeight}
             />
@@ -101,9 +101,9 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
           <div
             className={
               show ? classNames(
-                scroll ? 'showElementActiveMovScroll' : 'showElementActiveMov',
+                scroll ? styles.showElementActiveMovScroll : styles.showElementActiveMov,
               ) : classNames(
-                scroll ? 'showElementDisableMovScroll' : 'showElementDisableMov',
+                scroll ? styles.showElementDisableMovScroll : styles.showElementDisableMov,
               )
             }
           >
@@ -111,7 +111,7 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
           </div>
         )
         : (
-          <div className={show ? classNames(noMenu && 'noMenu', 'showElementActive') : classNames(noMenu && 'noMenu', 'showElementDisable')} style={{ width: menuWidth }}>
+          <div className={show ? classNames(noMenu && styles.noMenu, styles.showElementActive) : classNames(noMenu && styles.noMenu, styles.showElementDisable)} style={{ width: menuWidth }}>
             {isMounted || show ? renderComp : null}
           </div>
         )

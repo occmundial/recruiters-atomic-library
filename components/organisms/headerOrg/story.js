@@ -5,10 +5,9 @@ import { dummyOrganizationsAndTeams, dummyOrganizations } from '../headerOrg/con
 
 const defaultProps = {
   showCenter: true,
-  showCartCount: true,
+  showCounts: true,
   logged: false,
   showContingency: false,
-  totalItems: 0,
   userName: 'Moises Rojas',
   email: 'irojas@occ.com.mx',
   logout: () => { },
@@ -38,7 +37,6 @@ storiesOf('Header/Unlogged/Desktop', module)
 
 const defaultPropsLogged = {
   showCenter: true,
-  showCartCount: true,
   logged: true,
   showContingency: false,
   cartItems: 0,
@@ -53,7 +51,6 @@ const defaultPropsLogged = {
 
 const defaultPropsLoggedOrganization = {
   showCenter: true,
-  showCartCount: true,
   logged: true,
   showContingency: false,
   cartItems: 0,

@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
 import {
-  Avatar, Text, Card, NavIcon, 
+  Avatar, Text, Card, NavIcon,
 } from '@occmundial/occ-atomic';
 import classNames from 'classnames';
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
 import { localRoot, r12links, r11links, links } from '../config/links';
-import '../styles.css';
 
 interface link {
   url?: string;
@@ -24,7 +23,7 @@ const goTo = (url) => {
 };
 
 
-export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, referral = '', cartHasItems = false, chatHasItems = false, organizationLinks=[{}], isAdmin = false, validEmail = false, canReturn = false, typeAdministrator = false, typeSubadministrator = false, showCounts = false) => {
+export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, referral = '', cartHasItems = false, chatHasItems = false, organizationLinks = [{}], isAdmin = false, validEmail = false, canReturn = false, typeAdministrator = false, typeSubadministrator = false, showCounts = false) => {
   const cartLink = `${root.checkout}/${links.checkout}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
   const planLink = `${root.checkout}/${links.quotation}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
   const menu: Array<link> = [
@@ -85,9 +84,9 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
   return menu;
 };
 
-const buttonMenu = (menu = false, username = '', userPhoto = '', MenuMobile = true, Menulinks, Menulogout) => (
+const buttonMenu = (menu = false, username = '', userPhoto = '', MenuMobile = true, Menulinks, Menulogout, styles) => (
   <Fragment>
-    <div className="tabButton">
+    <div className={styles.tabButton}>
       <ButtonDropDown
         type="white"
         toggle={menu}
@@ -97,7 +96,7 @@ const buttonMenu = (menu = false, username = '', userPhoto = '', MenuMobile = tr
         arrowHeight={24}
         renderComp={(
           <Fragment>
-            <Card raised className="cardMenu">
+            <Card raised className={styles.cardMenu}>
               <Menu mobile={MenuMobile} linksH={Menulinks} logout={Menulogout} />
             </Card>
           </Fragment>
@@ -107,7 +106,7 @@ const buttonMenu = (menu = false, username = '', userPhoto = '', MenuMobile = tr
   </Fragment>
 );
 
-const cart = (cartCount = 0, referral = '', root=localRoot, tabSelected = 0, showCounts = false,) => (
+const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, showCounts = false, styles) => (
   <Fragment>
     <a
       href={cartCount > 0 ? `${root.checkout}/${links.checkout}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`
@@ -115,7 +114,7 @@ const cart = (cartCount = 0, referral = '', root=localRoot, tabSelected = 0, sho
       rel="nofollow"
       id="cart"
     >
-      <div title="Carrito" className="cartBtn">
+      <div title="Carrito" className={styles.cartBtn}>
         <Text
           small
           white
@@ -123,8 +122,8 @@ const cart = (cartCount = 0, referral = '', root=localRoot, tabSelected = 0, sho
           strong
           id="lblCartCount"
           className={classNames(
-            'labelCount',
-            cartCount > 0 && showCounts && 'labelCountShow',
+            styles.labelCount,
+            cartCount > 0 && showCounts && styles.labelCountShow,
           )}
         >
           {cartCount < 100 ? cartCount : '99'}
@@ -135,13 +134,13 @@ const cart = (cartCount = 0, referral = '', root=localRoot, tabSelected = 0, sho
   </Fragment>
 );
 
-const getChatItem = (chatItems = 0, root=localRoot, tabSelected = 0, showCounts = false) => {
+const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false, styles) => {
   const hasChats = chatItems > 0;
   const messagesContent = (
     <Fragment>
       <NavIcon iconName="messages" selected={tabSelected === 2} showBar={tabSelected === 2} />
       {hasChats && showCounts && (
-        <span className="unread">
+        <span className={styles.unread}>
           <Text micro white center strong>
             {chatItems > 99 ? '99+' : chatItems}
           </Text>
@@ -151,7 +150,7 @@ const getChatItem = (chatItems = 0, root=localRoot, tabSelected = 0, showCounts 
   );
   return (
     <div
-      className="notifications"
+      className={styles.notifications}
       onClick={() => goTo(`${root.basics}/${links.chat}`)}
       role="presentation"
     >
@@ -160,7 +159,7 @@ const getChatItem = (chatItems = 0, root=localRoot, tabSelected = 0, showCounts 
   );
 };
 
-export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root= localRoot, tabSelected = 0, showCounts = false,) => (
+export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false, styles) => (
   mobile ? (
     logged ? (
       [
@@ -172,52 +171,52 @@ export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto
         },
       ]
     ) : (
-      [
-        {
-          key: 0,
-          type: 'button',
-          text: 'INICIAR SESIÓN',
-          theme: 'ghostGrey',
-          href: `${root.accounts}/${links.loginPage}`,
-        },
-      ]
-    )
+        [
+          {
+            key: 0,
+            type: 'button',
+            text: 'INICIAR SESIÓN',
+            theme: 'ghostGrey',
+            href: `${root.accounts}/${links.loginPage}`,
+          },
+        ]
+      )
   ) : (
-    logged ? (
-      [
-        {
-          key: 0,
-          type: 'logo',
-          logo: cart(cartItems, referral, root, tabSelected, showCounts),
-        },
-        {
-          key: 1,
-          type: 'custom',
-          custom: getChatItem(chatItems, root, tabSelected, showCounts),
-        },
-        {
-          key: 2,
-          type: 'custom',
-          custom: buttonMenu(showMenu, userName, userPhoto, mobile, menuLinks, logout),
-        },
-      ]
-    ) : (
-      [
-        {
-          key: 0,
-          type: 'button',
-          text: 'CREAR CUENTA',
-          theme: 'ghostPink',
-          href: `${root.accounts}/${links.newAccount}`,
-        },
-        {
-          key: 1,
-          type: 'button',
-          text: 'INICIAR SESIÓN',
-          theme: 'ghostGrey',
-          href: `${root.accounts}/${links.loginPage}`,
-        },
-      ]
+      logged ? (
+        [
+          {
+            key: 0,
+            type: 'logo',
+            logo: cart(cartItems, referral, root, tabSelected, showCounts, styles),
+          },
+          {
+            key: 1,
+            type: 'custom',
+            custom: getChatItem(chatItems, root, tabSelected, showCounts, styles),
+          },
+          {
+            key: 2,
+            type: 'custom',
+            custom: buttonMenu(showMenu, userName, userPhoto, mobile, menuLinks, logout, styles),
+          },
+        ]
+      ) : (
+          [
+            {
+              key: 0,
+              type: 'button',
+              text: 'CREAR CUENTA',
+              theme: 'ghostPink',
+              href: `${root.accounts}/${links.newAccount}`,
+            },
+            {
+              key: 1,
+              type: 'button',
+              text: 'INICIAR SESIÓN',
+              theme: 'ghostGrey',
+              href: `${root.accounts}/${links.loginPage}`,
+            },
+          ]
+        )
     )
-  )
 );

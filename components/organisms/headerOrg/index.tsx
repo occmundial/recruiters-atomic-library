@@ -4,7 +4,7 @@ import React, {
 import {
   NavTab, NavAside, Text, grid, Modal, Banner, colors, Avatar, Flexbox,
 } from '@occmundial/occ-atomic';
-import './styles.css';
+import styles from '../../../styles/HeaderOrg.module.css';
 import { left } from './config/left';
 import { getRoot } from './config/links';
 import { getCookie, setCookie, cookieBanner } from './config/cookies';
@@ -23,8 +23,8 @@ export interface HeaderProps {
   logged?: boolean;
   showContingency?: boolean;
   logout: Function;
-  cartItems: number;
-  chatItems: number;
+  cartItems?: number;
+  chatItems?: number;
   userName?: string;
   userPhoto?: string;
   email?: string;
@@ -110,7 +110,7 @@ const HeaderOrg: FC<HeaderProps> = ({
     <Fragment>
       <NavTab
         top={scroll || logged ? undefined : top(isMobile, getRoot(local, dev, prod))}
-        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, orgMenu, organizationName, teamName, orgMenuLinks)}
+        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, orgMenu, organizationName, teamName, orgMenuLinks, styles)}
         center={showCenter && center(isMobile, logged, getRoot(local, dev, prod), tabSelected)}
         right={right(
           isMobile,
@@ -127,6 +127,7 @@ const HeaderOrg: FC<HeaderProps> = ({
           getRoot(local, dev, prod),
           rightTabSelected,
           showCounts,
+          styles,
         )}
         fixed
         hideOnScroll
@@ -145,7 +146,7 @@ const HeaderOrg: FC<HeaderProps> = ({
         top={(
           <Flexbox display="flex">
             <Avatar name={userName} photo={userPhoto && userPhoto} size={48} />
-            <div className="mobileData">
+            <div className={styles.mobileData}>
               <Text subheading>{userName}</Text>
               <Text small mid>{email}</Text>
             </div>
@@ -158,7 +159,7 @@ const HeaderOrg: FC<HeaderProps> = ({
           logout={logout}
         />
       </NavAside>
-      <div className={logged ? "spaceLogged" : "space"} />
+      <div className={logged ? styles.spaceLogged : styles.space} />
       {contingency && (
         <Banner onClose={(): void => { setCookie(cookieBanner, false, local, dev, prod); setContingency(false); }}>
           <Fragment>
@@ -242,9 +243,9 @@ HeaderOrg.propTypes = {
   /** Shows Covid contingency banner */
   logout: Proptypes.func.isRequired,
   /** Determines cart items */
-  cartItems: Proptypes.number.isRequired,
+  cartItems: Proptypes.number,
   /** Determines chat items */
-  chatItems: Proptypes.number.isRequired,
+  chatItems: Proptypes.number,
   /** user's userName  */
   userName: Proptypes.string,
   /** user's photo  */
