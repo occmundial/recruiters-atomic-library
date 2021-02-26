@@ -6,5 +6,5 @@ module.exports = {
       "/": { page: "/" },
     }
   },
-  assetPrefix: !debug ? '/recruiters-atomic-library/' : '',
+  assetPrefix: !debug ? 'https://occmundial.github.io/recruiters-atomic-library/' : '',
 }
