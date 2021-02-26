@@ -8,6 +8,7 @@ module.exports = {
   },
   assetPrefix: !debug ? '/recruiters-atomic-library/' : '',
   useFileSystemPublicRoutes: false,
+  basePath: !debug ? '/recruiters-atomic-library' : '',
   webpack: (config, { dev }) => {
     config.module.rules = config.module.rules.map(rule => {
       if(rule.loader === 'babel-loader') {
