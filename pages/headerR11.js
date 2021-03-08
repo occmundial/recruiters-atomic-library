@@ -1,6 +1,6 @@
 import styles from "../styles/HeaderR11.module.css";
 import * as functions from "../scripts/HomeR11";
-import classNames from 'classnames';
+import classNames from "classnames";
 
 /**
  * first level: black
@@ -32,12 +32,18 @@ export default function Home() {
               <div className={classNames(styles.groupContainer)}>
                 {/**Cart */}
                 <div className={styles.cartWrap}>
-                  <a href="http://localhost:5002/checkout/?utm_source=sight&utm_medium=referral&utm_campaign=" rel="nofollow" id="cart">
+                  <a
+                    href="http://localhost:5002/checkout/?utm_source=sight&utm_medium=referral&utm_campaign="
+                    rel="nofollow"
+                    id="cart"
+                  >
                     <div className={styles.cartButton}>
                       {/* p tag for count */}
                       <div className={styles.navIcon}>
                         <div className={styles.flexBox}>
-                          <div className={classNames(styles.icon, styles.cartIcon)}></div>
+                          <div
+                            className={classNames(styles.icon, styles.cartIcon)}
+                          ></div>
                         </div>
                       </div>
                     </div>
@@ -45,25 +51,45 @@ export default function Home() {
                 </div>
                 {/**Messages */}
                 <div className={styles.messagesWrap}>
-                    <div className={styles.messagesButton}>
-                      {/* p tag for count */}
-                      <div className={styles.navIcon}>
-                        <div className={styles.flexBox}>
-                          <div className={classNames(styles.icon, styles.messagesIcon)}></div>
-                        </div>
+                  <div className={styles.messagesButton}>
+                    {/* p tag for count */}
+                    <div className={styles.navIcon}>
+                      <div className={styles.flexBox}>
+                        <div
+                          className={classNames(
+                            styles.icon,
+                            styles.messagesIcon
+                          )}
+                        ></div>
                       </div>
                     </div>
+                  </div>
                 </div>
+                {/**Account */}
               </div>
               {/**Actividad *Vacantes *Talento */}
-              <div className={classNames(styles.groupContainer, styles.itemsCenter)}>
+              <div
+                className={classNames(
+                  styles.groupContainer,
+                  styles.itemsCenter
+                )}
+              >
                 {/**Actvidad */}
                 <div className={styles.actividadWrap}>
                   <div className={styles.navIcon}>
                     <div className={styles.flexBox}>
-                      <div className={classNames(styles.icon, styles.actividadIcon)}></div>
+                      <div
+                        className={classNames(
+                          styles.icon,
+                          styles.actividadIcon
+                        )}
+                      ></div>
                       <p
-                        className={classNames(styles.text, styles.textMicro, styles.textHighEmphasis)}
+                        className={classNames(
+                          styles.text,
+                          styles.textMicro,
+                          styles.textHighEmphasis
+                        )}
                       >
                         <span className={styles.navIconText}>Actividad</span>
                       </p>
@@ -74,9 +100,15 @@ export default function Home() {
                 <div className={styles.vacantesWrap}>
                   <div className={styles.navIcon}>
                     <div className={styles.flexBox}>
-                      <div className={classNames(styles.icon, styles.vacantesIcon)}></div>
+                      <div
+                        className={classNames(styles.icon, styles.vacantesIcon)}
+                      ></div>
                       <p
-                        className={classNames(styles.text, styles.textMicro, styles.textHighEmphasis)}
+                        className={classNames(
+                          styles.text,
+                          styles.textMicro,
+                          styles.textHighEmphasis
+                        )}
                       >
                         <span className={styles.navIconText}>Vacantes</span>
                       </p>
@@ -87,9 +119,15 @@ export default function Home() {
                 <div className={styles.talentoWrap}>
                   <div className={styles.navIcon}>
                     <div className={styles.flexBox}>
-                      <div className={classNames(styles.icon, styles.talentoIcon)}></div>
+                      <div
+                        className={classNames(styles.icon, styles.talentoIcon)}
+                      ></div>
                       <p
-                        className={classNames(styles.text, styles.textMicro, styles.textHighEmphasis)}
+                        className={classNames(
+                          styles.text,
+                          styles.textMicro,
+                          styles.textHighEmphasis
+                        )}
                       >
                         <span className={styles.navIconText}>Talento</span>
                       </p>
