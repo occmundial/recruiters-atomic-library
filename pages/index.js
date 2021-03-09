@@ -20,7 +20,7 @@ export default function Home() {
               <Link href="/headerLogged">Header Logged</Link>
             </Text>
             <Text subheading>
-              <Link href="/headerR11">Header R11</Link>
+              <Link href="/headerLoggedComplete">Header Logged Complete</Link>
             </Text>
           </div>
         </Grid.Col>

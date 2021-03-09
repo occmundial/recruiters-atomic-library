@@ -1,14 +1,13 @@
 import React, {
   useState, useEffect, useRef, FC, ReactElement,
 } from 'react';
-import { Button, Icon, colors } from '@occmundial/occ-atomic';
+import { Text, Icon, colors } from '@occmundial/occ-atomic';
 import classNames from 'classnames';
 import styles from '../../../styles/ButtonDropDown.module.css';
 
 export interface ButtonDropDownProps {
   buttonText: string | ReactElement;
   renderComp: ReactElement;
-  type: string;
   mobile?: boolean;
   toggle?: boolean;
   onClose?: Function;
@@ -17,11 +16,10 @@ export interface ButtonDropDownProps {
   arrowHeight?: number;
   arrowLeft?: number;
   noMenu?: boolean;
-  menuWidth?: string;
 }
 
 const ButtonDropDown: FC<ButtonDropDownProps> = ({
-  toggle = false, renderComp, type, buttonText, mobile = false, arrow = false, onClose, arrowWidth = 14, arrowHeight = 14, arrowLeft = 0, noMenu = false, menuWidth = 'auto',
+  toggle = false, renderComp, buttonText, mobile = false, arrow = false, onClose, arrowWidth = 14, arrowHeight = 14, arrowLeft = 0, noMenu = false,
 }: ButtonDropDownProps) => {
   const [show, toggleShow] = useState<boolean>(toggle);
   const [scroll, toggleScroll] = useState<boolean>(false);
@@ -83,7 +81,7 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
         role="presentation"
       >
         <div className={styles.divFlex}>
-          <Button theme={type === 'white' ? 'ghostGrey' : 'tertiaryWhite'} size="sm">{buttonText}</Button>
+          <Text subheading className={styles.buttonText}>{buttonText}</Text>
           {arrow && (
             <Icon
               style={{ marginLeft: arrowLeft }}
@@ -111,7 +109,7 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
           </div>
         )
         : (
-          <div className={show ? classNames(noMenu && styles.noMenu, styles.showElementActive) : classNames(noMenu && styles.noMenu, styles.showElementDisable)} style={{ width: menuWidth }}>
+          <div className={show ? classNames(noMenu && styles.noMenu, styles.showElementActive) : classNames(noMenu && styles.noMenu, styles.showElementDisable)}>
             {isMounted || show ? renderComp : null}
           </div>
         )
