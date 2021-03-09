@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import Header from '.';
 import { dummyOrganizationsAndTeams, dummyOrganizations } from '../headerOrg/config/links';
+import styles from '../../../styles/HeaderOrg.module.css';
 
 const defaultProps = {
   showCenter: true,

@@ -110,7 +110,7 @@ const HeaderOrg: FC<HeaderProps> = ({
     <Fragment>
       <NavTab
         top={scroll || logged ? undefined : top(isMobile, getRoot(local, dev, prod))}
-        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, orgMenu, organizationName, teamName, orgMenuLinks, styles)}
+        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, orgMenu, `${organizationName.substr(0,19)}...`, teamName, orgMenuLinks)}
         center={showCenter && center(isMobile, logged, getRoot(local, dev, prod), tabSelected)}
         right={right(
           isMobile,
@@ -127,7 +127,6 @@ const HeaderOrg: FC<HeaderProps> = ({
           getRoot(local, dev, prod),
           rightTabSelected,
           showCounts,
-          styles,
         )}
         fixed
         hideOnScroll

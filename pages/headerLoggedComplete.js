@@ -4,15 +4,16 @@ import {
 import {
   HeaderOrg
 } from '../components/index';
+import { dummyOrganizations } from '../components/organisms/headerOrg/config/links';
 
 const defaultProps = {
   showCenter: true,
   logged: true,
-  showContingency: false,
+  showContingency: true,
   cartItems: 0,
   chatItems: 0,
   userName: 'Moises Rojas',
-  userPhoto: '',
+  userPhoto: 'https://i.imgur.com/I80W1Q0.png',
   email: 'irojas@occ.com.mx',
   logout: () => { },
   tabSelected: 0,
@@ -22,7 +23,7 @@ const defaultProps = {
 export default function Home() {
   return (
     <Grid>
-      <HeaderOrg {...defaultProps} showCounts />
+      <HeaderOrg {...defaultProps} cartItems={2} chatItems={2} showCounts organizationName="Nombre de la organización" orgMenuLinks={dummyOrganizations()} />
     </Grid>
   )
 }

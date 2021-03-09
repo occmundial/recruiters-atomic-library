@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
 import { localRoot, r12links, r11links, links } from '../config/links';
+import styles from '../../../../styles/HeaderOrg.module.css';
 
 interface link {
   url?: string;
@@ -84,11 +85,10 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
   return menu;
 };
 
-const buttonMenu = (menu = false, username = '', userPhoto = '', MenuMobile = true, Menulinks, Menulogout, styles) => (
+const buttonMenu = (menu = false, username = '', userPhoto = '', MenuMobile = true, Menulinks, Menulogout) => (
   <Fragment>
     <div className={styles.tabButton}>
       <ButtonDropDown
-        type="white"
         toggle={menu}
         buttonText={<Avatar name={username} photo={userPhoto && userPhoto} size={32} />}
         arrow
@@ -106,7 +106,7 @@ const buttonMenu = (menu = false, username = '', userPhoto = '', MenuMobile = tr
   </Fragment>
 );
 
-const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, showCounts = false, styles) => (
+const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, showCounts = false) => (
   <Fragment>
     <a
       href={cartCount > 0 ? `${root.checkout}/${links.checkout}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`
@@ -134,7 +134,7 @@ const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, s
   </Fragment>
 );
 
-const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false, styles) => {
+const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => {
   const hasChats = chatItems > 0;
   const messagesContent = (
     <Fragment>
@@ -159,7 +159,7 @@ const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCount
   );
 };
 
-export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false, styles) => (
+export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => (
   mobile ? (
     logged ? (
       [
@@ -187,17 +187,17 @@ export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto
           {
             key: 0,
             type: 'logo',
-            logo: cart(cartItems, referral, root, tabSelected, showCounts, styles),
+            logo: cart(cartItems, referral, root, tabSelected, showCounts),
           },
           {
             key: 1,
             type: 'custom',
-            custom: getChatItem(chatItems, root, tabSelected, showCounts, styles),
+            custom: getChatItem(chatItems, root, tabSelected, showCounts),
           },
           {
             key: 2,
             type: 'custom',
-            custom: buttonMenu(showMenu, userName, userPhoto, mobile, menuLinks, logout, styles),
+            custom: buttonMenu(showMenu, userName, userPhoto, mobile, menuLinks, logout),
           },
         ]
       ) : (

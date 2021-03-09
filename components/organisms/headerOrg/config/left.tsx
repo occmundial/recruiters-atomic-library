@@ -5,8 +5,9 @@ import {
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
 import { localRoot, r12links, links } from '../config/links';
+import styles from '../../../../styles/HeaderOrg.module.css';
 
-const asideMenuUnLogged = (menuUnlogged = false, setMenuUnlogged, root = localRoot, tabSelected = 0, styles) => (
+const asideMenuUnLogged = (menuUnlogged = false, setMenuUnlogged, root = localRoot, tabSelected = 0) => (
   <Fragment>
     <Icon iconName="bars" onClick={() => setMenuUnlogged(true)} />
     <NavAside
@@ -43,23 +44,21 @@ const asideMenuUnLogged = (menuUnlogged = false, setMenuUnlogged, root = localRo
   </Fragment>
 );
 
-const organizationMenu = (menu = false, organization = '', team = '', MenuMobile = false, Menulinks, styles) => (
+const organizationMenu = (menu = false, organization = '', team = '', MenuMobile = false, Menulinks) => (
   <Fragment>
-    {organization !== '' && (
+    {organization !== '...' && (
       <div>
         <ButtonDropDown
-          type="white"
           toggle={menu}
           buttonText={team !== '' ? `${organization} / ${team} ` : `${organization} `}
           arrow
           arrowWidth={14}
           arrowHeight={14}
           arrowLeft={4}
-          menuWidth="264px"
           noMenu
           renderComp={(
             <Fragment>
-              <Card raised className={styles.cardMenu}>
+              <Card raised className={styles.cardOrgMenu}>
                 <Menu mobile={MenuMobile} linksH={Menulinks} />
               </Card>
             </Fragment>
@@ -70,7 +69,7 @@ const organizationMenu = (menu = false, organization = '', team = '', MenuMobile
   </Fragment>
 );
 
-export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideMenu, orgMenu = false, organizationName = '', teamName = '', orgMenuLinks = [{}], styles) => (
+export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideMenu, orgMenu = false, organizationName = '', teamName = '', orgMenuLinks = [{}]) => (
   mobile ? (
     logged ? (
       [
@@ -90,7 +89,7 @@ export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideM
             key: 0,
             type: 'logo',
             logo: (
-              asideMenuUnLogged(asideMenu, setAsideMenu, root, tabSelected, styles)
+              asideMenuUnLogged(asideMenu, setAsideMenu, root, tabSelected)
             ),
           },
         ]
@@ -110,7 +109,7 @@ export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideM
           {
             key: 1,
             type: 'custom',
-            custom: organizationMenu(orgMenu, organizationName, teamName, mobile, orgMenuLinks, styles),
+            custom: organizationMenu(orgMenu, organizationName, teamName, mobile, orgMenuLinks),
           },
         ]
       ) : (
