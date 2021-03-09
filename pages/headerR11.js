@@ -2,12 +2,6 @@ import styles from "../styles/HeaderR11.module.css";
 import * as functions from "../scripts/HomeR11";
 import classNames from "classnames";
 
-/**
- * first level: black
- * second level: red
- * third level: blue
- */
-
 export default function Home() {
   return (
     <>
@@ -66,6 +60,20 @@ export default function Home() {
                   </div>
                 </div>
                 {/**Account */}
+                <div>
+                  <div className={styles.accountWrap}>
+                    <div className={styles.buttonDropDownDefault}>
+                      <div className={styles.buttonDropDownText}>
+                        <div className={styles.buttonDropDownFlex}>
+                          <button>
+                            <span>MR</span>
+                          </button>
+                          <span className={classNames(styles.icon, styles.dropDownIcon)}></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               {/**Actividad *Vacantes *Talento */}
               <div
