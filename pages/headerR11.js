@@ -3,6 +3,7 @@ import * as functions from "../scripts/HomeR11";
 import classNames from "classnames";
 
 export default function Home() {
+
   return (
     <>
       {/* <section className={styles.main}>
@@ -44,7 +45,7 @@ export default function Home() {
                   </a>
                 </div>
                 {/**Messages */}
-                <div className={styles.messagesWrap}>
+                <div className={styles.messagesWrap} onClick={(styles) => functions.myFunction(styles)}>
                   <div className={styles.messagesButton}>
                     {/* p tag for count */}
                     <div className={styles.navIcon}>
@@ -65,11 +66,11 @@ export default function Home() {
                     <div className={styles.buttonDropDownDefault}>
                       <div className={styles.buttonDropDownText}>
                         <div className={styles.buttonDropDownFlex}>
-                          <button onClick={() => functions.myFunction()}>
+                          <button id="buttonAccount" onClick={(styles) => functions.myFunction(styles)}>
                             <span>MR</span>
                           </button>
-                          <span
-                            onClick={() => functions.myFunction()}
+                          <span id="spanAccount"
+                            onClick={(styles) => functions.myFunction(styles)}
                             className={classNames(
                               styles.icon,
                               styles.dropDownIcon
@@ -77,7 +78,7 @@ export default function Home() {
                           ></span>
                         </div>
                       </div>
-                      <div className={styles.accountCardActive}>
+                      <div id="accountCardWrap" className={styles.accountCardDisable}>
                         <div className={styles.accountCard}>
                           <div>
                             <a
@@ -200,6 +201,25 @@ export default function Home() {
                                 )}
                               >
                                 Ayuda
+                              </span>
+                            </a>
+                          </div>
+                          <div>
+                            <div className={styles.menuSeparator}></div>
+                          </div>
+                          <div>
+                            <a
+                              className={styles.navItemLink}
+                              href="https://occayuda.zendesk.com/hc/es"
+                            >
+                              <span
+                                className={classNames(
+                                  styles.text,
+                                  styles.textStandard,
+                                  styles.textNoEmphasis
+                                )}
+                              >
+                                Cerrar sesión
                               </span>
                             </a>
                           </div>
