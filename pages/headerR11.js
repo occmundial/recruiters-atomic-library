@@ -22,7 +22,7 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-              {/**Cart *Messages *User */}
+              {/**Cart *Messages *Account */}
               <div className={classNames(styles.groupContainer)}>
                 {/**Cart */}
                 <div className={styles.cartWrap}>
@@ -65,10 +65,144 @@ export default function Home() {
                     <div className={styles.buttonDropDownDefault}>
                       <div className={styles.buttonDropDownText}>
                         <div className={styles.buttonDropDownFlex}>
-                          <button>
+                          <button onClick={() => functions.myFunction()}>
                             <span>MR</span>
                           </button>
-                          <span className={classNames(styles.icon, styles.dropDownIcon)}></span>
+                          <span
+                            onClick={() => functions.myFunction()}
+                            className={classNames(
+                              styles.icon,
+                              styles.dropDownIcon
+                            )}
+                          ></span>
+                        </div>
+                      </div>
+                      <div className={styles.accountCardActive}>
+                        <div className={styles.accountCard}>
+                          <div>
+                            <a
+                              className={styles.navItemLink}
+                              href="http://localhost:64660/Vacantes/Clasificaciones/"
+                            >
+                              <span
+                                className={classNames(
+                                  styles.text,
+                                  styles.textStandard,
+                                  styles.textNoEmphasis
+                                )}
+                              >
+                                Clasificaciones de CV's
+                              </span>
+                            </a>
+                          </div>
+                          <div>
+                            <a
+                              className={styles.navItemLink}
+                              href="http://localhost:64660/Administracion/NotasReclutador/"
+                            >
+                              <span
+                                className={classNames(
+                                  styles.text,
+                                  styles.textStandard,
+                                  styles.textNoEmphasis
+                                )}
+                              >
+                                Notas de CV's
+                              </span>
+                            </a>
+                          </div>
+                          <div>
+                            <div className={styles.menuSeparator}></div>
+                          </div>
+                          <div>
+                            <a
+                              className={styles.navItemLink}
+                              href="http://localhost:64660/Paquetes/EstadoCuenta/"
+                            >
+                              <span
+                                className={classNames(
+                                  styles.text,
+                                  styles.textStandard,
+                                  styles.textNoEmphasis
+                                )}
+                              >
+                                Estado de Cuenta
+                              </span>
+                            </a>
+                          </div>
+                          <div>
+                            <div className={styles.menuSeparator}></div>
+                          </div>
+                          <div>
+                            <a
+                              className={styles.navItemLink}
+                              href="http://localhost:64660/DatosPersonales/"
+                            >
+                              <span
+                                className={classNames(
+                                  styles.text,
+                                  styles.textStandard,
+                                  styles.textNoEmphasis
+                                )}
+                              >
+                                Datos personales
+                              </span>
+                            </a>
+                          </div>
+                          <div>
+                            <a
+                              className={styles.navItemLink}
+                              href="http://localhost:64660/DatosPersonales/CambiarClave/"
+                            >
+                              <span
+                                className={classNames(
+                                  styles.text,
+                                  styles.textStandard,
+                                  styles.textNoEmphasis
+                                )}
+                              >
+                                Cambiar contraseña
+                              </span>
+                            </a>
+                          </div>
+                          <div>
+                            <div className={styles.menuSeparator}></div>
+                          </div>
+                          <div>
+                            <a
+                              className={styles.navItemLink}
+                              href="https://h3.occ.com.mx/Mercer/MisPerfiles"
+                            >
+                              <span
+                                className={classNames(
+                                  styles.text,
+                                  styles.textStandard,
+                                  styles.textNoEmphasis
+                                )}
+                              >
+                                Índices salariales
+                              </span>
+                            </a>
+                          </div>
+                          <div>
+                            <div className={styles.menuSeparator}></div>
+                          </div>
+                          <div>
+                            <a
+                              className={styles.navItemLink}
+                              href="https://occayuda.zendesk.com/hc/es"
+                            >
+                              <span
+                                className={classNames(
+                                  styles.text,
+                                  styles.textStandard,
+                                  styles.textNoEmphasis
+                                )}
+                              >
+                                Ayuda
+                              </span>
+                            </a>
+                          </div>
                         </div>
                       </div>
                     </div>

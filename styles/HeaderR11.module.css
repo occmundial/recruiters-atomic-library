@@ -136,6 +136,45 @@
   background: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgogICAgICAgICAgICAJIHZpZXdCb3g9IjAgMCAxNCAxNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTQgMTQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KICAgICAgICAgICAgPHBhdGggZmlsbD0iIzIyMjIyMiIgZD0iTTExLjUsNC4ybDAuMywwLjRjMC4xLDAuMSwwLjEsMC4yLDAsMC4zTDcuMSw5LjhjLTAuMSwwLjEtMC4yLDAuMS0wLjMsMGMwLDAsMCwwLDAsMEwyLjEsNC44CiAgICAgICAgICAgIAljLTAuMS0wLjEtMC4xLTAuMiwwLTAuM2wwLjMtMC40YzAuMS0wLjEsMC4yLTAuMSwwLjMsMGMwLDAsMCwwLDAsMGw0LjEsNC40YzAuMSwwLjEsMC4yLDAuMSwwLjMsMGMwLDAsMCwwLDAsMGw0LjEtNC40CiAgICAgICAgICAgIAlDMTEuMyw0LjEsMTEuNCw0LjEsMTEuNSw0LjJDMTEuNSw0LjEsMTEuNSw0LjIsMTEuNSw0LjJ6Ii8+CiAgICAgICAgICAgIDwvc3ZnPg==);
 }
 
+.accountCardActive {
+  height: auto;
+  max-height: 2000px;
+  margin: 16px 0px 0px -46px;
+  padding: 0px 0px 46px 46px;
+  width: fit-content;
+  transition-property: all, margin-top;
+  transition-duration: 0.6s, 0.8s;
+  transition-timing-function: ease, ease;
+  transition-delay: 0s, 0s;
+  position: absolute;
+  right: 0;
+  z-index: 9999;
+  transform: translateZ(0);
+  overflow: hidden;
+}
+
+.accountCard {
+  z-index: 4;
+  box-shadow: 0 12px 9px -5px rgb(0 0 0 / 12%), 0 10px 32px 0 rgb(0 29 124 / 12%);
+  position: relative;
+  background: #ffffff;
+  transition-property: box-shadow, transform;
+  transition-duration: 0.3s, 0.3s;
+  transition-timing-function: ease, ease;
+  transition-delay: 0s, 0s;
+  border-radius: 6px;
+  right: 12px;
+  border: 1px solid #dddddd;
+  padding: 8px 16px 8px 16px !important;
+}
+
+.menuSeparator {
+  height: 1px;
+  background: #dddddd;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
 .navIcon {
   height: 64px;
   cursor: pointer;
@@ -154,9 +193,18 @@
   color: #222222;
 }
 
+.textNoEmphasis {
+  color: #777777;
+}
+
 .textMicro {
   font-size: 11px;
   line-height: 16px;
+}
+
+.textStandard {
+  font-size: 15px;
+  line-height: 24px;
 }
 
 .text {
@@ -172,6 +220,11 @@
   margin-left: 4px;
   transition: 0.3s all;
   text-transform: uppercase;
+}
+
+.navItemLink {
+  display: inline-block;
+  text-decoration: none;
 }
 
 .logoContainer {

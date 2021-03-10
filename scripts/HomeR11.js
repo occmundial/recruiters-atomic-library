@@ -1,5 +1,10 @@
 const myFunction = () => {
-  alert("I am an alert box!");
+  alert('myFunction function works!');
+  return (
+    <div>
+      myFunction function works!
+    </div>
+  );
 };
 
 export {
