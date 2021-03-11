@@ -3,6 +3,10 @@ import * as functions from "../scripts/HomeR11";
 import classNames from "classnames";
 
 export default function Home() {
+  if (typeof window !== "undefined") {
+    window.addEventListener("click", functions.handleWindowClick);
+    // TODO add for scroll
+  }
 
   return (
     <>
@@ -45,7 +49,7 @@ export default function Home() {
                   </a>
                 </div>
                 {/**Messages */}
-                <div className={styles.messagesWrap} onClick={(styles) => functions.myFunction(styles)}>
+                <div className={styles.messagesWrap}>
                   <div className={styles.messagesButton}>
                     {/* p tag for count */}
                     <div className={styles.navIcon}>
@@ -66,11 +70,19 @@ export default function Home() {
                     <div className={styles.buttonDropDownDefault}>
                       <div className={styles.buttonDropDownText}>
                         <div className={styles.buttonDropDownFlex}>
-                          <button id="buttonAccount" onClick={(styles) => functions.myFunction(styles)}>
+                          <button
+                            id="buttonAccount"
+                            onClick={(event) =>
+                              functions.handleClickOnAccountWrap(event)
+                            }
+                          >
                             <span>MR</span>
                           </button>
-                          <span id="spanAccount"
-                            onClick={(styles) => functions.myFunction(styles)}
+                          <span
+                            id="spanAccount"
+                            onClick={(event) =>
+                              functions.handleClickOnAccountWrap(event)
+                            }
                             className={classNames(
                               styles.icon,
                               styles.dropDownIcon
@@ -78,7 +90,11 @@ export default function Home() {
                           ></span>
                         </div>
                       </div>
-                      <div id="accountCardWrap" className={styles.accountCardDisable}>
+                      <div
+                        id="accountCardWrap"
+                        className={styles.accountCardDisable}
+                        style={{ opacity: 0 }}
+                      >
                         <div className={styles.accountCard}>
                           <div>
                             <a
