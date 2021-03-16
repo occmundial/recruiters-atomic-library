@@ -341,22 +341,9 @@ export default function Home() {
                           <div>
                             <div className={styles.menuSeparator}></div>
                           </div>
-                          <div>
-                            <a
-                              className={styles.navItemLink}
-                              href="https://occayuda.zendesk.com/hc/es"
-                            >
-                              <span
-                                className={`
-                                ${styles.text}
-                                ${styles.textStandard}
-                                ${styles.textNoEmphasis}
-                              `}
-                              >
-                                Cerrar sesión
-                              </span>
-                            </a>
-                          </div>
+                          <p className={`${styles.text} ${styles.textStandard} ${styles.textSecondary} ${styles.menuBottomTiny}`}>
+                            <a role="presentation" className={styles.menuLogOut}>Cerrar sesión</a>
+                          </p>
                         </div>
                       </div>
                     </div>

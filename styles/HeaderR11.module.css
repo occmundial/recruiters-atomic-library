@@ -312,6 +312,20 @@
   line-height: 16px;
 }
 
+.menuLogOut {
+  text-decoration: none !important;
+  cursor: pointer !important;
+  color: #f13465;
+}
+
+.menuBottomTiny {
+  margin-bottom: 8px !important;
+}
+
+.textSecondary {
+  color: #f13465;
+}
+
 .headerLabelCountShow {
   display: block;
 }
