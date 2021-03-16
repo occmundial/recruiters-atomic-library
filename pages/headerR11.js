@@ -1,11 +1,10 @@
 import styles from "../styles/HeaderR11.module.css";
 import * as functions from "../scripts/HomeR11";
-import classNames from "classnames";
 
 export default function Home() {
   if (typeof window !== "undefined") {
     window.addEventListener("click", functions.handleWindowClick);
-    // TODO add for scroll
+    window.addEventListener("scroll", functions.handleWindowScroll());
   }
 
   return (
@@ -15,20 +14,99 @@ export default function Home() {
         <button onClick={() => functions.myFunction()}>Click me</button>
       </section> */}
 
-      <div className={styles.headerContainer}>
-        <div className={styles.headerStyle}>
+      <div id="headerContainer" className={styles.headerContainer}>
+        <div id="headerStyle" className={styles.headerStyle}>
           <div className={styles.innerHeaderContainer}>
             <div className={styles.navElementsContainer}>
-              {/**Logo occmundial */}
               <div className={styles.groupContainer}>
+                {/**Logo occmundial */}
                 <div className={styles.logoContainer}>
                   <a href="http://localhost:8029/actividad/">
                     <span className={styles.logo}></span>
                   </a>
                 </div>
+                {/**Nombre de la organización */}
+                <div>
+                  <div
+                    className={styles.buttonDropDownDefault}
+                    onClick={(event) =>
+                      functions.handleClickOnOrganizationWrap(event)
+                    }
+                  >
+                    <div className={styles.buttonDropDownText}>
+                      <div className={styles.buttonDropDownFlex}>
+                        <p
+                          className={`${styles.text} ${styles.textSubHeading} ${styles.textHighEmphasis}`}
+                        >
+                          Nombre de la organi...
+                        </p>
+                        <span id="organizationDropDownButton"
+                          className={`${styles.icon} ${styles.iconSmall}`}
+                        ></span>
+                      </div>
+                    </div>
+                    {/**Organization Card */}
+                    <div
+                      id="organizationCardWrap"
+                      className={styles.accountCardDisable}
+                      style={{ opacity: 0 }}
+                    >
+                      <div className={styles.organizationCard}>
+                        <div>
+                          <a
+                            className={styles.navItemLink}
+                            href="http://localhost:64660/Vacantes/Clasificaciones/"
+                          >
+                            <span
+                              className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
+                            >
+                              Organización 1
+                            </span>
+                          </a>
+                        </div>
+                        <div>
+                          <a
+                            className={styles.navItemLink}
+                            href="http://localhost:64660/Administracion/NotasReclutador/"
+                          >
+                            <span
+                              className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
+                            >
+                              Organización 2
+                            </span>
+                          </a>
+                        </div>
+                        <div>
+                          <a
+                            className={styles.navItemLink}
+                            href="http://localhost:64660/Paquetes/EstadoCuenta/"
+                          >
+                            <span
+                              className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
+                            >
+                              Organización 3
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               {/**Cart *Messages *Account */}
-              <div className={classNames(styles.groupContainer)}>
+              <div className={`${styles.groupContainer}`}>
                 {/**Cart */}
                 <div className={styles.cartWrap}>
                   <a
@@ -41,7 +119,7 @@ export default function Home() {
                       <div className={styles.navIcon}>
                         <div className={styles.flexBox}>
                           <div
-                            className={classNames(styles.icon, styles.cartIcon)}
+                            className={`${styles.icon} ${styles.cartIcon}`}
                           ></div>
                         </div>
                       </div>
@@ -55,10 +133,10 @@ export default function Home() {
                     <div className={styles.navIcon}>
                       <div className={styles.flexBox}>
                         <div
-                          className={classNames(
-                            styles.icon,
-                            styles.messagesIcon
-                          )}
+                          className={`
+                            ${styles.icon}
+                            ${styles.messagesIcon}
+                          `}
                         ></div>
                       </div>
                     </div>
@@ -67,29 +145,43 @@ export default function Home() {
                 {/**Account */}
                 <div>
                   <div className={styles.accountWrap}>
-                    <div className={styles.buttonDropDownDefault}>
+                    <div
+                      className={styles.buttonDropDownDefault}
+                      onClick={(event) =>
+                        functions.handleClickOnAccountWrap(event)
+                      }
+                    >
                       <div className={styles.buttonDropDownText}>
                         <div className={styles.buttonDropDownFlex}>
-                          <button
-                            id="buttonAccount"
-                            onClick={(event) =>
-                              functions.handleClickOnAccountWrap(event)
-                            }
+                          <p
+                            className={`
+                            ${styles.text} 
+                            ${styles.textSubHeading} 
+                            ${styles.textHighEmphasis}
+                            `}
                           >
-                            <span>MR</span>
-                          </button>
-                          <span
-                            id="spanAccount"
-                            onClick={(event) =>
-                              functions.handleClickOnAccountWrap(event)
-                            }
-                            className={classNames(
-                              styles.icon,
-                              styles.dropDownIcon
-                            )}
+                            <div className={styles.avatarCircle}>
+                              <div className={styles.avatarContentWrap}>
+                                <div
+                                  className={`${styles.avatarContent} ${styles.avatarContentCapital}`}
+                                >
+                                  <span>MR</span>
+                                </div>
+                                <div
+                                  className={`${styles.avatarContent} ${styles.avatarIcon}`}
+                                ></div>
+                              </div>
+                            </div>
+                          </p>
+                          <span id="accountDropDownButton"
+                            className={`
+                              ${styles.icon}
+                              ${styles.dropDownIcon}
+                            `}
                           ></span>
                         </div>
                       </div>
+                      {/**Account Card */}
                       <div
                         id="accountCardWrap"
                         className={styles.accountCardDisable}
@@ -102,11 +194,11 @@ export default function Home() {
                               href="http://localhost:64660/Vacantes/Clasificaciones/"
                             >
                               <span
-                                className={classNames(
-                                  styles.text,
-                                  styles.textStandard,
-                                  styles.textNoEmphasis
-                                )}
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
                               >
                                 Clasificaciones de CV's
                               </span>
@@ -118,11 +210,11 @@ export default function Home() {
                               href="http://localhost:64660/Administracion/NotasReclutador/"
                             >
                               <span
-                                className={classNames(
-                                  styles.text,
-                                  styles.textStandard,
-                                  styles.textNoEmphasis
-                                )}
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
                               >
                                 Notas de CV's
                               </span>
@@ -137,11 +229,11 @@ export default function Home() {
                               href="http://localhost:64660/Paquetes/EstadoCuenta/"
                             >
                               <span
-                                className={classNames(
-                                  styles.text,
-                                  styles.textStandard,
-                                  styles.textNoEmphasis
-                                )}
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
                               >
                                 Estado de Cuenta
                               </span>
@@ -156,11 +248,11 @@ export default function Home() {
                               href="http://localhost:64660/DatosPersonales/"
                             >
                               <span
-                                className={classNames(
-                                  styles.text,
-                                  styles.textStandard,
-                                  styles.textNoEmphasis
-                                )}
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
                               >
                                 Datos personales
                               </span>
@@ -172,11 +264,11 @@ export default function Home() {
                               href="http://localhost:64660/DatosPersonales/CambiarClave/"
                             >
                               <span
-                                className={classNames(
-                                  styles.text,
-                                  styles.textStandard,
-                                  styles.textNoEmphasis
-                                )}
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
                               >
                                 Cambiar contraseña
                               </span>
@@ -191,11 +283,11 @@ export default function Home() {
                               href="https://h3.occ.com.mx/Mercer/MisPerfiles"
                             >
                               <span
-                                className={classNames(
-                                  styles.text,
-                                  styles.textStandard,
-                                  styles.textNoEmphasis
-                                )}
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
                               >
                                 Índices salariales
                               </span>
@@ -210,11 +302,11 @@ export default function Home() {
                               href="https://occayuda.zendesk.com/hc/es"
                             >
                               <span
-                                className={classNames(
-                                  styles.text,
-                                  styles.textStandard,
-                                  styles.textNoEmphasis
-                                )}
+                                className={`
+                                ${styles.text}
+                                ${styles.textStandard}
+                                ${styles.textNoEmphasis}
+                              `}
                               >
                                 Ayuda
                               </span>
@@ -229,11 +321,11 @@ export default function Home() {
                               href="https://occayuda.zendesk.com/hc/es"
                             >
                               <span
-                                className={classNames(
-                                  styles.text,
-                                  styles.textStandard,
-                                  styles.textNoEmphasis
-                                )}
+                                className={`
+                                ${styles.text}
+                                ${styles.textStandard}
+                                ${styles.textNoEmphasis}
+                              `}
                               >
                                 Cerrar sesión
                               </span>
@@ -246,28 +338,23 @@ export default function Home() {
                 </div>
               </div>
               {/**Actividad *Vacantes *Talento */}
-              <div
-                className={classNames(
-                  styles.groupContainer,
-                  styles.itemsCenter
-                )}
-              >
+              <div className={`${styles.groupContainer} ${styles.itemsCenter}`}>
                 {/**Actvidad */}
                 <div className={styles.actividadWrap}>
                   <div className={styles.navIcon}>
                     <div className={styles.flexBox}>
                       <div
-                        className={classNames(
-                          styles.icon,
-                          styles.actividadIcon
-                        )}
+                        className={`
+                          ${styles.icon}
+                          ${styles.actividadIcon}
+                        `}
                       ></div>
                       <p
-                        className={classNames(
-                          styles.text,
-                          styles.textMicro,
-                          styles.textHighEmphasis
-                        )}
+                        className={`
+                          ${styles.text}
+                          ${styles.textMicro}
+                          ${styles.textHighEmphasis}
+                        `}
                       >
                         <span className={styles.navIconText}>Actividad</span>
                       </p>
@@ -279,14 +366,14 @@ export default function Home() {
                   <div className={styles.navIcon}>
                     <div className={styles.flexBox}>
                       <div
-                        className={classNames(styles.icon, styles.vacantesIcon)}
+                        className={`${styles.icon} ${styles.vacantesIcon}`}
                       ></div>
                       <p
-                        className={classNames(
-                          styles.text,
-                          styles.textMicro,
-                          styles.textHighEmphasis
-                        )}
+                        className={`
+                          ${styles.text}
+                          ${styles.textMicro}
+                          ${styles.textHighEmphasis}
+                        `}
                       >
                         <span className={styles.navIconText}>Vacantes</span>
                       </p>
@@ -298,14 +385,14 @@ export default function Home() {
                   <div className={styles.navIcon}>
                     <div className={styles.flexBox}>
                       <div
-                        className={classNames(styles.icon, styles.talentoIcon)}
+                        className={`${styles.icon} ${styles.talentoIcon}`}
                       ></div>
                       <p
-                        className={classNames(
-                          styles.text,
-                          styles.textMicro,
-                          styles.textHighEmphasis
-                        )}
+                        className={`
+                          ${styles.text}
+                          ${styles.textMicro}
+                          ${styles.textHighEmphasis}
+                        `}
                       >
                         <span className={styles.navIconText}>Talento</span>
                       </p>
@@ -317,6 +404,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/* <div className={styles.divtest}></div> */}
     </>
   );
 }
