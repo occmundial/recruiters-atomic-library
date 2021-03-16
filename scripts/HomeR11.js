@@ -150,6 +150,36 @@ const handleWindowClick = () => {
 };
 
 const handleWindowScroll = () => {
+  console.log('scroll');
+  // Hide account dropdown if visible
+  const accountDropDownButton = document.getElementById(
+    "accountDropDownButton"
+  );
+  if (accountDropDownButton.style.transform !== "")
+    accountDropDownButton.style.transform = "";
+
+  const accountCard = document.getElementById("accountCardWrap");
+
+  if (accountCard.style.opacity !== "0") {
+    switchElementStyle(accountCard, cardDisable);
+  }
+
+  // Hide organization dropdown if visible
+  const organizationDropDownButton = document.getElementById(
+    "organizationDropDownButton"
+  );
+  if (organizationDropDownButton.style.transform !== "")
+    organizationDropDownButton.style.transform = "";
+    
+  const organizationCard = document.getElementById("organizationCardWrap");
+
+  if (organizationCard.style.opacity !== "0") {
+    switchElementStyle(organizationCard, {
+      ...cardDisable,
+      ...organizationCardDisable,
+    });
+  }
+
   // TODO handle header hiding/showing
   var scroll = window.scrollY;
 
@@ -165,20 +195,6 @@ const handleWindowScroll = () => {
   } else {
     const header = document.getElementById("headerContainer");
     header.style.marginTop = "0px";
-  }
-
-  // Hide account dropdown if visible
-  const accountCard = document.getElementById("accountCardWrap");
-
-  if (accountCard.style.opacity !== "0") {
-    switchElementStyle(accountCard, cardDisable);
-  }
-
-  // Hide organization dropdown if visible
-  const organizationCard = document.getElementById("organizationCardWrap");
-
-  if (organizationCard.style.opacity !== "0") {
-    switchElementStyle(organizationCard, cardDisable);
   }
 };
 

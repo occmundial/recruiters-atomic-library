@@ -4,7 +4,7 @@ import * as functions from "../scripts/HomeR11";
 export default function Home() {
   if (typeof window !== "undefined") {
     window.addEventListener("click", functions.handleWindowClick);
-    window.addEventListener("scroll", functions.handleWindowScroll());
+    window.addEventListener("scroll", functions.handleWindowScroll);
   }
 
   return (
@@ -40,7 +40,8 @@ export default function Home() {
                         >
                           Nombre de la organi...
                         </p>
-                        <span id="organizationDropDownButton"
+                        <span
+                          id="organizationDropDownButton"
                           className={`${styles.icon} ${styles.iconSmall}`}
                         ></span>
                       </div>
@@ -115,7 +116,17 @@ export default function Home() {
                     id="cart"
                   >
                     <div className={styles.cartButton}>
-                      {/* p tag for count */}
+                      <p
+                        className={`${styles.text} 
+                        ${styles.textSmall} 
+                        ${styles.textWhite} 
+                        ${styles.textCenter} 
+                        ${styles.textStrong}
+                        ${styles.headerLabelCount}
+                        ${styles.headerLabelCountShow}`}
+                      >
+                        2
+                      </p>
                       <div className={styles.navIcon}>
                         <div className={styles.flexBox}>
                           <div
@@ -129,7 +140,17 @@ export default function Home() {
                 {/**Messages */}
                 <div className={styles.messagesWrap}>
                   <div className={styles.messagesButton}>
-                    {/* p tag for count */}
+                  <p
+                        className={`${styles.text} 
+                        ${styles.textSmall} 
+                        ${styles.textWhite} 
+                        ${styles.textCenter} 
+                        ${styles.textStrong}
+                        ${styles.headerLabelCount}
+                        ${styles.headerLabelCountShow}`}
+                      >
+                        2
+                      </p>
                     <div className={styles.navIcon}>
                       <div className={styles.flexBox}>
                         <div
@@ -173,7 +194,8 @@ export default function Home() {
                               </div>
                             </div>
                           </p>
-                          <span id="accountDropDownButton"
+                          <span
+                            id="accountDropDownButton"
                             className={`
                               ${styles.icon}
                               ${styles.dropDownIcon}
@@ -404,7 +426,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* <div className={styles.divtest}></div> */}
+      <div className={styles.divtest}></div>
     </>
   );
 }

@@ -291,6 +291,42 @@
   letter-spacing: 0;
 }
 
+.textCenter {
+  text-align: center;
+}
+
+.textWhite {
+  color: #ffffff;
+}
+
+.textStrong {
+  font-weight: 600;
+}
+
+.textSmall {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.headerLabelCountShow {
+  display: block;
+}
+
+.headerLabelCount {
+  position: absolute;
+  top: 16px;
+  left: 12px;
+  border-radius: 8px !important;
+  background: #f13465;
+  border: 1px solid #ffffff;
+  max-width: 16px;
+  padding-left: 4px;
+  padding-right: 4px;
+  z-index: 1;
+}
+
+
+
 .navIconText {
   color: #777777;
   margin-left: 4px;
