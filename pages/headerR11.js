@@ -2,6 +2,10 @@ import styles from "../styles/HeaderR11.module.css";
 import * as functions from "../scripts/HomeR11";
 
 export default function Home() {
+  if (typeof document !== "undefined") {
+    document.addEventListener("scroll", functions.handleDocumentScroll);
+  }
+
   if (typeof window !== "undefined") {
     window.addEventListener("click", functions.handleWindowClick);
     window.addEventListener("scroll", functions.handleWindowScroll);
@@ -140,17 +144,17 @@ export default function Home() {
                 {/**Messages */}
                 <div className={styles.messagesWrap}>
                   <div className={styles.messagesButton}>
-                  <p
-                        className={`${styles.text} 
+                    <p
+                      className={`${styles.text} 
                         ${styles.textSmall} 
                         ${styles.textWhite} 
                         ${styles.textCenter} 
                         ${styles.textStrong}
                         ${styles.headerLabelCount}
                         ${styles.headerLabelCountShow}`}
-                      >
-                        2
-                      </p>
+                    >
+                      2
+                    </p>
                     <div className={styles.navIcon}>
                       <div className={styles.flexBox}>
                         <div

@@ -41,6 +41,10 @@ const buttonDropDownActive = {
   transform: "rotate(180deg)",
 };
 
+const previousScrollPosition = {
+  scrollY: 0,
+};
+
 const switchElementStyle = (element, style) => {
   Object.keys(style).forEach((styleKey) => {
     element.style[styleKey] = style[styleKey];
@@ -119,7 +123,6 @@ const handleClickOnOrganizationWrap = (event) => {
 };
 
 const handleWindowClick = () => {
-  
   // Account
   const accountDropDownButton = document.getElementById(
     "accountDropDownButton"
@@ -149,8 +152,12 @@ const handleWindowClick = () => {
   }
 };
 
+const handleDocumentScroll = () => {
+  const header = document.getElementById("headerContainer");
+  header.style.marginTop = "64px";
+};
+
 const handleWindowScroll = () => {
-  console.log('scroll');
   // Hide account dropdown if visible
   const accountDropDownButton = document.getElementById(
     "accountDropDownButton"
@@ -159,7 +166,6 @@ const handleWindowScroll = () => {
     accountDropDownButton.style.transform = "";
 
   const accountCard = document.getElementById("accountCardWrap");
-
   if (accountCard.style.opacity !== "0") {
     switchElementStyle(accountCard, cardDisable);
   }
@@ -170,9 +176,8 @@ const handleWindowScroll = () => {
   );
   if (organizationDropDownButton.style.transform !== "")
     organizationDropDownButton.style.transform = "";
-    
-  const organizationCard = document.getElementById("organizationCardWrap");
 
+  const organizationCard = document.getElementById("organizationCardWrap");
   if (organizationCard.style.opacity !== "0") {
     switchElementStyle(organizationCard, {
       ...cardDisable,
@@ -180,22 +185,22 @@ const handleWindowScroll = () => {
     });
   }
 
-  // TODO handle header hiding/showing
-  var scroll = window.scrollY;
+  // Header
+  var scroll = window.pageYOffset;
 
   const headerStyle = document.getElementById("headerStyle");
 
-  scroll > 20
+  previousScrollPosition.scrollY > 10
     ? (headerStyle.style.background = "rgba(255, 255, 255, 0.85)")
-    : (headerStyle.style.background = "#ffffff;");
+    : (headerStyle.style.background = "");
 
-  if (scroll > 20) {
-    const header = document.getElementById("headerContainer");
+  const header = document.getElementById("headerContainer");
+  if (scroll > previousScrollPosition.scrollY) {
     header.style.marginTop = "-64px";
   } else {
-    const header = document.getElementById("headerContainer");
     header.style.marginTop = "0px";
   }
+  previousScrollPosition.scrollY = window.pageYOffset;
 };
 
 export {
@@ -203,4 +208,5 @@ export {
   handleWindowClick,
   handleWindowScroll,
   handleClickOnOrganizationWrap,
+  handleDocumentScroll,
 };
