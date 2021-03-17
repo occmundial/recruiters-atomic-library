@@ -3,6 +3,8 @@
   "version": "0.2.0",
   "private": false,
   "scripts": {
+    "predeploy": "npm run build-storybook",
+    "deploy-storybook": "build-storybook -s styles && gh-pages -d storybook-static",
     "dev": "next",
     "build": "next build",
     "start": "next start",
@@ -10,8 +12,7 @@
     "serve": "next build && next export && serve out",
     "publish": "npm publish --access public",
     "deploy": "rimraf -rf node_modules/.cache && rimraf out && next build && next export && touch out/.nojekyll && gh-pages -d out -t true",
-    "storybook": "start-storybook -p 6006 -s styles",
-    "build-storybook": "build-storybook -s styles"
+    "storybook": "start-storybook -p 6006 -s styles"
   },
   "dependencies": {
     "@occmundial/occ-atomic": "^1.15.1",

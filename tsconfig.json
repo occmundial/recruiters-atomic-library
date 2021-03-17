@@ -19,7 +19,7 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
-    "jsx": "preserve", // for storybook jsx must be "react",
+    "jsx": "react", // for storybook jsx must be "react",
     "removeComments": true,
     "strictNullChecks": true,
     "strictFunctionTypes": false,
