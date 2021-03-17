@@ -1,0 +1,14 @@
+:root {
+--grid-xxs: 0;
+--grid-xs: 576;
+--grid-sm: 768;
+--grid-md: 992;
+--grid-lg: 1200;
+--grid-xl: 1500;
+--grid-full: '100%';
+--grid-xsGrid: 564;
+--grid-smGrid: 744;
+--grid-mdGrid: 984;
+--grid-lgGrid: 1164;
+--grid-xlGrid: 1464;
+}
