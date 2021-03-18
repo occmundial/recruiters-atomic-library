@@ -4,17 +4,17 @@ import React, {
 import {
   NavTab, NavAside, Text, grid, Modal, Banner, colors, Avatar, Flexbox,
 } from '@occmundial/occ-atomic';
-import styles from '../../../styles/HeaderOrg.module.css';
-import { left } from './config/left';
-import { getRoot } from './config/links';
-import { getCookie, setCookie, cookieBanner } from './config/cookies';
-import { top } from './config/top';
-import { center, centerMobile } from './config/center';
-import { right, loggedMenu } from './config/right';
+import './HeaderOrg.css';
+import { left } from './configHeaderOrg/left';
+import { getRoot } from './configHeaderOrg/links';
+import { getCookie, setCookie, cookieBanner } from './configHeaderOrg/cookies';
+import { top } from './configHeaderOrg/top';
+import { center, centerMobile } from './configHeaderOrg/center';
+import { right, loggedMenu } from './configHeaderOrg/right';
 import Proptypes from 'prop-types';
 
-import windowSize from '../../common/useWindowSize';
-import HeaderMenu from '../../molecules/menu';
+import windowSize from '../components/common/useWindowSize';
+import HeaderMenu from '../components/molecules/menu';
 
 const contingencyModal: string = 'https://cdn-shop.occ.com.mx/recruiters-home-page/img/contingencyModal.png';
 export interface HeaderProps {
@@ -34,6 +34,7 @@ export interface HeaderProps {
   local?: boolean;
   dev?: boolean;
   prod?: boolean;
+  orgMenu?: boolean;
   organizationName?: string;
   teamName?: string;
   orgMenuLinks?: Array<object>;
@@ -62,6 +63,7 @@ const HeaderOrg: FC<HeaderProps> = ({
   local = false,
   dev = false,
   prod = false,
+  orgMenu = false,
   organizationName = '',
   teamName = '',
   orgMenuLinks = [],
@@ -101,6 +103,8 @@ const HeaderOrg: FC<HeaderProps> = ({
         setContingency(true);
         setCookie(cookieBanner, true, local, dev, prod);
       } else if (cookieBannerValue === 'true') setContingency(true);
+    } else {
+      setContingency(false);
     }
   }, [showContingency]);
 
@@ -108,7 +112,7 @@ const HeaderOrg: FC<HeaderProps> = ({
     <Fragment>
       <NavTab
         top={scroll || logged ? undefined : top(isMobile, getRoot(local, dev, prod))}
-        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, `${organizationName.substr(0,19)}...`, teamName, orgMenuLinks)}
+        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, orgMenu, `${organizationName.substr(0,19)}...`, teamName, orgMenuLinks)}
         center={showCenter && center(isMobile, logged, getRoot(local, dev, prod), tabSelected)}
         right={right(
           isMobile,
@@ -143,7 +147,7 @@ const HeaderOrg: FC<HeaderProps> = ({
         top={(
           <Flexbox display="flex">
             <Avatar name={userName} photo={userPhoto && userPhoto} size={48} />
-            <div className={styles.mobileData}>
+            <div className="mobileData">
               <Text subheading>{userName}</Text>
               <Text small mid>{email}</Text>
             </div>
@@ -156,7 +160,7 @@ const HeaderOrg: FC<HeaderProps> = ({
           logout={logout}
         />
       </NavAside>
-      <div className={logged ? styles.spaceLogged : styles.space} />
+      <div className={logged ? "spaceLogged" : "space"} />
       {contingency && (
         <Banner onClose={(): void => { setCookie(cookieBanner, false, local, dev, prod); setContingency(false); }}>
           <Fragment>
@@ -261,6 +265,8 @@ HeaderOrg.propTypes = {
   dev: Proptypes.bool,
   /** Determines if the env is prod for links */
   prod: Proptypes.bool,
+  /** External toggle for the orgMenu */
+  orgMenu: Proptypes.bool,
   /** Determines name of the organization */
   organizationName: Proptypes.string,
   /** Determines name of the team */

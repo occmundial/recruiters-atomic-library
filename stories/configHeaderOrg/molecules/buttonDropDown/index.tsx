@@ -3,12 +3,13 @@ import React, {
 } from 'react';
 import { Text, Icon, colors } from '@occmundial/occ-atomic';
 import classNames from 'classnames';
-import styles from '../../../styles/ButtonDropDown.module.css';
+import './ButtonDropDown.css';
 
 export interface ButtonDropDownProps {
   buttonText: string | ReactElement;
   renderComp: ReactElement;
   mobile?: boolean;
+  toggle?: boolean;
   onClose?: Function;
   arrow?: boolean;
   arrowWidth?: number;
@@ -18,12 +19,12 @@ export interface ButtonDropDownProps {
 }
 
 const ButtonDropDown: FC<ButtonDropDownProps> = ({
-  renderComp, buttonText, mobile = false, arrow = false, onClose, arrowWidth = 14, arrowHeight = 14, arrowLeft = 0, noMenu = false,
+  toggle = false, renderComp, buttonText, mobile = false, arrow = false, onClose, arrowWidth = 14, arrowHeight = 14, arrowLeft = 0, noMenu = false,
 }: ButtonDropDownProps) => {
-  const [show, toggleShow] = useState<boolean>(false);
+  const [show, toggleShow] = useState<boolean>(toggle);
   const [scroll, toggleScroll] = useState<boolean>(false);
   const [previousScroll, togglepreviousScroll] = useState<number>(0);
-  const [isMounted, toggleisMounted] = useState<boolean>(false);
+  const [isMounted, toggleisMounted] = useState<boolean>(toggle);
   const myRef: any = useRef<HTMLDivElement>(null);
 
   const rotate = (bol: boolean): void => {
@@ -73,20 +74,20 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
   }, []);
 
   return (
-    <div className={styles.divDefault} ref={myRef}>
+    <div className="divDefault" ref={myRef}>
       <div
-        className={styles.divText}
+        className="divText"
         onClick={(): void => rotate(show)}
         role="presentation"
       >
-        <div className={styles.divFlex}>
-          <Text subheading className={styles.buttonText}>{buttonText}</Text>
+        <div className="divFlex">
+          <Text subheading className="buttonText">{buttonText}</Text>
           {arrow && (
             <Icon
               style={{ marginLeft: arrowLeft }}
               iconName="arrowDown"
               colors={[colors.black]}
-              className={show ? styles.iconStyleActive : styles.iconStyleDisable}
+              className={show ? "iconStyleActive" : "iconStyleDisable"}
               width={arrowWidth}
               height={arrowHeight}
             />
@@ -98,9 +99,9 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
           <div
             className={
               show ? classNames(
-                scroll ? styles.showElementActiveMovScroll : styles.showElementActiveMov,
+                scroll ? "showElementActiveMovScroll" : "showElementActiveMov",
               ) : classNames(
-                scroll ? styles.showElementDisableMovScroll : styles.showElementDisableMov,
+                scroll ? "showElementDisableMovScroll" : "showElementDisableMov",
               )
             }
           >
@@ -108,7 +109,7 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
           </div>
         )
         : (
-          <div className={show ? classNames(noMenu && styles.noMenu, styles.showElementActive) : classNames(noMenu && styles.noMenu, styles.showElementDisable)}>
+          <div className={show ? classNames(noMenu && "noMenu", "showElementActive") : classNames(noMenu && "noMenu", "showElementDisable")}>
             {isMounted || show ? renderComp : null}
           </div>
         )

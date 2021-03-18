@@ -3,7 +3,7 @@ import '../styles/occ-atomic/colors.css';
 import '../styles/occ-atomic/grid.css';
 import '../styles/occ-atomic/iconSizes.css';
 import '../styles/occ-atomic/shadows.css';
-import '../styles/occ-atomic/spacing.css'
+import '../styles/occ-atomic/spacing.css';
 import React, { useEffect, Fragment, useState } from 'react';
 import Head from 'next/head'
 

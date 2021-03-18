@@ -12,7 +12,8 @@
     "serve": "next build && next export && serve out",
     "publish": "npm publish --access public",
     "deploy": "rimraf -rf node_modules/.cache && rimraf out && next build && next export && touch out/.nojekyll && gh-pages -d out -t true",
-    "storybook": "start-storybook -p 6006 -s styles"
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@occmundial/occ-atomic": "^1.15.1",
@@ -31,10 +32,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
-    "@storybook/addon-actions": "^5.3.19",
-    "@storybook/addon-links": "^5.3.19",
-    "@storybook/react": "^5.3.19",
-    "@types/storybook__react": "^5.2.1",
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/react": "^6.1.21",
     "babel-loader": "^8.2.2",
     "gh-pages": "^2.1.1",
     "typescript": "^4.1.5"
