@@ -18,34 +18,115 @@ import HeaderMenu from '../components/molecules/menu';
 
 const contingencyModal: string = 'https://cdn-shop.occ.com.mx/recruiters-home-page/img/contingencyModal.png';
 export interface HeaderProps {
+  /**
+   * Shows Cart or Chat counts
+   */
   showCounts?: boolean;
+  /**
+   * Shows middle navigation menu
+   */
   showCenter?: boolean;
+  /**
+   * user is logged or not
+   */
   logged?: boolean;
+  /**
+   * Shows Covid contingency banner
+   */
   showContingency?: boolean;
+  /**
+   * Determines what to do when a user is logged out
+   */
   logout: Function;
+  /**
+   * The number of cart items to be displayed
+   */
   cartItems?: number;
+  /**
+   * The number of chat items to be displayed
+   */
   chatItems?: number;
+  /**
+   * user's userName
+   */
   userName?: string;
+  /**
+   * user's photo
+   */
   userPhoto?: string;
+  /**
+   * user's email
+   */
   email?: string;
+  /**
+   * Determines if header should be displayed for a mobile viewport
+   */
   isMobile?: boolean;
+  /**
+   * Determines which tab is selected in the left/center navigation menu
+   */
   tabSelected?: number;
+  /**
+   * Determines which tab is selected in the right navigation menu
+   */
   rightTabSelected?: number;
+  /**
+   * Determines if the env is local for links
+   */
   local?: boolean;
+  /**
+   * Determines if the env is dev for links
+   */
   dev?: boolean;
+  /**
+   * Determines if the env is prod for links
+   */
   prod?: boolean;
+  /**
+   * External toggle for the orgMenu
+   */
   orgMenu?: boolean;
+  /**
+   * Determines name of the organization
+   */
   organizationName?: string;
+  /**
+   * Determines name of the team
+   */
   teamName?: string;
+  /**
+   * Determines links of the organization menu
+   */
   orgMenuLinks?: Array<object>;
+  /**
+   * Determines referral name for the checkout analytics
+   */
   referral?: string;
+  /**
+   * Determines if the account is an admin
+   */
   isAdmin?: boolean;
+  /**
+   * Determines if the account has a valid email
+   */
   validEmail?: boolean;
+  /**
+   * Determines if the account can return to R11 sections
+   */
   canReturn?: boolean;
+  /**
+   * Determines if the levelAccount is an admin
+   */
   typeAdministrator?: boolean;
+  /**
+   * Determines if the levelAccount is a subAdmin
+   */
   typeSubAdministrator?: boolean;
 }
 
+/**
+ * Primary UI component for user interaction
+ */
 const HeaderOrg: FC<HeaderProps> = ({
   showCenter = false,
   showCounts = false,
@@ -130,13 +211,13 @@ const HeaderOrg: FC<HeaderProps> = ({
           rightTabSelected,
           showCounts,
         )}
-        fixed
+        // fixed
         hideOnScroll
       />
       {isMobile && logged && (
         <NavTab
           flexCenter={centerMobile(getRoot(local, dev, prod), tabSelected)}
-          fixed
+          // fixed
           bottom
         />
       )}
@@ -255,9 +336,9 @@ HeaderOrg.propTypes = {
   email: Proptypes.string,
   /** Determines if isMobile */
   isMobile: Proptypes.bool,
-  /** Determines what tab is selected in the left/center navigation */
+  /** Determines which tab is selected in the left/center navigation */
   tabSelected: Proptypes.number,
-  /** Determines what tab is selected in the right navigation */
+  /** Determines which tab is selected in the right navigation */
   rightTabSelected: Proptypes.number,
   /** Determines if the env is local for links */
   local: Proptypes.bool,
@@ -287,4 +368,7 @@ HeaderOrg.propTypes = {
   typeSubAdministrator: Proptypes.bool,
 };
 
+/**
+ * Primary UI component for user interaction
+ */
 export default HeaderOrg;

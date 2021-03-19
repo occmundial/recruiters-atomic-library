@@ -6,6 +6,16 @@ import { dummyOrganizations } from './configHeaderOrg/links';
 export default {
   title: 'Organisms/HeaderOrg',
   component: HeaderOrg,
+  argTypes: {
+    organizationTabSelected: {
+      description: 'Determines which organization is selected',
+      table: {
+        defaultValue: {
+          summary: 0
+        }
+      },
+    }
+  }
 } as Meta;
 
 const Template: Story<HeaderProps> = (args) => <HeaderOrg {...args} />;
@@ -26,3 +36,10 @@ const defaultProps = {
 
 export const Desktop = Template.bind({});
 Desktop.args = defaultProps;
+Desktop.parameters = {
+  docs: {
+    source: {
+      type: 'dynamic'
+    }
+  }
+}
