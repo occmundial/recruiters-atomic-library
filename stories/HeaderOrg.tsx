@@ -4,47 +4,129 @@ import React, {
 import {
   NavTab, NavAside, Text, grid, Modal, Banner, colors, Avatar, Flexbox,
 } from '@occmundial/occ-atomic';
-import styles from '../../../styles/HeaderOrg.module.css';
-import { left } from './config/left';
-import { getRoot } from './config/links';
-import { getCookie, setCookie, cookieBanner } from './config/cookies';
-import { top } from './config/top';
-import { center, centerMobile } from './config/center';
-import { right, loggedMenu } from './config/right';
+import './HeaderOrg.css';
+import { left } from './configHeaderOrg/left';
+import { getRoot } from './configHeaderOrg/links';
+import { getCookie, setCookie, cookieBanner } from './configHeaderOrg/cookies';
+import { top } from './configHeaderOrg/top';
+import { center, centerMobile } from './configHeaderOrg/center';
+import { right, loggedMenu } from './configHeaderOrg/right';
 import Proptypes from 'prop-types';
 
-import windowSize from '../../common/useWindowSize';
-import HeaderMenu from '../../molecules/menu';
+import windowSize from '../components/common/useWindowSize';
+import HeaderMenu from '../components/molecules/menu';
 
 const contingencyModal: string = 'https://cdn-shop.occ.com.mx/recruiters-home-page/img/contingencyModal.png';
 export interface HeaderProps {
+  /**
+   * Shows Cart or Chat counts
+   */
   showCounts?: boolean;
+  /**
+   * Shows middle navigation menu
+   */
   showCenter?: boolean;
+  /**
+   * user is logged or not
+   */
   logged?: boolean;
+  /**
+   * Shows Covid contingency banner
+   */
   showContingency?: boolean;
+  /**
+   * Determines what to do when a user is logged out
+   */
   logout: Function;
+  /**
+   * The number of cart items to be displayed
+   */
   cartItems?: number;
+  /**
+   * The number of chat items to be displayed
+   */
   chatItems?: number;
+  /**
+   * user's userName
+   */
   userName?: string;
+  /**
+   * user's photo
+   */
   userPhoto?: string;
+  /**
+   * user's email
+   */
   email?: string;
+  /**
+   * Determines if header should be displayed for a mobile viewport
+   */
   isMobile?: boolean;
+  /**
+   * Determines which tab is selected in the left/center navigation menu
+   */
   tabSelected?: number;
+  /**
+   * Determines which tab is selected in the right navigation menu
+   */
   rightTabSelected?: number;
+  /**
+   * Determines if the env is local for links
+   */
   local?: boolean;
+  /**
+   * Determines if the env is dev for links
+   */
   dev?: boolean;
+  /**
+   * Determines if the env is prod for links
+   */
   prod?: boolean;
+  /**
+   * External toggle for the orgMenu
+   */
+  orgMenu?: boolean;
+  /**
+   * Determines name of the organization
+   */
   organizationName?: string;
+  /**
+   * Determines name of the team
+   */
   teamName?: string;
+  /**
+   * Determines links of the organization menu
+   */
   orgMenuLinks?: Array<object>;
+  /**
+   * Determines referral name for the checkout analytics
+   */
   referral?: string;
+  /**
+   * Determines if the account is an admin
+   */
   isAdmin?: boolean;
+  /**
+   * Determines if the account has a valid email
+   */
   validEmail?: boolean;
+  /**
+   * Determines if the account can return to R11 sections
+   */
   canReturn?: boolean;
+  /**
+   * Determines if the levelAccount is an admin
+   */
   typeAdministrator?: boolean;
+  /**
+   * Determines if the levelAccount is a subAdmin
+   */
   typeSubAdministrator?: boolean;
 }
 
+/**
+ * Primary UI component for user interaction
+ */
 const HeaderOrg: FC<HeaderProps> = ({
   showCenter = false,
   showCounts = false,
@@ -62,6 +144,7 @@ const HeaderOrg: FC<HeaderProps> = ({
   local = false,
   dev = false,
   prod = false,
+  orgMenu = false,
   organizationName = '',
   teamName = '',
   orgMenuLinks = [],
@@ -101,6 +184,8 @@ const HeaderOrg: FC<HeaderProps> = ({
         setContingency(true);
         setCookie(cookieBanner, true, local, dev, prod);
       } else if (cookieBannerValue === 'true') setContingency(true);
+    } else {
+      setContingency(false);
     }
   }, [showContingency]);
 
@@ -108,7 +193,7 @@ const HeaderOrg: FC<HeaderProps> = ({
     <Fragment>
       <NavTab
         top={scroll || logged ? undefined : top(isMobile, getRoot(local, dev, prod))}
-        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, `${organizationName.substr(0,19)}...`, teamName, orgMenuLinks)}
+        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, orgMenu, `${organizationName.substr(0,19)}...`, teamName, orgMenuLinks)}
         center={showCenter && center(isMobile, logged, getRoot(local, dev, prod), tabSelected)}
         right={right(
           isMobile,
@@ -126,13 +211,13 @@ const HeaderOrg: FC<HeaderProps> = ({
           rightTabSelected,
           showCounts,
         )}
-        fixed
+        // fixed
         hideOnScroll
       />
       {isMobile && logged && (
         <NavTab
           flexCenter={centerMobile(getRoot(local, dev, prod), tabSelected)}
-          fixed
+          // fixed
           bottom
         />
       )}
@@ -143,7 +228,7 @@ const HeaderOrg: FC<HeaderProps> = ({
         top={(
           <Flexbox display="flex">
             <Avatar name={userName} photo={userPhoto && userPhoto} size={48} />
-            <div className={styles.mobileData}>
+            <div className="mobileData">
               <Text subheading>{userName}</Text>
               <Text small mid>{email}</Text>
             </div>
@@ -156,7 +241,7 @@ const HeaderOrg: FC<HeaderProps> = ({
           logout={logout}
         />
       </NavAside>
-      <div className={logged ? styles.spaceLogged : styles.space} />
+      <div className={logged ? "spaceLogged" : "space"} />
       {contingency && (
         <Banner onClose={(): void => { setCookie(cookieBanner, false, local, dev, prod); setContingency(false); }}>
           <Fragment>
@@ -251,9 +336,9 @@ HeaderOrg.propTypes = {
   email: Proptypes.string,
   /** Determines if isMobile */
   isMobile: Proptypes.bool,
-  /** Determines what tab is selected in the left/center navigation */
+  /** Determines which tab is selected in the left/center navigation */
   tabSelected: Proptypes.number,
-  /** Determines what tab is selected in the right navigation */
+  /** Determines which tab is selected in the right navigation */
   rightTabSelected: Proptypes.number,
   /** Determines if the env is local for links */
   local: Proptypes.bool,
@@ -261,6 +346,8 @@ HeaderOrg.propTypes = {
   dev: Proptypes.bool,
   /** Determines if the env is prod for links */
   prod: Proptypes.bool,
+  /** External toggle for the orgMenu */
+  orgMenu: Proptypes.bool,
   /** Determines name of the organization */
   organizationName: Proptypes.string,
   /** Determines name of the team */
@@ -281,4 +368,7 @@ HeaderOrg.propTypes = {
   typeSubAdministrator: Proptypes.bool,
 };
 
+/**
+ * Primary UI component for user interaction
+ */
 export default HeaderOrg;

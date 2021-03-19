@@ -11,7 +11,7 @@
     "skipLibCheck": true,
     "strict": false,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": false, // for storybook noEmit must be false
+    "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "outDir": "",
@@ -19,7 +19,7 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "isolatedModules": true,
-    "jsx": "react", // for storybook jsx must be "react",
+    "jsx": "preserve",
     "removeComments": true,
     "strictNullChecks": true,
     "strictFunctionTypes": false,
