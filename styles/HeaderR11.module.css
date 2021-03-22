@@ -214,8 +214,9 @@
 .menuSeparator {
   height: 1px;
   background: #dddddd;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  margin-bottom: 15px;
+  margin-top: 16px;
+  flex-grow: 0;
 }
 
 .navIcon {
@@ -282,6 +283,12 @@
   font-family: "HK Grotesk", sans-serif;
   font-weight: 400;
   letter-spacing: 0;
+}
+
+.menuText {
+  margin: 0 0 8px 0px;
+  line-height: 1.6;
+  letter-spacing: normal;
 }
 
 .textCenter {
