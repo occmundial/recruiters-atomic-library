@@ -2,7 +2,7 @@ const cardActive = {
   opacity: 1,
   height: "auto",
   maxHeight: "2000px",
-  margin: "16px 0px 0px -46px",
+  margin: "8px 0px 0px -46px",
   padding: "0px 0px 46px 46px",
   width: "fit-content",
   transition: "all 0.6s ease, margin-top 0.8s",
