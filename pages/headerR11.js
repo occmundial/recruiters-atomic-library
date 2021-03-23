@@ -40,9 +40,9 @@ export default function Home() {
                     <div className={styles.buttonDropDownText}>
                       <div className={styles.buttonDropDownFlex}>
                         <p
-                          className={`${styles.text} ${styles.textSubHeading} ${styles.textHighEmphasis}`}
+                          className={`${styles.organizationText}`}
                         >
-                          Nombre de la organi...
+                          NOMBRE DE ORGANIZACIÓN
                         </p>
                         <span
                           id="organizationDropDownButton"
@@ -217,7 +217,77 @@ export default function Home() {
                           <div className={styles.menuText}>
                             <a
                               className={styles.navItemLink}
-                              href="http://localhost:64660/Vacantes/Clasificaciones/"
+                              href=""
+                            >
+                              <span
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
+                              >
+                                Configuración de tu cuenta
+                              </span>
+                            </a>
+                          </div>
+                          <div className={styles.menuText}>
+                            <a
+                              className={styles.navItemLink}
+                              href=""
+                            >
+                              <span
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
+                              >
+                                Buscar trabajo
+                              </span>
+                            </a>
+                          </div>
+                          <div>
+                            <div className={styles.menuSeparator}></div>
+                          </div>
+                          <div className={styles.menuText}>
+                            <a
+                              className={styles.navItemLink}
+                              href=""
+                            >
+                              <span
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
+                              >
+                                Configuración de organización
+                              </span>
+                            </a>
+                          </div>
+                          <div className={styles.menuText}>
+                            <a
+                              className={styles.navItemLink}
+                              href=""
+                            >
+                              <span
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
+                              >
+                                Reportes
+                              </span>
+                            </a>
+                          </div>
+                          <div>
+                            <div className={styles.menuSeparator}></div>
+                          </div>
+                          <div className={styles.menuText}>
+                            <a
+                              className={styles.navItemLink}
+                              href=""
                             >
                               <span
                                 className={`
@@ -233,80 +303,7 @@ export default function Home() {
                           <div className={styles.menuText}>
                             <a
                               className={styles.navItemLink}
-                              href="http://localhost:64660/Administracion/NotasReclutador/"
-                            >
-                              <span
-                                className={`
-                                  ${styles.text}
-                                  ${styles.textStandard}
-                                  ${styles.textNoEmphasis}
-                                `}
-                              >
-                                Notas de CV's
-                              </span>
-                            </a>
-                          </div>
-                          <div>
-                            <div className={styles.menuSeparator}></div>
-                          </div>
-                          <div className={styles.menuText}>
-                            <a
-                              className={styles.navItemLink}
-                              href="http://localhost:64660/Paquetes/EstadoCuenta/"
-                            >
-                              <span
-                                className={`
-                                  ${styles.text}
-                                  ${styles.textStandard}
-                                  ${styles.textNoEmphasis}
-                                `}
-                              >
-                                Estado de Cuenta
-                              </span>
-                            </a>
-                          </div>
-                          <div>
-                            <div className={styles.menuSeparator}></div>
-                          </div>
-                          <div className={styles.menuText}>
-                            <a
-                              className={styles.navItemLink}
-                              href="http://localhost:64660/DatosPersonales/"
-                            >
-                              <span
-                                className={`
-                                  ${styles.text}
-                                  ${styles.textStandard}
-                                  ${styles.textNoEmphasis}
-                                `}
-                              >
-                                Datos personales
-                              </span>
-                            </a>
-                          </div>
-                          <div className={styles.menuText}>
-                            <a
-                              className={styles.navItemLink}
-                              href="http://localhost:64660/DatosPersonales/CambiarClave/"
-                            >
-                              <span
-                                className={`
-                                  ${styles.text}
-                                  ${styles.textStandard}
-                                  ${styles.textNoEmphasis}
-                                `}
-                              >
-                                Cambiar contraseña
-                              </span>
-                            </a>
-                          </div>
-                          <div>
-                            <div className={styles.menuSeparator}></div>
-                          </div>
-                          <div className={styles.menuText}>
-                            <a
-                              className={styles.navItemLink}
-                              href="https://h3.occ.com.mx/Mercer/MisPerfiles"
+                              href=""
                             >
                               <span
                                 className={`

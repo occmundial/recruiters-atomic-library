@@ -12,7 +12,7 @@
 .showElementActive {
     height: auto;
     max-height: 2000px;
-    margin: 16px 0px 0px -46px;
+    margin: 8px 0px 0px -46px;
     padding: 0px 0px 46px 46px;
     width: fit-content;
     transition: all .6s ease, margin-top .8s;
