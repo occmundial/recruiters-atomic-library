@@ -1,8 +1,8 @@
 .separator {
   height: 1px;
   background: #DDDDDD;
-  margin-bottom: var(--spacing-tiny);
-  margin-top: var(--spacing-tiny);
+  margin-bottom: var(--spacing-small);
+  margin-top: 15px;
 }
 
 .separatorMobile {
@@ -40,4 +40,10 @@
   text-decoration: none !important;
   cursor: default !important;
   opacity: 0.6 !important;
+}
+
+.cardText {
+  margin-bottom: 8px;
+  line-height: 1.6;
+  letter-spacing: normal;
 }

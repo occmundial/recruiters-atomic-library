@@ -5,7 +5,7 @@ const cardActive = {
   margin: "8px 0px 0px -46px",
   padding: "0px 0px 46px 46px",
   width: "fit-content",
-  transition: "all 0.6s ease, margin-top 0.8s",
+  transition: "all 0.3s ease, margin-top 0.5s",
   position: "absolute",
   right: "0",
   zIndex: "9999",
@@ -16,6 +16,8 @@ const cardActive = {
 
 const organizationCardActive = {
   right: "auto",
+  margin: "0px 0px 0px -46px",
+  transition: "all 0.6s ease, margin-top 0.8s",
 };
 
 const cardDisable = {

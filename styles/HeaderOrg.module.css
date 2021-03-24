@@ -45,14 +45,14 @@
   right: var(--spacing-gutter);
   border: 1px solid var(--colors-grey200);
   background-color: var(--colors-bgWhite);
-  padding: var(--spacing-tiny) var(--spacing-small) var(--spacing-tiny) var(--spacing-small) !important;
+  padding: var(--spacing-base) var(--spacing-base) var(--spacing-base) var(--spacing-base) !important;
 }
 
 .cardOrgMenu {
   right: var(--spacing-gutter);
   border: 1px solid var(--colors-grey200);
   background-color: var(--colors-bgWhite);
-  padding: var(--spacing-tiny) var(--spacing-small) var(--spacing-tiny) var(--spacing-small) !important;
+  padding: var(--spacing-base) !important;
   width: 200px;
 }
 

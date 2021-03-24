@@ -23,7 +23,7 @@ export interface MenuProps {
 const Menu: FC<MenuProps> = ({ mobile = false, linksH, logout }: MenuProps) => (
   <Fragment>
     {linksH.map((link) => (
-      <div key={uuid()}>
+      <div key={uuid()} className={link.visible ? styles.cardText : ''}>
         {link.separator && !link.hide && <div key={uuid()} className={mobile ? styles.separatorMobile : styles.separator} />}
         {link.unclickable && (
           <Text key={uuid()} className={classnames(mobile && styles.bottomTiny, link.unclickable && styles.unclickable)}>{link.text}</Text>

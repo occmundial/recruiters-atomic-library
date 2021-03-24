@@ -228,8 +228,8 @@
 .menuSeparator {
   height: 1px;
   background: #dddddd;
-  margin-bottom: 15px;
-  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-top: 15px;
   flex-grow: 0;
 }
 
