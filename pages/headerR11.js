@@ -129,7 +129,7 @@ export default function Home() {
                         ${styles.headerLabelCount}
                         ${styles.headerLabelCountShow}`}
                       >
-                        2
+                        99+
                       </p>
                       <div className={styles.navIcon}>
                         <div className={styles.flexBox}>
@@ -153,7 +153,7 @@ export default function Home() {
                         ${styles.headerLabelCount}
                         ${styles.headerLabelCountShow}`}
                     >
-                      2
+                      99+
                     </p>
                     <div className={styles.navIcon}>
                       <div className={styles.flexBox}>
