@@ -16,7 +16,7 @@ const cardActive = {
 
 const organizationCardActive = {
   right: "auto",
-  margin: "0px 0px 0px -46px",
+  margin: "0px 0px 0px -36px",
   transition: "all 0.6s ease, margin-top 0.8s",
 };
 
