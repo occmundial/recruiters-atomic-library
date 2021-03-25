@@ -27,7 +27,8 @@
   border-radius: var(--spacing-tiny) !important;
   background: var(--colors-sec);
   border: 1px solid var(--colors-bgWhite);
-  max-width: var(--spacing-small);
+  /* max-width: var(--spacing-small); */
+  width: fit-content;
   padding-left: var(--spacing-xTiny);
   padding-right: var(--spacing-xTiny);
   z-index: 1;
@@ -71,7 +72,8 @@
 .unread {
   position: absolute;
   border-radius: var(--spacing-tiny);
-  max-width: var(--spacing-small);
+  /* max-width: var(--spacing-small); */
+  width: fit-content;
   padding-left: var(--spacing-xTiny);
   padding-right: var(--spacing-xTiny);
   top: var(--spacing-small);

@@ -112,7 +112,7 @@ const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, s
             cartCount > 0 && showCounts && styles.labelCountShow,
           )}
         >
-          {cartCount < 100 ? cartCount : '99'}
+          {cartCount < 100 ? cartCount : '99+'}
         </Text>
         <NavIcon iconName="cart" selected={tabSelected === 1} showBar={tabSelected === 1} />
       </div>
@@ -127,7 +127,7 @@ const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCount
       <NavIcon iconName="messages" selected={tabSelected === 2} showBar={tabSelected === 2} />
       {hasChats && showCounts && (
         <span className={styles.unread}>
-          <Text micro white center strong>
+          <Text small white center strong>
             {chatItems > 99 ? '99+' : chatItems}
           </Text>
         </span>
