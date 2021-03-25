@@ -104,3 +104,17 @@
   .iconStyleDisable {
     transition: transform 200ms ease;
   }
+
+  .buttonText {
+    height: 24px !important;
+    flex-grow: 0 !important;
+    font-family: HK Grotesk, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    font-stretch: normal !important;
+    font-style: normal !important;
+    line-height: 2 !important;
+    letter-spacing: 0.86px !important;
+    text-align: left !important;
+    color: #222222 !important;
+  }

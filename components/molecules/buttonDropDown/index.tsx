@@ -80,7 +80,7 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
         role="presentation"
       >
         <div className={styles.divFlex}>
-          <Text subheading className={styles.buttonText}>{buttonText}</Text>
+          <Text className={styles.buttonText}>{buttonText}</Text>
           {arrow && (
             <Icon
               style={{ marginLeft: arrowLeft }}

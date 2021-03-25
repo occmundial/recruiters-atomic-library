@@ -101,7 +101,7 @@ export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideM
             type: 'logo',
             logo: (
               <a href={`${root.r12}/${r12links.sightMainPage}`}>
-                <Icon iconName="occHorizontalGrey" />
+                <Icon width={146} height={32} style={{backgroundRepeat: 'no-repeat'}} iconName="occHorizontalGrey" />
               </a>
             ),
           },
