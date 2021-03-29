@@ -84,12 +84,13 @@ export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideM
       [
         {
           key: 0,
-          type: 'logo',
-          logo: (
-            <a href={`${root.r12}/${r12links.sightMainPage}`}>
-              <Icon iconName="occHorizontalGrey" />
-            </a>
-          ),
+          type: 'custom',
+          custom: logoContainer(146, 32, {backgroundRepeat: 'no-repeat'}, "occHorizontalGrey", root),
+          // logo: (
+          //   <a href={`${root.r12}/${r12links.sightMainPage}`}>
+          //     <Icon iconName="occHorizontalGrey" />
+          //   </a>
+          // ),
         },
       ]
     ) : (
