@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import {
-  Avatar, Text, Card, NavIcon,
+  Avatar, Text, Card, NavIcon, Icon
 } from '@occmundial/occ-atomic';
 import classNames from 'classnames';
 import ButtonDropDown from '../../../molecules/buttonDropDown';
@@ -145,14 +145,21 @@ const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCount
   );
 };
 
+const menuBars = (setShowMenu) => (
+  <div style={{marginRight: '12px'}}>
+    <Icon iconName="bars" onClick={() => setShowMenu(true)} width={18} height={18}/>
+  </div>
+);
+
 export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => (
   mobile ? (
     logged ? (
       [
         {
           key: 0,
-          type: 'icon',
-          iconName: 'bars',
+          type: 'custom',
+          //iconName: 'bars',
+          custom: menuBars(setShowMenu),
           onClick: () => setShowMenu(true),
         },
       ]
