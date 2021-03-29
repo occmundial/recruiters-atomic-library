@@ -44,7 +44,7 @@ const asideMenuUnLogged = (menuUnlogged = false, setMenuUnlogged, root = localRo
   </Fragment>
 );
 
-const logoContainer = (width = 146, height = 32, style: Object, iconName: String, root) => (
+const logoContainer = (width = 146, height = 34, style: Object, iconName: String, root) => (
   <Fragment>
     <div className={styles.logoSpacing}>
       <a href={`${root.r12}/${r12links.sightMainPage}`}>
@@ -85,7 +85,7 @@ export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideM
         {
           key: 0,
           type: 'custom',
-          custom: logoContainer(146, 32, {backgroundRepeat: 'no-repeat'}, "occHorizontalGrey", root),
+          custom: logoContainer(146, 34, {backgroundRepeat: 'no-repeat'}, "occHorizontalGrey", root),
         },
       ]
     ) : (
@@ -105,7 +105,7 @@ export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideM
           {
             key: 0,
             type: 'custom',
-            custom: logoContainer(146, 32, {backgroundRepeat: 'no-repeat'}, "occHorizontalGrey", root),
+            custom: logoContainer(146, 34, {backgroundRepeat: 'no-repeat'}, "occHorizontalGrey", root),
           },
           {
             key: 1,
