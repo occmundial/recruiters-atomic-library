@@ -13,7 +13,7 @@
     height: auto;
     max-height: 2000px;
     margin: 8px 0px 0px -46px;
-    padding: 0px 0px 46px 46px;
+    padding: 0px 0px 46px 56px;
     width: fit-content;
     transition: all .6s ease, margin-top .8s;
     position: absolute;
@@ -27,7 +27,7 @@
     height: auto;
     max-height: 0px;
     margin: 0px 0px 0px -16px;
-    padding: 0px 0px 46px 16px;
+    padding: 0px 0px 46px 26px;
     overflow: hidden;
     width: auto;
     transition: all .3s ease, margin-top .5s;
@@ -106,10 +106,9 @@
   }
 
   .buttonText {
-    /* height: 24px !important; */
     flex-grow: 0 !important;
     font-family: HK Grotesk, sans-serif !important;
-    font-size: 12px !important;
+    font-size: var(--spacing-gutter) !important;
     font-weight: 600 !important;
     font-stretch: normal !important;
     font-style: normal !important;

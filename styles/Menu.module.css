@@ -43,7 +43,7 @@
 }
 
 .cardText {
-  margin-bottom: 8px;
+  margin-bottom: var(--spacing-tiny);
   line-height: 1.6;
   letter-spacing: normal;
 }

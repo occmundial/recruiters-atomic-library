@@ -54,11 +54,11 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
       url: ``, text: 'Configuración de organización', visible: true, selected: tabSelected === 5,
     },
     {
-      url: ``, text: 'Reportes', visible: true /*isAdmin && typeAdministrator && canReturn*/, selected: tabSelected === 6,
+      url: ``, text: 'Reportes', visible: isAdmin && typeAdministrator && canReturn, selected: tabSelected === 6,
     },
     { separator: true, hide: false },
     {
-      url: ``, text: 'Clasificaciones de CV\'s', visible: true/*isAdmin && typeAdministrator*/, selected: tabSelected === 7,
+      url: ``, text: 'Clasificaciones de CV\'s', visible: true, selected: tabSelected === 7,
     },
     {
       url: `${links.indices}`, text: 'Índices salariales', visible: true, selected: tabSelected === 12,
@@ -158,7 +158,6 @@ export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto
         {
           key: 0,
           type: 'custom',
-          //iconName: 'bars',
           custom: menuBars(setShowMenu),
           onClick: () => setShowMenu(true),
         },
