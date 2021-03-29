@@ -146,7 +146,7 @@ const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCount
 };
 
 const menuBars = (setShowMenu) => (
-  <div style={{marginRight: '12px'}}>
+  <div className={styles.menuBarSpacing}>
     <Icon iconName="bars" onClick={() => setShowMenu(true)} width={18} height={18}/>
   </div>
 );

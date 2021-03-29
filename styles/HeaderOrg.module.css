@@ -95,6 +95,10 @@
   margin-left: var(--spacing-tiny);
 }
 
+.menuBarSpacing {
+  margin-right: 12px;
+}
+
 @media (max-width:991px) {
   .space {
     height: 64px;
