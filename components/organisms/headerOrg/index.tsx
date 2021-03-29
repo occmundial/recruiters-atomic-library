@@ -108,7 +108,7 @@ const HeaderOrg: FC<HeaderProps> = ({
     <Fragment>
       <NavTab
         top={scroll || logged ? undefined : top(isMobile, getRoot(local, dev, prod))}
-        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, organizationName/*`${organizationName.substr(0,19)}...`*/, teamName, orgMenuLinks)}
+        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, organizationName, teamName, orgMenuLinks)}
         center={showCenter && center(isMobile, logged, getRoot(local, dev, prod), tabSelected)}
         right={right(
           isMobile,

@@ -13,11 +13,6 @@ export default function Home() {
 
   return (
     <>
-      {/* <section className={styles.main}>
-        <p>Header</p>
-        <button onClick={() => functions.myFunction()}>Click me</button>
-      </section> */}
-
       <div id="headerContainer" className={styles.headerContainer}>
         <div id="headerStyle" className={styles.headerStyle}>
           <div className={styles.innerHeaderContainer}>

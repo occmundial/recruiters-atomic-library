@@ -1,8 +1,3 @@
-/* .main {
-  margin-left: var(--spacing-small);
-  border-color: red;
-} */
-
 .headerContainer {
   margin-top: 0;
   top: 0;
@@ -348,7 +343,6 @@
   border-radius: 8px !important;
   background: #f13465;
   border: 1px solid #ffffff;
-  /* max-width: 16px; */
   width: fit-content;
   padding-left: 4px;
   padding-right: 4px;
