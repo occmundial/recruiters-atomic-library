@@ -87,6 +87,10 @@
   margin-left: var(--spacing-base);
 }
 
+.logoSpacing {
+  margin-right: var(--spacing-base);
+}
+
 .mobileData {
   margin-left: var(--spacing-tiny);
 }
