@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import {
-  Avatar, Text, Card, NavIcon,
+  Avatar, Text, Card, NavIcon, Icon
 } from '@occmundial/occ-atomic';
 import classNames from 'classnames';
 import ButtonDropDown from '../../../molecules/buttonDropDown';
@@ -44,35 +44,22 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
   }
   menu.push(
     {
-      url: `${root.r11}/${r11links.classifications}`, text: 'Clasificaciones de CV\'s', visible: true, selected: tabSelected === 3,
+      url: ``, text: 'Configuración de tu cuenta', visible: true, selected: tabSelected === 3,
     },
     {
-      url: `${root.r11}/${r11links.notasCV}`, text: 'Notas de CV\'s', visible: true, selected: tabSelected === 4,
+      url: ``, text: 'Buscar trabajo', visible: true, selected: tabSelected === 4,
     },
     { separator: true, hide: false },
     {
-      url: `${root.r11}/${r11links.account}`, text: 'Estado de cuenta', visible: true, selected: tabSelected === 5,
+      url: ``, text: 'Configuración de organización', visible: true, selected: tabSelected === 5,
     },
     {
-      url: `${root.r11}/${r11links.reports}`, text: 'Reportes de uso de cuenta', visible: isAdmin && typeAdministrator && canReturn, selected: tabSelected === 6,
+      url: ``, text: 'Reportes', visible: isAdmin && typeAdministrator && canReturn, selected: tabSelected === 6,
     },
     { separator: true, hide: false },
     {
-      url: `${root.r11}/${r12links.contacto}`, text: 'Datos de contacto', visible: isAdmin && typeAdministrator, selected: tabSelected === 7,
+      url: ``, text: 'Clasificaciones de CV\'s', visible: true, selected: tabSelected === 7,
     },
-    {
-      url: `${root.r11}/${r11links.personalData}`, text: 'Datos personales', visible: !isAdmin || !typeAdministrator, selected: tabSelected === 8,
-    },
-    {
-      url: `${root.r11}/${r11links.changePass}`, text: 'Cambiar contraseña', visible: true, selected: tabSelected === 9,
-    },
-    {
-      url: `${root.r11}/${r11links.users}`, text: 'Administrador de cuenta', visible: validEmail && isAdmin && (typeAdministrator || typeSubadministrator), selected: tabSelected === 10,
-    },
-    {
-      url: `${root.basics}/${links.notes}`, text: 'Administrador de notas', visible: false, selected: tabSelected === 11,
-    },
-    { separator: true, hide: false },
     {
       url: `${links.indices}`, text: 'Índices salariales', visible: true, selected: tabSelected === 12,
     },
@@ -80,7 +67,6 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
     {
       url: `${links.ayuda}`, text: 'Ayuda', visible: true, selected: tabSelected === 13,
     },
-    { separator: true, hide: false },
   );
   return menu;
 };
@@ -126,7 +112,7 @@ const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, s
             cartCount > 0 && showCounts && styles.labelCountShow,
           )}
         >
-          {cartCount < 100 ? cartCount : '99'}
+          {cartCount < 100 ? cartCount : '99+'}
         </Text>
         <NavIcon iconName="cart" selected={tabSelected === 1} showBar={tabSelected === 1} />
       </div>
@@ -141,7 +127,7 @@ const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCount
       <NavIcon iconName="messages" selected={tabSelected === 2} showBar={tabSelected === 2} />
       {hasChats && showCounts && (
         <span className={styles.unread}>
-          <Text micro white center strong>
+          <Text small white center strong>
             {chatItems > 99 ? '99+' : chatItems}
           </Text>
         </span>
@@ -159,14 +145,20 @@ const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCount
   );
 };
 
+const menuBars = (setShowMenu) => (
+  <div className={styles.menuBarSpacing}>
+    <Icon iconName="bars" onClick={() => setShowMenu(true)} width={18} height={18}/>
+  </div>
+);
+
 export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => (
   mobile ? (
     logged ? (
       [
         {
           key: 0,
-          type: 'icon',
-          iconName: 'bars',
+          type: 'custom',
+          custom: menuBars(setShowMenu),
           onClick: () => setShowMenu(true),
         },
       ]

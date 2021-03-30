@@ -13,11 +13,6 @@ export default function Home() {
 
   return (
     <>
-      {/* <section className={styles.main}>
-        <p>Header</p>
-        <button onClick={() => functions.myFunction()}>Click me</button>
-      </section> */}
-
       <div id="headerContainer" className={styles.headerContainer}>
         <div id="headerStyle" className={styles.headerStyle}>
           <div className={styles.innerHeaderContainer}>
@@ -40,9 +35,9 @@ export default function Home() {
                     <div className={styles.buttonDropDownText}>
                       <div className={styles.buttonDropDownFlex}>
                         <p
-                          className={`${styles.text} ${styles.textSubHeading} ${styles.textHighEmphasis}`}
+                          className={`${styles.organizationText}`}
                         >
-                          Nombre de la organi...
+                          NOMBRE DE ORGANIZACIÓN
                         </p>
                         <span
                           id="organizationDropDownButton"
@@ -57,7 +52,7 @@ export default function Home() {
                       style={{ opacity: 0 }}
                     >
                       <div className={styles.organizationCard}>
-                        <div>
+                        <div className={styles.menuText}>
                           <a
                             className={styles.navItemLink}
                             href="http://localhost:64660/Vacantes/Clasificaciones/"
@@ -73,7 +68,7 @@ export default function Home() {
                             </span>
                           </a>
                         </div>
-                        <div>
+                        <div className={styles.menuText}>
                           <a
                             className={styles.navItemLink}
                             href="http://localhost:64660/Administracion/NotasReclutador/"
@@ -89,7 +84,7 @@ export default function Home() {
                             </span>
                           </a>
                         </div>
-                        <div>
+                        <div className={styles.menuText}>
                           <a
                             className={styles.navItemLink}
                             href="http://localhost:64660/Paquetes/EstadoCuenta/"
@@ -129,7 +124,7 @@ export default function Home() {
                         ${styles.headerLabelCount}
                         ${styles.headerLabelCountShow}`}
                       >
-                        2
+                        99+
                       </p>
                       <div className={styles.navIcon}>
                         <div className={styles.flexBox}>
@@ -153,7 +148,7 @@ export default function Home() {
                         ${styles.headerLabelCount}
                         ${styles.headerLabelCountShow}`}
                     >
-                      2
+                      99+
                     </p>
                     <div className={styles.navIcon}>
                       <div className={styles.flexBox}>
@@ -214,10 +209,80 @@ export default function Home() {
                         style={{ opacity: 0 }}
                       >
                         <div className={styles.accountCard}>
-                          <div>
+                          <div className={styles.menuText}>
                             <a
                               className={styles.navItemLink}
-                              href="http://localhost:64660/Vacantes/Clasificaciones/"
+                              href=""
+                            >
+                              <span
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
+                              >
+                                Configuración de tu cuenta
+                              </span>
+                            </a>
+                          </div>
+                          <div className={styles.menuText}>
+                            <a
+                              className={styles.navItemLink}
+                              href=""
+                            >
+                              <span
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
+                              >
+                                Buscar trabajo
+                              </span>
+                            </a>
+                          </div>
+                          <div>
+                            <div className={styles.menuSeparator}></div>
+                          </div>
+                          <div className={styles.menuText}>
+                            <a
+                              className={styles.navItemLink}
+                              href=""
+                            >
+                              <span
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
+                              >
+                                Configuración de organización
+                              </span>
+                            </a>
+                          </div>
+                          <div className={styles.menuText}>
+                            <a
+                              className={styles.navItemLink}
+                              href=""
+                            >
+                              <span
+                                className={`
+                                  ${styles.text}
+                                  ${styles.textStandard}
+                                  ${styles.textNoEmphasis}
+                                `}
+                              >
+                                Reportes
+                              </span>
+                            </a>
+                          </div>
+                          <div>
+                            <div className={styles.menuSeparator}></div>
+                          </div>
+                          <div className={styles.menuText}>
+                            <a
+                              className={styles.navItemLink}
+                              href=""
                             >
                               <span
                                 className={`
@@ -230,83 +295,10 @@ export default function Home() {
                               </span>
                             </a>
                           </div>
-                          <div>
+                          <div className={styles.menuText}>
                             <a
                               className={styles.navItemLink}
-                              href="http://localhost:64660/Administracion/NotasReclutador/"
-                            >
-                              <span
-                                className={`
-                                  ${styles.text}
-                                  ${styles.textStandard}
-                                  ${styles.textNoEmphasis}
-                                `}
-                              >
-                                Notas de CV's
-                              </span>
-                            </a>
-                          </div>
-                          <div>
-                            <div className={styles.menuSeparator}></div>
-                          </div>
-                          <div>
-                            <a
-                              className={styles.navItemLink}
-                              href="http://localhost:64660/Paquetes/EstadoCuenta/"
-                            >
-                              <span
-                                className={`
-                                  ${styles.text}
-                                  ${styles.textStandard}
-                                  ${styles.textNoEmphasis}
-                                `}
-                              >
-                                Estado de Cuenta
-                              </span>
-                            </a>
-                          </div>
-                          <div>
-                            <div className={styles.menuSeparator}></div>
-                          </div>
-                          <div>
-                            <a
-                              className={styles.navItemLink}
-                              href="http://localhost:64660/DatosPersonales/"
-                            >
-                              <span
-                                className={`
-                                  ${styles.text}
-                                  ${styles.textStandard}
-                                  ${styles.textNoEmphasis}
-                                `}
-                              >
-                                Datos personales
-                              </span>
-                            </a>
-                          </div>
-                          <div>
-                            <a
-                              className={styles.navItemLink}
-                              href="http://localhost:64660/DatosPersonales/CambiarClave/"
-                            >
-                              <span
-                                className={`
-                                  ${styles.text}
-                                  ${styles.textStandard}
-                                  ${styles.textNoEmphasis}
-                                `}
-                              >
-                                Cambiar contraseña
-                              </span>
-                            </a>
-                          </div>
-                          <div>
-                            <div className={styles.menuSeparator}></div>
-                          </div>
-                          <div>
-                            <a
-                              className={styles.navItemLink}
-                              href="https://h3.occ.com.mx/Mercer/MisPerfiles"
+                              href=""
                             >
                               <span
                                 className={`
@@ -322,7 +314,7 @@ export default function Home() {
                           <div>
                             <div className={styles.menuSeparator}></div>
                           </div>
-                          <div>
+                          <div className={styles.menuText}>
                             <a
                               className={styles.navItemLink}
                               href="https://occayuda.zendesk.com/hc/es"
@@ -338,10 +330,12 @@ export default function Home() {
                               </span>
                             </a>
                           </div>
-                          <div>
-                            <div className={styles.menuSeparator}></div>
-                          </div>
-                          <p className={`${styles.text} ${styles.textStandard} ${styles.textSecondary} ${styles.menuBottomTiny}`}>
+                          <p className={`
+                          ${styles.text} 
+                          ${styles.textStandard} 
+                          ${styles.textSecondary} 
+                          ${styles.menuBottomTiny} 
+                          `}>
                             <a role="presentation" className={styles.menuLogOut}>Cerrar sesión</a>
                           </p>
                         </div>

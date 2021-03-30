@@ -23,7 +23,7 @@ const defaultProps = {
 export default function Home() {
   return (
     <Grid>
-      <HeaderOrg {...defaultProps} cartItems={2} chatItems={2} showCounts organizationName="Nombre de la organización" orgMenuLinks={dummyOrganizations()} />
+      <HeaderOrg {...defaultProps} cartItems={101} chatItems={101} showCounts organizationName="NOMBRE DE ORGANIZACIÓN" orgMenuLinks={dummyOrganizations()} />
     </Grid>
   )
 }
