@@ -159,7 +159,6 @@ export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto
           key: 0,
           type: 'custom',
           custom: menuBars(setShowMenu),
-          onClick: () => setShowMenu(true),
         },
       ]
     ) : (

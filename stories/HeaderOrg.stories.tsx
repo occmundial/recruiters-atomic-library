@@ -26,11 +26,12 @@ const defaultProps = {
   logged: false,
   showContingency: false,
   userName: 'Moises Rojas',
+  userPhoto: 'https://i.imgur.com/I80W1Q0.png',
   email: 'irojas@occ.com.mx',
   logout: () => { },
   tabSelected: 0,
   organizationTabSelected: 0,
-  organizationName: 'Nombre de la organización',
+  organizationName: 'NOMBRE DE ORGANIZACIÓN',
   orgMenuLinks: dummyOrganizations(),
 };
 

@@ -62,7 +62,7 @@ const defaultPropsLoggedOrganization = {
   logout: () => { },
   tabSelected: 0,
   organizationTabSelected: 0,
-  organizationName: 'Nombre de la organización',
+  organizationName: 'NOMBRE DE ORGANIZACIÓN',
   orgMenuLinks: dummyOrganizations(),
 };
 

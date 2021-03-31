@@ -23,13 +23,13 @@ export interface MenuProps {
 const Menu: FC<MenuProps> = ({ mobile = false, linksH, logout }: MenuProps) => (
   <Fragment>
     {linksH.map((link) => (
-      <div key={uuid()}>
+      <div key={uuid()} className="cardText">
         {link.separator && !link.hide && <div key={uuid()} className={mobile ? "separatorMobile" : "separator"} />}
         {link.unclickable && (
           <Text key={uuid()} className={classnames(mobile && "bottomTiny", link.unclickable && "unclickable")}>{link.text}</Text>
         )}
         {link.visible && (
-          <NavItem key={uuid()} className={mobile ? "bottomTiny" : ''} link={link.url || ''} notification={link.alert || false} selected={link.selected}>{link.text || ''}</NavItem>
+          <NavItem key={uuid()} className={mobile ? "cardText" : ''} link={link.url || ''} notification={link.alert || false} selected={link.selected}>{link.text || ''}</NavItem>
         )}
       </div>
     ))}
