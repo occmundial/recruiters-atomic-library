@@ -10,7 +10,7 @@ const cardActive = {
   right: "0",
   zIndex: "9999",
   transform: "translateZ(0)",
-  overflow: "hidden",
+  overflow: "visible",
   pointerEvents: "auto",
 };
 
@@ -26,7 +26,7 @@ const cardDisable = {
   maxHeight: "0px",
   margin: "0px 0px 0px 0px",
   padding: "0px 0px 0px 0px",
-  overflow: "hidden",
+  overflow: "visible",
   width: "auto",
   transition: "all 0.3s ease, margin-top 0.5s",
   position: "absolute",

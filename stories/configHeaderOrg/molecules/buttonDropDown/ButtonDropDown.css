@@ -20,7 +20,7 @@
     right: 0;
     z-index: 9999;
     transform: translateZ(0);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .showElementDisable {
@@ -28,7 +28,7 @@
     max-height: 0px;
     margin: 0px 0px 0px -16px;
     padding: 0px 0px 46px 26px;
-    overflow: hidden;
+    overflow: visible;
     width: auto;
     transition: all .3s ease, margin-top .5s;
     position: absolute;
