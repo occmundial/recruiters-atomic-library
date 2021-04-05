@@ -96,7 +96,7 @@
 }
 
 .menuBarSpacing {
-  margin-right: 12px;
+  margin-right: var(--spacing-gutter);
 }
 
 @media (max-width:991px) {
