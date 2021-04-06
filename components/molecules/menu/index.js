@@ -3,24 +3,8 @@ import uuid from 'react-uuid';
 import classnames from 'classnames';
 import { Text, NavItem } from '@occmundial/occ-atomic';
 import styles from '../../../styles/Menu.module.css';
-interface link {
-  url?: string;
-  text?: string;
-  separator?: boolean;
-  hide?: boolean;
-  visible?: boolean;
-  alert?: boolean;
-  selected?: boolean;
-  unclickable?: boolean;
-}
 
-export interface MenuProps {
-  mobile?: boolean;
-  linksH: Array<link>;
-  logout?: Function;
-}
-
-const Menu: FC<MenuProps> = ({ mobile = false, linksH, logout }: MenuProps) => (
+const Menu = ({ mobile = false, linksH, logout }) => (
   <Fragment>
     {linksH.map((link) => (
       <div key={uuid()} className={link.visible ? styles.cardText : ''}>
@@ -35,7 +19,7 @@ const Menu: FC<MenuProps> = ({ mobile = false, linksH, logout }: MenuProps) => (
     ))}
     {logout && (
       <Text secondary className={mobile ? styles.bottomSmall : styles.bottomTiny}>
-        <a role="presentation" onClick={(): void => logout()} className={styles.logout}>Cerrar sesión</a>
+        <a role="presentation" onClick={() => logout()} className={styles.logout}>Cerrar sesión</a>
       </Text>
     )}
   </Fragment>

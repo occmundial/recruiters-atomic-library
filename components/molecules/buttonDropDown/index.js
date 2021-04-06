@@ -5,28 +5,16 @@ import { Text, Icon, colors } from '@occmundial/occ-atomic';
 import classNames from 'classnames';
 import styles from '../../../styles/ButtonDropDown.module.css';
 
-export interface ButtonDropDownProps {
-  buttonText: string | ReactElement;
-  renderComp: ReactElement;
-  mobile?: boolean;
-  onClose?: Function;
-  arrow?: boolean;
-  arrowWidth?: number;
-  arrowHeight?: number;
-  arrowLeft?: number;
-  noMenu?: boolean;
-}
-
-const ButtonDropDown: FC<ButtonDropDownProps> = ({
+const ButtonDropDown = ({
   renderComp, buttonText, mobile = false, arrow = false, onClose, arrowWidth = 14, arrowHeight = 14, arrowLeft = 0, noMenu = false,
-}: ButtonDropDownProps) => {
+}) => {
   const [show, toggleShow] = useState<boolean>(false);
   const [scroll, toggleScroll] = useState<boolean>(false);
   const [previousScroll, togglepreviousScroll] = useState<number>(0);
   const [isMounted, toggleisMounted] = useState<boolean>(false);
-  const myRef: any = useRef<HTMLDivElement>(null);
+  const myRef = useRef<HTMLDivElement>(null);
 
-  const rotate = (bol: boolean): void => {
+  const rotate = (bol) => {
     toggleShow(!bol);
     if (bol) {
       setTimeout(
@@ -40,7 +28,7 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
       toggleisMounted(!bol);
     }
   };
-  const handleClickOutside = (e: Event): void => {
+  const handleClickOutside = (e) => {
     if (myRef.current && !myRef.current.contains(e.target)) {
       toggleShow(false);
       if (show && onClose) onClose();
@@ -53,7 +41,7 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
     }
   };
 
-  const handleScroll = (): void => {
+  const handleScroll = () => {
     if (window.scrollY === 0) {
       togglepreviousScroll(window.scrollY);
       toggleScroll(false);
@@ -66,7 +54,7 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
   useEffect(() => {
     window.addEventListener('mousedown', handleClickOutside, false);
     window.addEventListener('scroll', handleScroll, false);
-    return (): void => {
+    return () => {
       window.removeEventListener('mousedown', handleClickOutside, false);
       window.removeEventListener('scroll', handleScroll, false);
     };
@@ -76,7 +64,7 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
     <div className={styles.divDefault} ref={myRef}>
       <div
         className={styles.divText}
-        onClick={(): void => rotate(show)}
+        onClick={() => rotate(show)}
         role="presentation"
       >
         <div className={styles.divFlex}>

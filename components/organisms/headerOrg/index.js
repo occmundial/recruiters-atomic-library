@@ -16,36 +16,9 @@ import Proptypes from 'prop-types';
 import windowSize from '../../common/useWindowSize';
 import HeaderMenu from '../../molecules/menu';
 
-const contingencyModal: string = 'https://cdn-shop.occ.com.mx/recruiters-home-page/img/contingencyModal.png';
-export interface HeaderProps {
-  showCounts?: boolean;
-  showCenter?: boolean;
-  logged?: boolean;
-  showContingency?: boolean;
-  logout: Function;
-  cartItems?: number;
-  chatItems?: number;
-  userName?: string;
-  userPhoto?: string;
-  email?: string;
-  isMobile?: boolean;
-  tabSelected?: number;
-  rightTabSelected?: number;
-  local?: boolean;
-  dev?: boolean;
-  prod?: boolean;
-  organizationName?: string;
-  teamName?: string;
-  orgMenuLinks?: Array<object>;
-  referral?: string;
-  isAdmin?: boolean;
-  validEmail?: boolean;
-  canReturn?: boolean;
-  typeAdministrator?: boolean;
-  typeSubAdministrator?: boolean;
-}
+const contingencyModal = 'https://cdn-shop.occ.com.mx/recruiters-home-page/img/contingencyModal.png';
 
-const HeaderOrg: FC<HeaderProps> = ({
+const HeaderOrg = ({
   showCenter = false,
   showCounts = false,
   logged = false,
@@ -71,15 +44,15 @@ const HeaderOrg: FC<HeaderProps> = ({
   isAdmin = false,
   validEmail = false,
   canReturn = false,
-}: HeaderProps) => {
+}) => {
   const [scroll, toggleScroll] = useState(false);
   const [contingency, setContingency] = useState(false);
-  const width: number = windowSize();
+  const width = windowSize();
   const [showModal, toggleContigencyModal] = useState(false);
   const [asideMenu, setAsideMenu] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
-  const handleScroll = (): void => {
+  const handleScroll = () => {
     if (window.pageYOffset === 0) {
       toggleScroll(false);
     } else {
@@ -89,14 +62,14 @@ const HeaderOrg: FC<HeaderProps> = ({
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    return (): void => {
+    return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   useEffect(() => {
     if (showContingency) {
-      const cookieBannerValue: string = getCookie(cookieBanner);
+      const cookieBannerValue = getCookie(cookieBanner);
       if (cookieBannerValue === null) {
         setContingency(true);
         setCookie(cookieBanner, true, local, dev, prod);
@@ -158,13 +131,13 @@ const HeaderOrg: FC<HeaderProps> = ({
       </NavAside>
       <div className={logged ? styles.spaceLogged : styles.space} />
       {contingency && (
-        <Banner onClose={(): void => { setCookie(cookieBanner, false, local, dev, prod); setContingency(false); }}>
+        <Banner onClose={() => { setCookie(cookieBanner, false, local, dev, prod); setContingency(false); }}>
           <Fragment>
             Estas son las medidas de apoyo a nuestros clientes ante la contingencia del COVID-19.
             <a
               style={{ textDecoration: 'underline', marginLeft: '8px', cursor: 'pointer' }}
               role="presentation"
-              onClick={(): void => { toggleContigencyModal(true); }}
+              onClick={() => { toggleContigencyModal(true); }}
             >
               Conócelas aquí
             </a>
@@ -173,7 +146,7 @@ const HeaderOrg: FC<HeaderProps> = ({
       )}
       <Modal
         show={showModal}
-        onClose={(): void => { toggleContigencyModal(false); }}
+        onClose={() => { toggleContigencyModal(false); }}
         size="lg"
         imgTop={{
           img: contingencyModal, position: 'center', size: 'cover', color: colors.bgWhite,
