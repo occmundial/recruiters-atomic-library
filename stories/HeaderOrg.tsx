@@ -14,7 +14,7 @@ import { right, loggedMenu } from './configHeaderOrg/right';
 import Proptypes from 'prop-types';
 
 import windowSize from '../components/common/useWindowSize';
-import HeaderMenu from '../components/molecules/menu';
+import HeaderMenu from '../stories/configHeaderOrg/molecules/menu';
 
 const contingencyModal: string = 'https://cdn-shop.occ.com.mx/recruiters-home-page/img/contingencyModal.png';
 export interface HeaderProps {
@@ -193,7 +193,7 @@ const HeaderOrg: FC<HeaderProps> = ({
     <Fragment>
       <NavTab
         top={scroll || logged ? undefined : top(isMobile, getRoot(local, dev, prod))}
-        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, orgMenu, `${organizationName.substr(0,19)}...`, teamName, orgMenuLinks)}
+        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, orgMenu, organizationName, teamName, orgMenuLinks)}
         center={showCenter && center(isMobile, logged, getRoot(local, dev, prod), tabSelected)}
         right={right(
           isMobile,
@@ -211,13 +211,13 @@ const HeaderOrg: FC<HeaderProps> = ({
           rightTabSelected,
           showCounts,
         )}
-        // fixed
+        fixed
         hideOnScroll
       />
       {isMobile && logged && (
         <NavTab
           flexCenter={centerMobile(getRoot(local, dev, prod), tabSelected)}
-          // fixed
+          fixed
           bottom
         />
       )}
@@ -241,7 +241,6 @@ const HeaderOrg: FC<HeaderProps> = ({
           logout={logout}
         />
       </NavAside>
-      <div className={logged ? "spaceLogged" : "space"} />
       {contingency && (
         <Banner onClose={(): void => { setCookie(cookieBanner, false, local, dev, prod); setContingency(false); }}>
           <Fragment>

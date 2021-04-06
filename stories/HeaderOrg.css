@@ -27,7 +27,7 @@
   border-radius: var(--spacing-tiny) !important;
   background: var(--colors-sec);
   border: 1px solid var(--colors-bgWhite);
-  max-width: var(--spacing-small);
+  width: fit-content;
   padding-left: var(--spacing-xTiny);
   padding-right: var(--spacing-xTiny);
   z-index: 1;
@@ -45,14 +45,14 @@
   right: var(--spacing-gutter);
   border: 1px solid var(--colors-grey200);
   background-color: var(--colors-bgWhite);
-  padding: var(--spacing-tiny) var(--spacing-small) var(--spacing-tiny) var(--spacing-small) !important;
+  padding: var(--spacing-base) var(--spacing-base) var(--spacing-base) var(--spacing-base) !important;
 }
 
 .cardOrgMenu {
   right: var(--spacing-gutter);
   border: 1px solid var(--colors-grey200);
   background-color: var(--colors-bgWhite);
-  padding: var(--spacing-tiny) var(--spacing-small) var(--spacing-tiny) var(--spacing-small) !important;
+  padding: var(--spacing-base) !important;
   width: 200px;
 }
 
@@ -71,7 +71,7 @@
 .unread {
   position: absolute;
   border-radius: var(--spacing-tiny);
-  max-width: var(--spacing-small);
+  width: fit-content;
   padding-left: var(--spacing-xTiny);
   padding-right: var(--spacing-xTiny);
   top: var(--spacing-small);
@@ -87,8 +87,16 @@
   margin-left: var(--spacing-base);
 }
 
+.logoSpacing {
+  margin-right: var(--spacing-base);
+}
+
 .mobileData {
   margin-left: var(--spacing-tiny);
+}
+
+.menuBarSpacing {
+  margin-right: var(--spacing-gutter);
 }
 
 @media (max-width:991px) {
