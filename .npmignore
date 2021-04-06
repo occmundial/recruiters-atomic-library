@@ -1,1 +1,12 @@
 .storybook
+.next
+.storybook
+out
+pages
+scripts
+stories
+storybook-static
+public
+.gitignore
+next-env.d.ts
+next.config.js
