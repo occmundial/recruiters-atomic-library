@@ -8,11 +8,11 @@ import styles from '../../../styles/ButtonDropDown.module.css';
 const ButtonDropDown = ({
   renderComp, buttonText, mobile = false, arrow = false, onClose, arrowWidth = 14, arrowHeight = 14, arrowLeft = 0, noMenu = false,
 }) => {
-  const [show, toggleShow] = useState<boolean>(false);
-  const [scroll, toggleScroll] = useState<boolean>(false);
-  const [previousScroll, togglepreviousScroll] = useState<number>(0);
-  const [isMounted, toggleisMounted] = useState<boolean>(false);
-  const myRef = useRef<HTMLDivElement>(null);
+  const [show, toggleShow] = useState(false);
+  const [scroll, toggleScroll] = useState(false);
+  const [previousScroll, togglepreviousScroll] = useState(0);
+  const [isMounted, toggleisMounted] = useState(false);
+  const myRef = useRef(null);
 
   const rotate = (bol) => {
     toggleShow(!bol);
