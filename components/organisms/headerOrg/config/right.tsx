@@ -5,7 +5,7 @@ import {
 import classNames from 'classnames';
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
-import { localRoot, r12links, r11links, links } from '../config/links';
+import { localRoot, r11links, links } from '../config/links';
 import styles from '../../../../styles/HeaderOrg.module.css';
 
 interface link {
@@ -27,6 +27,8 @@ const goTo = (url) => {
 export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, referral = '', cartHasItems = false, chatHasItems = false, organizationLinks = [{}], isAdmin = false, validEmail = false, canReturn = false, typeAdministrator = false, typeSubadministrator = false, showCounts = false) => {
   const cartLink = `${root.checkout}/${links.checkout}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
   const planLink = `${root.checkout}/${links.quotation}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
+  console.log(validEmail);
+  console.log(typeSubadministrator);
   const menu: Array<link> = [
     {
       url: cartHasItems ? cartLink : planLink, text: 'Carrito', visible: mobile, alert: cartHasItems && showCounts, selected: tabSelected === 1,
@@ -71,11 +73,10 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
   return menu;
 };
 
-const buttonMenu = (menu = false, username = '', userPhoto = '', MenuMobile = true, Menulinks, Menulogout) => (
+const buttonMenu = (username = '', userPhoto = '', MenuMobile = true, Menulinks, Menulogout) => (
   <Fragment>
     <div className={styles.tabButton}>
       <ButtonDropDown
-        toggle={menu}
         buttonText={<Avatar name={username} photo={userPhoto && userPhoto} size={32} />}
         arrow
         arrowWidth={24}
@@ -151,7 +152,7 @@ const menuBars = (setShowMenu) => (
   </div>
 );
 
-export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => (
+export const right = (mobile, logged, setShowMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => (
   mobile ? (
     logged ? (
       [
@@ -188,7 +189,7 @@ export const right = (mobile, logged, setShowMenu, showMenu, userName, userPhoto
           {
             key: 2,
             type: 'custom',
-            custom: buttonMenu(showMenu, userName, userPhoto, mobile, menuLinks, logout),
+            custom: buttonMenu(userName, userPhoto, mobile, menuLinks, logout),
           },
         ]
       ) : (
