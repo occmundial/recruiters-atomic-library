@@ -87,7 +87,6 @@ const HeaderOrg = ({
           isMobile,
           logged,
           setShowMenu,
-          showMenu,
           userName,
           userPhoto,
           loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts),
