@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { Text, NavItem } from '@occmundial/occ-atomic';
 import styles from '../../../styles/Menu.module.css';
 
-const Menu = ({ mobile = false, linksH, logout }) => (
+const Menu = ({ mobile = false, linksH, logout = false }) => (
   <Fragment>
     {linksH.map((link) => (
       <div key={uuid()} className={link.visible ? styles.cardText : ''}>

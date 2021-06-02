@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import styles from '../../../styles/ButtonDropDown.module.css';
 
 const ButtonDropDown = ({
-  renderComp, buttonText, mobile = false, arrow = false, onClose, arrowWidth = 14, arrowHeight = 14, arrowLeft = 0, noMenu = false,
+  renderComp, buttonText, mobile = false, arrow = false, onClose = false, arrowWidth = 14, arrowHeight = 14, arrowLeft = 0, noMenu = false,
 }) => {
   const [show, toggleShow] = useState(false);
   const [scroll, toggleScroll] = useState(false);
