@@ -27,8 +27,6 @@ const goTo = (url) => {
 export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, referral = '', cartHasItems = false, chatHasItems = false, organizationLinks = [{}], isAdmin = false, validEmail = false, canReturn = false, typeAdministrator = false, typeSubadministrator = false, showCounts = false) => {
   const cartLink = `${root.checkout}/${links.checkout}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
   const planLink = `${root.checkout}/${links.quotation}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
-  console.log(validEmail);
-  console.log(typeSubadministrator);
   const menu: Array<link> = [
     {
       url: cartHasItems ? cartLink : planLink, text: 'Carrito', visible: mobile, alert: cartHasItems && showCounts, selected: tabSelected === 1,
