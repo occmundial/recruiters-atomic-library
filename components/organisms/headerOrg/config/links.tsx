@@ -18,7 +18,7 @@ export const links = {
   buscoEmpleo: 'https://www.occ.com.mx/?utm_source=empresas&utm_medium=referral&utm_campaign=header',
   sightJobAdmin: 'vacantes/admin/',
   talent: 'talento/',
-  notes: 'herramientas/notas/',
+  notes: 'notas/',
   company: 'empresa/',
   sSight: 'productos/',
   anuncios: 'publicacion-de-vacantes/',

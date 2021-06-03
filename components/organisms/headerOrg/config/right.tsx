@@ -45,19 +45,19 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
     {
       url: ``, text: 'Configuración de tu cuenta', visible: true, selected: tabSelected === 3,
     },
+    { separator: true, hide: false },
     {
-      url: ``, text: 'Buscar trabajo', visible: true, selected: tabSelected === 4,
+      url: ``, text: 'Configuración de organización', visible: true, selected: tabSelected === 4,
+    },
+    {
+      url: `${root.r11}/${r11links.account}`, text: 'Estado de cuenta', visible: isAdmin && typeAdministrator && canReturn, selected: tabSelected === 5,
     },
     { separator: true, hide: false },
     {
-      url: ``, text: 'Configuración de organización', visible: true, selected: tabSelected === 5,
+      url: `${root.r11}/${r11links.classifications}`, text: 'Clasificaciones de CV\'s', visible: true, selected: tabSelected === 6,
     },
     {
-      url: ``, text: 'Reportes', visible: isAdmin && typeAdministrator && canReturn, selected: tabSelected === 6,
-    },
-    { separator: true, hide: false },
-    {
-      url: ``, text: 'Clasificaciones de CV\'s', visible: true, selected: tabSelected === 7,
+      url: `${root.basics}/${links.notes}`, text: 'Notas de CV\'s', visible: true, selected: tabSelected === 7,
     },
     {
       url: `${links.indices}`, text: 'Índices salariales', visible: true, selected: tabSelected === 12,
