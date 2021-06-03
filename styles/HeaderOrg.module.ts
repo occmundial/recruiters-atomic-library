@@ -96,4 +96,16 @@ export default {
   menuBarSpacing: {
     marginRight: '12px',
   },
+  organizationName: {
+    flexGrow: '0 !important',
+    fontFamily: 'HK Grotesk, sans-serif !important',
+    fontSize: `${gutter}px !important`,
+    fontWeight: '600 !important',
+    fontStretch: 'normal !important',
+    fontStyle: 'normal !important',
+    lineHeight: '2px !important',
+    letterSpacing: '0.86px !important',
+    textAlign: 'left !important',
+    color: '#222222 !important',
+  },
 };

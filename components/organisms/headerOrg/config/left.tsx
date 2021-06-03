@@ -55,7 +55,7 @@ const logoContainer = (classes, width = 146, height = 34, style: Object, iconNam
 
 const organizationMenu = (classes, organization = '', team = '', MenuMobile = false, Menulinks) => (
   <Fragment>
-    {organization !== '...' && (
+    {(organization && Menulinks.length) ? (
       <div>
         <ButtonDropDown
           buttonText={team !== '' ? `${organization} / ${team} ` : `${organization} `}
@@ -73,7 +73,10 @@ const organizationMenu = (classes, organization = '', team = '', MenuMobile = fa
           )}
         />
       </div>
-    )}
+    ) : null}
+    {(organization && !Menulinks.length) ? (
+      <Text className={classes.organizationName}>{team !== '' ? `${organization} / ${team} ` : `${organization} `}</Text>
+    ) : null}
   </Fragment>
 );
 
