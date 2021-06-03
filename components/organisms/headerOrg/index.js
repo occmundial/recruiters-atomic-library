@@ -1,10 +1,11 @@
 import React, {
   Fragment, FC, useEffect, useState,
 } from 'react';
+import injectSheet from 'react-jss';
 import {
   NavTab, NavAside, Text, grid, Modal, Banner, colors, Avatar, Flexbox,
 } from '@occmundial/occ-atomic';
-import styles from '../../../styles/HeaderOrg.module.css';
+import styles from '../../../styles/HeaderOrg.module.ts';
 import { left } from './config/left';
 import { getRoot } from './config/links';
 import { getCookie, setCookie, cookieBanner } from './config/cookies';
@@ -19,6 +20,7 @@ import HeaderMenu from '../../molecules/menu';
 const contingencyModal = 'https://cdn-shop.occ.com.mx/recruiters-home-page/img/contingencyModal.png';
 
 const HeaderOrg = ({
+  classes,
   showCenter = false,
   showCounts = false,
   logged = false,
@@ -81,9 +83,10 @@ const HeaderOrg = ({
     <Fragment>
       <NavTab
         top={scroll || logged ? undefined : top(isMobile, getRoot(local, dev, prod))}
-        left={left(isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, organizationName, teamName, orgMenuLinks)}
+        left={left(classes, isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, organizationName, teamName, orgMenuLinks)}
         center={showCenter && center(isMobile, logged, getRoot(local, dev, prod), tabSelected)}
         right={right(
+          classes, 
           isMobile,
           logged,
           setShowMenu,
@@ -115,7 +118,7 @@ const HeaderOrg = ({
         top={(
           <Flexbox display="flex">
             <Avatar name={userName} photo={userPhoto && userPhoto} size={48} />
-            <div className={styles.mobileData}>
+            <div className={classes.mobileData}>
               <Text subheading>{userName}</Text>
               <Text small mid>{email}</Text>
             </div>
@@ -128,7 +131,7 @@ const HeaderOrg = ({
           logout={logout}
         />
       </NavAside>
-      <div className={logged ? styles.spaceLogged : styles.space} />
+      <div className={logged ? classes.spaceLogged : classes.space} />
       {contingency && (
         <Banner onClose={() => { setCookie(cookieBanner, false, local, dev, prod); setContingency(false); }}>
           <Fragment>
@@ -253,4 +256,4 @@ HeaderOrg.propTypes = {
   typeSubAdministrator: Proptypes.bool,
 };
 
-export default HeaderOrg;
+export default injectSheet(styles)(HeaderOrg);

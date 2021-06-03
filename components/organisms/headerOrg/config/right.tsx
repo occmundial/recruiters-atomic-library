@@ -6,7 +6,6 @@ import classNames from 'classnames';
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
 import { localRoot, r11links, links } from '../config/links';
-import styles from '../../../../styles/HeaderOrg.module.css';
 
 interface link {
   url?: string;
@@ -71,9 +70,9 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
   return menu;
 };
 
-const buttonMenu = (username = '', userPhoto = '', MenuMobile = true, Menulinks, Menulogout) => (
+const buttonMenu = (classes, username = '', userPhoto = '', MenuMobile = true, Menulinks, Menulogout) => (
   <Fragment>
-    <div className={styles.tabButton}>
+    <div className={classes.tabButton}>
       <ButtonDropDown
         buttonText={<Avatar name={username} photo={userPhoto && userPhoto} size={32} />}
         arrow
@@ -81,7 +80,7 @@ const buttonMenu = (username = '', userPhoto = '', MenuMobile = true, Menulinks,
         arrowHeight={24}
         renderComp={(
           <Fragment>
-            <Card raised className={styles.cardMenu}>
+            <Card raised className={classes.cardMenu}>
               <Menu mobile={MenuMobile} linksH={Menulinks} logout={Menulogout} />
             </Card>
           </Fragment>
@@ -91,7 +90,7 @@ const buttonMenu = (username = '', userPhoto = '', MenuMobile = true, Menulinks,
   </Fragment>
 );
 
-const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, showCounts = false) => (
+const cart = (classes, cartCount = 0, referral = '', root = localRoot, tabSelected = 0, showCounts = false) => (
   <Fragment>
     <a
       href={cartCount > 0 ? `${root.checkout}/${links.checkout}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`
@@ -99,7 +98,7 @@ const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, s
       rel="nofollow"
       id="cart"
     >
-      <div title="Carrito" className={styles.cartBtn}>
+      <div title="Carrito" className={classes.cartBtn}>
         <Text
           small
           white
@@ -107,8 +106,8 @@ const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, s
           strong
           id="lblCartCount"
           className={classNames(
-            styles.labelCount,
-            cartCount > 0 && showCounts && styles.labelCountShow,
+            classes.labelCount,
+            cartCount > 0 && showCounts && classes.labelCountShow,
           )}
         >
           {cartCount < 100 ? cartCount : '99+'}
@@ -119,13 +118,13 @@ const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, s
   </Fragment>
 );
 
-const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => {
+const getChatItem = (classes, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => {
   const hasChats = chatItems > 0;
   const messagesContent = (
     <Fragment>
       <NavIcon iconName="messages" selected={tabSelected === 2} showBar={tabSelected === 2} />
       {hasChats && showCounts && (
-        <span className={styles.unread}>
+        <span className={classes.unread}>
           <Text small white center strong>
             {chatItems > 99 ? '99+' : chatItems}
           </Text>
@@ -135,7 +134,7 @@ const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCount
   );
   return (
     <div
-      className={styles.notifications}
+      className={classes.notifications}
       onClick={() => goTo(`${root.basics}/${links.chat}`)}
       role="presentation"
     >
@@ -144,20 +143,20 @@ const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCount
   );
 };
 
-const menuBars = (setShowMenu) => (
-  <div className={styles.menuBarSpacing}>
+const menuBars = (classes, setShowMenu) => (
+  <div className={classes.menuBarSpacing}>
     <Icon iconName="bars" onClick={() => setShowMenu(true)} width={18} height={18}/>
   </div>
 );
 
-export const right = (mobile, logged, setShowMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => (
+export const right = (classes, mobile, logged, setShowMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => (
   mobile ? (
     logged ? (
       [
         {
           key: 0,
           type: 'custom',
-          custom: menuBars(setShowMenu),
+          custom: menuBars(classes, setShowMenu),
         },
       ]
     ) : (
@@ -177,17 +176,17 @@ export const right = (mobile, logged, setShowMenu, userName, userPhoto, menuLink
           {
             key: 0,
             type: 'logo',
-            logo: cart(cartItems, referral, root, tabSelected, showCounts),
+            logo: cart(classes, cartItems, referral, root, tabSelected, showCounts),
           },
           {
             key: 1,
             type: 'custom',
-            custom: getChatItem(chatItems, root, tabSelected, showCounts),
+            custom: getChatItem(classes, chatItems, root, tabSelected, showCounts),
           },
           {
             key: 2,
             type: 'custom',
-            custom: buttonMenu(userName, userPhoto, mobile, menuLinks, logout),
+            custom: buttonMenu(classes, userName, userPhoto, mobile, menuLinks, logout),
           },
         ]
       ) : (

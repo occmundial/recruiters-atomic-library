@@ -1,12 +1,13 @@
 import React, {
   useState, useEffect, useRef, FC, ReactElement,
 } from 'react';
+import injectSheet from 'react-jss';
 import { Text, Icon, colors } from '@occmundial/occ-atomic';
 import classNames from 'classnames';
-import styles from '../../../styles/ButtonDropDown.module.css';
+import styles from '../../../styles/ButtonDropDown.module.ts';
 
 const ButtonDropDown = ({
-  renderComp, buttonText, mobile = false, arrow = false, onClose = false, arrowWidth = 14, arrowHeight = 14, arrowLeft = 0, noMenu = false,
+  classes, renderComp, buttonText, mobile = false, arrow = false, onClose = false, arrowWidth = 14, arrowHeight = 14, arrowLeft = 0, noMenu = false,
 }) => {
   const [show, toggleShow] = useState(false);
   const [scroll, toggleScroll] = useState(false);
@@ -61,20 +62,20 @@ const ButtonDropDown = ({
   }, []);
 
   return (
-    <div className={styles.divDefault} ref={myRef}>
+    <div className={classes.divDefault} ref={myRef}>
       <div
-        className={styles.divText}
+        className={classes.divText}
         onClick={() => rotate(show)}
         role="presentation"
       >
-        <div className={styles.divFlex}>
-          <Text className={styles.buttonText}>{buttonText}</Text>
+        <div className={classes.divFlex}>
+          <Text className={classes.buttonText}>{buttonText}</Text>
           {arrow && (
             <Icon
               style={{ marginLeft: arrowLeft }}
               iconName="arrowDown"
               colors={[colors.black]}
-              className={show ? styles.iconStyleActive : styles.iconStyleDisable}
+              className={show ? classes.iconStyleActive : classes.iconStyleDisable}
               width={arrowWidth}
               height={arrowHeight}
             />
@@ -86,9 +87,9 @@ const ButtonDropDown = ({
           <div
             className={
               show ? classNames(
-                scroll ? styles.showElementActiveMovScroll : styles.showElementActiveMov,
+                scroll ? classes.showElementActiveMovScroll : classes.showElementActiveMov,
               ) : classNames(
-                scroll ? styles.showElementDisableMovScroll : styles.showElementDisableMov,
+                scroll ? classes.showElementDisableMovScroll : classes.showElementDisableMov,
               )
             }
           >
@@ -96,7 +97,7 @@ const ButtonDropDown = ({
           </div>
         )
         : (
-          <div className={show ? classNames(noMenu && styles.noMenu, styles.showElementActive) : classNames(noMenu && styles.noMenu, styles.showElementDisable)}>
+          <div className={show ? classNames(noMenu && classes.noMenu, classes.showElementActive) : classNames(noMenu && classes.noMenu, classes.showElementDisable)}>
             {isMounted || show ? renderComp : null}
           </div>
         )
@@ -105,4 +106,4 @@ const ButtonDropDown = ({
   );
 };
 
-export default ButtonDropDown;
+export default injectSheet(styles)(ButtonDropDown);
