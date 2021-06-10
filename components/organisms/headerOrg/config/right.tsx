@@ -6,7 +6,6 @@ import classNames from 'classnames';
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
 import { localRoot, r11links, links } from '../config/links';
-import styles from '../../../../styles/HeaderOrg.module.css';
 
 interface link {
   url?: string;
@@ -27,8 +26,6 @@ const goTo = (url) => {
 export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, referral = '', cartHasItems = false, chatHasItems = false, organizationLinks = [{}], isAdmin = false, validEmail = false, canReturn = false, typeAdministrator = false, typeSubadministrator = false, showCounts = false) => {
   const cartLink = `${root.checkout}/${links.checkout}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
   const planLink = `${root.checkout}/${links.quotation}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
-  console.log(validEmail);
-  console.log(typeSubadministrator);
   const menu: Array<link> = [
     {
       url: cartHasItems ? cartLink : planLink, text: 'Carrito', visible: mobile, alert: cartHasItems && showCounts, selected: tabSelected === 1,
@@ -48,19 +45,19 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
     {
       url: ``, text: 'Configuración de tu cuenta', visible: true, selected: tabSelected === 3,
     },
+    { separator: true, hide: false },
     {
-      url: ``, text: 'Buscar trabajo', visible: true, selected: tabSelected === 4,
+      url: ``, text: 'Configuración de organización', visible: true, selected: tabSelected === 4,
+    },
+    {
+      url: `${root.r11}/${r11links.account}`, text: 'Estado de cuenta', visible: isAdmin && typeAdministrator && canReturn, selected: tabSelected === 5,
     },
     { separator: true, hide: false },
     {
-      url: ``, text: 'Configuración de organización', visible: true, selected: tabSelected === 5,
+      url: `${root.r11}/${r11links.classifications}`, text: 'Clasificaciones de CV\'s', visible: true, selected: tabSelected === 6,
     },
     {
-      url: ``, text: 'Reportes', visible: isAdmin && typeAdministrator && canReturn, selected: tabSelected === 6,
-    },
-    { separator: true, hide: false },
-    {
-      url: ``, text: 'Clasificaciones de CV\'s', visible: true, selected: tabSelected === 7,
+      url: `${root.basics}/${links.notes}`, text: 'Notas de CV\'s', visible: true, selected: tabSelected === 7,
     },
     {
       url: `${links.indices}`, text: 'Índices salariales', visible: true, selected: tabSelected === 12,
@@ -73,9 +70,9 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
   return menu;
 };
 
-const buttonMenu = (username = '', userPhoto = '', MenuMobile = true, Menulinks, Menulogout) => (
+const buttonMenu = (classes, username = '', userPhoto = '', MenuMobile = true, Menulinks, Menulogout) => (
   <Fragment>
-    <div className={styles.tabButton}>
+    <div className={classes.tabButton}>
       <ButtonDropDown
         buttonText={<Avatar name={username} photo={userPhoto && userPhoto} size={32} />}
         arrow
@@ -83,7 +80,7 @@ const buttonMenu = (username = '', userPhoto = '', MenuMobile = true, Menulinks,
         arrowHeight={24}
         renderComp={(
           <Fragment>
-            <Card raised className={styles.cardMenu}>
+            <Card raised className={classes.cardMenu}>
               <Menu mobile={MenuMobile} linksH={Menulinks} logout={Menulogout} />
             </Card>
           </Fragment>
@@ -93,7 +90,7 @@ const buttonMenu = (username = '', userPhoto = '', MenuMobile = true, Menulinks,
   </Fragment>
 );
 
-const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, showCounts = false) => (
+const cart = (classes, cartCount = 0, referral = '', root = localRoot, tabSelected = 0, showCounts = false) => (
   <Fragment>
     <a
       href={cartCount > 0 ? `${root.checkout}/${links.checkout}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`
@@ -101,7 +98,7 @@ const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, s
       rel="nofollow"
       id="cart"
     >
-      <div title="Carrito" className={styles.cartBtn}>
+      <div title="Carrito" className={classes.cartBtn}>
         <Text
           small
           white
@@ -109,8 +106,8 @@ const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, s
           strong
           id="lblCartCount"
           className={classNames(
-            styles.labelCount,
-            cartCount > 0 && showCounts && styles.labelCountShow,
+            classes.labelCount,
+            cartCount > 0 && showCounts && classes.labelCountShow,
           )}
         >
           {cartCount < 100 ? cartCount : '99+'}
@@ -121,13 +118,13 @@ const cart = (cartCount = 0, referral = '', root = localRoot, tabSelected = 0, s
   </Fragment>
 );
 
-const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => {
+const getChatItem = (classes, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => {
   const hasChats = chatItems > 0;
   const messagesContent = (
     <Fragment>
       <NavIcon iconName="messages" selected={tabSelected === 2} showBar={tabSelected === 2} />
       {hasChats && showCounts && (
-        <span className={styles.unread}>
+        <span className={classes.unread}>
           <Text small white center strong>
             {chatItems > 99 ? '99+' : chatItems}
           </Text>
@@ -137,7 +134,7 @@ const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCount
   );
   return (
     <div
-      className={styles.notifications}
+      className={classes.notifications}
       onClick={() => goTo(`${root.basics}/${links.chat}`)}
       role="presentation"
     >
@@ -146,20 +143,20 @@ const getChatItem = (chatItems = 0, root = localRoot, tabSelected = 0, showCount
   );
 };
 
-const menuBars = (setShowMenu) => (
-  <div className={styles.menuBarSpacing}>
+const menuBars = (classes, setShowMenu) => (
+  <div className={classes.menuBarSpacing}>
     <Icon iconName="bars" onClick={() => setShowMenu(true)} width={18} height={18}/>
   </div>
 );
 
-export const right = (mobile, logged, setShowMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => (
+export const right = (classes, mobile, logged, setShowMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => (
   mobile ? (
     logged ? (
       [
         {
           key: 0,
           type: 'custom',
-          custom: menuBars(setShowMenu),
+          custom: menuBars(classes, setShowMenu),
         },
       ]
     ) : (
@@ -179,17 +176,17 @@ export const right = (mobile, logged, setShowMenu, userName, userPhoto, menuLink
           {
             key: 0,
             type: 'logo',
-            logo: cart(cartItems, referral, root, tabSelected, showCounts),
+            logo: cart(classes, cartItems, referral, root, tabSelected, showCounts),
           },
           {
             key: 1,
             type: 'custom',
-            custom: getChatItem(chatItems, root, tabSelected, showCounts),
+            custom: getChatItem(classes, chatItems, root, tabSelected, showCounts),
           },
           {
             key: 2,
             type: 'custom',
-            custom: buttonMenu(userName, userPhoto, mobile, menuLinks, logout),
+            custom: buttonMenu(classes, userName, userPhoto, mobile, menuLinks, logout),
           },
         ]
       ) : (

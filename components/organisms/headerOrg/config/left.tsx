@@ -5,9 +5,8 @@ import {
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
 import { localRoot, r12links, links } from '../config/links';
-import styles from '../../../../styles/HeaderOrg.module.css';
 
-const asideMenuUnLogged = (menuUnlogged = false, setMenuUnlogged, root = localRoot, tabSelected = 0) => (
+const asideMenuUnLogged = (classes, menuUnlogged = false, setMenuUnlogged, root = localRoot, tabSelected = 0) => (
   <Fragment>
     <Icon iconName="bars" onClick={() => setMenuUnlogged(true)} />
     <NavAside
@@ -20,8 +19,8 @@ const asideMenuUnLogged = (menuUnlogged = false, setMenuUnlogged, root = localRo
       )}
     >
       <div>
-        <div className={styles.divButtons}>
-          <div className={styles.leftElement}>
+        <div className={classes.divButtons}>
+          <div className={classes.leftElement}>
             <Button theme="ghostPink" size="sm" href={`${root.accounts}/${links.newAccount}`}>CREAR CUENTA</Button>
           </div>
           <Button
@@ -32,21 +31,21 @@ const asideMenuUnLogged = (menuUnlogged = false, setMenuUnlogged, root = localRo
             INICIAR SESIÓN
           </Button>
         </div>
-        <div className={styles.verticalSeparator} />
-        <NavItem selected={tabSelected === 0} className={styles.topTiny} link={`${root.home}/`}>Inicio</NavItem>
-        <NavItem selected={tabSelected === 1} className={styles.topTiny} link={`${root.home}/${links.sSight}`}>Productos</NavItem>
-        <NavItem selected={tabSelected === 2} className={styles.topTiny} link={`${root.home}/${links.prices}`}>Precios y paquetes</NavItem>
-        <NavItem selected={tabSelected === 3} className={styles.topTiny} link={`${root.home}/${links.aboutUs}`}>Acerca de OCCMundial</NavItem>
-        <NavItem selected={tabSelected === 4} className={styles.topTiny} link={`${root.home}/${links.faqs}`}>Preguntas Frecuentes</NavItem>
-        <NavItem selected={tabSelected === 5} className={styles.topTiny} link={`${links.buscoEmpleo}`}>Busco Empleo</NavItem>
+        <div className={classes.verticalSeparator} />
+        <NavItem selected={tabSelected === 0} className={classes.topTiny} link={`${root.home}/`}>Inicio</NavItem>
+        <NavItem selected={tabSelected === 1} className={classes.topTiny} link={`${root.home}/${links.sSight}`}>Productos</NavItem>
+        <NavItem selected={tabSelected === 2} className={classes.topTiny} link={`${root.home}/${links.prices}`}>Precios y paquetes</NavItem>
+        <NavItem selected={tabSelected === 3} className={classes.topTiny} link={`${root.home}/${links.aboutUs}`}>Acerca de OCCMundial</NavItem>
+        <NavItem selected={tabSelected === 4} className={classes.topTiny} link={`${root.home}/${links.faqs}`}>Preguntas Frecuentes</NavItem>
+        <NavItem selected={tabSelected === 5} className={classes.topTiny} link={`${links.buscoEmpleo}`}>Busco Empleo</NavItem>
       </div>
     </NavAside>
   </Fragment>
 );
 
-const logoContainer = (width = 146, height = 34, style: Object, iconName: String, root) => (
+const logoContainer = (classes, width = 146, height = 34, style: Object, iconName: String, root) => (
   <Fragment>
-    <div className={styles.logoSpacing}>
+    <div className={classes.logoSpacing}>
       <a href={`${root.r12}/${r12links.sightMainPage}`}>
         <Icon width={width} height={height} style={style} iconName={iconName} />
       </a>
@@ -54,9 +53,9 @@ const logoContainer = (width = 146, height = 34, style: Object, iconName: String
   </Fragment>
 );
 
-const organizationMenu = (organization = '', team = '', MenuMobile = false, Menulinks) => (
+const organizationMenu = (classes, organization = '', team = '', MenuMobile = false, Menulinks) => (
   <Fragment>
-    {organization !== '...' && (
+    {(organization && Menulinks.length) ? (
       <div>
         <ButtonDropDown
           buttonText={team !== '' ? `${organization} / ${team} ` : `${organization} `}
@@ -67,25 +66,28 @@ const organizationMenu = (organization = '', team = '', MenuMobile = false, Menu
           noMenu
           renderComp={(
             <Fragment>
-              <Card raised className={styles.cardOrgMenu}>
+              <Card raised className={classes.cardOrgMenu}>
                 <Menu mobile={MenuMobile} linksH={Menulinks} />
               </Card>
             </Fragment>
           )}
         />
       </div>
-    )}
+    ) : null}
+    {(organization && !Menulinks.length) ? (
+      <Text className={classes.organizationName}>{team !== '' ? `${organization} / ${team} ` : `${organization} `}</Text>
+    ) : null}
   </Fragment>
 );
 
-export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideMenu, organizationName = '', teamName = '', orgMenuLinks = [{}]) => (
+export const left = (classes, mobile, logged, tabSelected = 0, root, asideMenu, setAsideMenu, organizationName = '', teamName = '', orgMenuLinks = [{}]) => (
   mobile ? (
     logged ? (
       [
         {
           key: 0,
           type: 'custom',
-          custom: logoContainer(146, 34, {backgroundRepeat: 'no-repeat'}, "occHorizontalGrey", root),
+          custom: logoContainer(classes, 146, 34, {backgroundRepeat: 'no-repeat'}, "occHorizontalGrey", root),
         },
       ]
     ) : (
@@ -94,7 +96,7 @@ export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideM
             key: 0,
             type: 'logo',
             logo: (
-              asideMenuUnLogged(asideMenu, setAsideMenu, root, tabSelected)
+              asideMenuUnLogged(classes, asideMenu, setAsideMenu, root, tabSelected)
             ),
           },
         ]
@@ -105,12 +107,12 @@ export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideM
           {
             key: 0,
             type: 'custom',
-            custom: logoContainer(146, 34, {backgroundRepeat: 'no-repeat'}, "occHorizontalGrey", root),
+            custom: logoContainer(classes, 146, 34, {backgroundRepeat: 'no-repeat'}, "occHorizontalGrey", root),
           },
           {
             key: 1,
             type: 'custom',
-            custom: organizationMenu(organizationName, teamName, mobile, orgMenuLinks),
+            custom: organizationMenu(classes, organizationName, teamName, mobile, orgMenuLinks),
           },
         ]
       ) : (
