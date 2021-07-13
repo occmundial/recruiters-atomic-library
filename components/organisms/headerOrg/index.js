@@ -7,7 +7,7 @@ import {
 } from '@occmundial/occ-atomic';
 import styles from '../../../styles/HeaderOrg.module.ts';
 import { left } from './config/left';
-import { getRoot } from './config/links';
+import { getRoot, links } from './config/links';
 import { getCookie, setCookie, cookieBanner } from './config/cookies';
 import { top } from './config/top';
 import { center, centerMobile } from './config/center';
@@ -53,6 +53,7 @@ const HeaderOrg = ({
   const [showModal, toggleContigencyModal] = useState(false);
   const [asideMenu, setAsideMenu] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const linksRoot = getRoot(local, dev, prod);
 
   const handleScroll = () => {
     if (window.pageYOffset === 0) {
@@ -135,13 +136,14 @@ const HeaderOrg = ({
       {contingency && (
         <Banner onClose={() => { setCookie(cookieBanner, false, local, dev, prod); setContingency(false); }}>
           <Fragment>
-            Estas son las medidas de apoyo a nuestros clientes ante la contingencia del COVID-19.
+            <b>3 y 6 Meses Sin Intereses</b> en tus compras.
             <a
-              style={{ textDecoration: 'underline', marginLeft: '8px', cursor: 'pointer' }}
+              style={{ textDecoration: 'underline', marginLeft: '8px', cursor: 'pointer', color: colors.bgWhite }}
               role="presentation"
-              onClick={() => { toggleContigencyModal(true); }}
+              // onClick={() => { toggleContigencyModal(true); }}
+              href={`${linksRoot.checkout}/${links.quotation}`}
             >
-              Conócelas aquí
+              Aprovecha ahora &gt;
             </a>
           </Fragment>
         </Banner>
