@@ -22,6 +22,8 @@ const goTo = (url) => {
   window.location.assign(url);
 };
 
+const currentUrl = typeof window === 'undefined' ? '' : window.location;
+
 
 export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, referral = '', cartHasItems = false, chatHasItems = false, organizationLinks = [{}], isAdmin = false, validEmail = false, canReturn = false, typeAdministrator = false, typeSubadministrator = false, showCounts = false) => {
   const cartLink = `${root.checkout}/${links.checkout}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
@@ -43,11 +45,11 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
   }
   menu.push(
     {
-      url: ``, text: 'Configuración de tu cuenta', visible: true, selected: tabSelected === 3,
+      url: `${root.accountConfig}/${!mobile ? links.profile : ''}?returnurl=${currentUrl}`, text: 'Configuración de tu cuenta', visible: true, selected: tabSelected === 3,
     },
     { separator: true, hide: false },
     {
-      url: ``, text: 'Configuración de organización', visible: true, selected: tabSelected === 4,
+      url: `${root.organizationConfig}/${links.settings}`, text: 'Configuración de organización', visible: true, selected: tabSelected === 4,
     },
     {
       url: `${root.r11}/${r11links.account}`, text: 'Estado de cuenta', visible: isAdmin && typeAdministrator && canReturn, selected: tabSelected === 5,
