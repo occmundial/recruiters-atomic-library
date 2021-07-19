@@ -34,6 +34,8 @@ export const links = {
   indices: 'https://h3.occ.com.mx/Mercer/MisPerfiles',
   ayuda: 'https://occayuda.zendesk.com/hc/es',
   RUE: ' https://www.occ.com.mx/rue/contacto/',
+  profile: 'perfil/',
+  settings: 'ajustes/',
 };
 
 export const r12links = {
@@ -49,6 +51,8 @@ export const localRoot = {
   basics: 'http://localhost:3005',
   talentSearch: 'http://localhost:3003',
   candidates: 'http://localhost:3010',
+  accountConfig: 'http://localhost:3050/configuracion',
+  organizationConfig: 'http://localhost:7000',
   r12: 'http://localhost:8029',
   r11: 'http://localhost:64660',
 };
@@ -61,6 +65,8 @@ export const devRoot = {
   basics: 'https://master.occdev.com.mx/empresas/herramientas',
   talentSearch: 'https://master.occdev.com.mx/empresas/talento',
   candidates: 'https://master.occdev.com.mx/empresas/candidatos',
+  accountConfig: 'https://master.occdev.com.mx/configuracion',
+  organizationConfig: 'https://master.occdev.com.mx/empresas/organizaciones',
   r12: 'https://master.occdev.com.mx/empresas/hirer-center',
   r11: 'http://devrecluta1.occdev.com.mx',
 };
@@ -73,6 +79,8 @@ export const prodRoot = {
   basics: 'https://occ.com.mx/empresas/herramientas',
   talentSearch: 'https://occ.com.mx/empresas/talento',
   candidates: 'https://occ.com.mx/empresas/candidatos',
+  accountConfig: 'https://www.occ.com.mx/configuracion',
+  organizationConfig: 'https://www.occ.com.mx/empresas/organizaciones',
   r12: 'https://occ.com.mx/empresas/hirer-center',
   r11: 'https://recluta11.occ.com.mx',
 };
