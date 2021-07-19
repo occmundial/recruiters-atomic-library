@@ -29,6 +29,7 @@ const defaultProps = {
   userPhoto: 'https://i.imgur.com/I80W1Q0.png',
   email: 'irojas@occ.com.mx',
   logout: () => { },
+  login: () => { },
   tabSelected: 0,
   organizationTabSelected: 0,
   organizationName: 'NOMBRE DE ORGANIZACIÓN',

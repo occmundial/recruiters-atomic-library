@@ -15,6 +15,7 @@ const defaultProps = {
   userPhoto: '',
   email: 'irojas@occ.com.mx',
   logout: () => { },
+  login: () => { },
   tabSelected: 0,
   organizationTabSelected: 0,
 };

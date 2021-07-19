@@ -39,6 +39,10 @@ export interface HeaderProps {
    */
   logout: Function;
   /**
+   * Trigger action when login button is clicked 
+  */
+  login: Function;
+  /**
    * The number of cart items to be displayed
    */
   cartItems?: number;
@@ -138,6 +142,7 @@ const HeaderOrg: FC<HeaderProps> = ({
   email = '',
   userPhoto = '',
   logout,
+  login,
   isMobile = false,
   tabSelected = 0,
   rightTabSelected = 0,
@@ -203,6 +208,7 @@ const HeaderOrg: FC<HeaderProps> = ({
           userPhoto,
           loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts),
           logout,
+          login,
           referral,
           cartItems,
           chatItems,
@@ -322,6 +328,8 @@ HeaderOrg.propTypes = {
   showContingency: Proptypes.bool,
   /** Shows Covid contingency banner */
   logout: Proptypes.func.isRequired,
+  /** trigger action when login button is clicked **/
+  login: Proptypes.func.isRequired,
   /** Determines cart items */
   cartItems: Proptypes.number,
   /** Determines chat items */

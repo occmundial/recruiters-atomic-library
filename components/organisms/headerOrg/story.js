@@ -12,6 +12,7 @@ const defaultProps = {
   userName: 'Moises Rojas',
   email: 'irojas@occ.com.mx',
   logout: () => { },
+  login: () => { }
 };
 
 storiesOf('Header/Unlogged/Desktop', module)
@@ -46,6 +47,7 @@ const defaultPropsLogged = {
   userPhoto: '',
   email: 'irojas@occ.com.mx',
   logout: () => { },
+  login: () => { },
   tabSelected: 0,
   organizationTabSelected: 0,
 };
@@ -60,6 +62,7 @@ const defaultPropsLoggedOrganization = {
   userPhoto: '',
   email: 'irojas@occ.com.mx',
   logout: () => { },
+  login: () => { },
   tabSelected: 0,
   organizationTabSelected: 0,
   organizationName: 'NOMBRE DE ORGANIZACIÓN',
