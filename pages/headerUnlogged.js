@@ -13,6 +13,7 @@ const defaultProps = {
   userName: 'Moises Rojas',
   email: 'irojas@occ.com.mx',
   logout: () => { },
+  login: () => { }
 };
 
 export default function Home() {

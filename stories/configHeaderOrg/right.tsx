@@ -150,7 +150,7 @@ const menuBars = (setShowMenu) => (
   </div>
 );
 
-export const right = (mobile, logged, setShowMenu, userName, userPhoto, menuLinks, logout, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => (
+export const right = (mobile, logged, setShowMenu, userName, userPhoto, menuLinks, logout, login, referral = '', cartItems = 0, chatItems = 0, root = localRoot, tabSelected = 0, showCounts = false) => (
   mobile ? (
     logged ? (
       [
@@ -167,7 +167,7 @@ export const right = (mobile, logged, setShowMenu, userName, userPhoto, menuLink
             type: 'button',
             text: 'INICIAR SESIÓN',
             theme: 'ghostGrey',
-            href: `${root.accounts}/${links.loginPage}`,
+            onClick: () => login()
           },
         ]
       )
@@ -204,7 +204,7 @@ export const right = (mobile, logged, setShowMenu, userName, userPhoto, menuLink
               type: 'button',
               text: 'INICIAR SESIÓN',
               theme: 'ghostGrey',
-              href: `${root.accounts}/${links.loginPage}`,
+              onClick: () => login()
             },
           ]
         )
