@@ -126,6 +126,10 @@ export interface HeaderProps {
    * Determines if the levelAccount is a subAdmin
    */
   typeSubAdministrator?: boolean;
+  /**
+   * Show config tabs
+   */
+  showConfigTabs: boolean,
 }
 
 /**
@@ -159,6 +163,7 @@ const HeaderOrg: FC<HeaderProps> = ({
   isAdmin = false,
   validEmail = false,
   canReturn = false,
+  showConfigTabs = false,
 }: HeaderProps) => {
   const [scroll, toggleScroll] = useState(false);
   const [contingency, setContingency] = useState(false);
@@ -206,7 +211,7 @@ const HeaderOrg: FC<HeaderProps> = ({
           setShowMenu,
           userName,
           userPhoto,
-          loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts),
+          loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts, showConfigTabs),
           logout,
           login,
           referral,
@@ -242,7 +247,7 @@ const HeaderOrg: FC<HeaderProps> = ({
       >
         <HeaderMenu
           mobile={isMobile}
-          linksH={loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts)}
+          linksH={loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts, showConfigTabs)}
           logout={logout}
         />
       </NavAside>

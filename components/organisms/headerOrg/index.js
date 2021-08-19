@@ -47,6 +47,7 @@ const HeaderOrg = ({
   isAdmin = false,
   validEmail = false,
   canReturn = false,
+  showConfigTabs = false,
 }) => {
   const [scroll, toggleScroll] = useState(false);
   const [contingency, setContingency] = useState(false);
@@ -94,7 +95,7 @@ const HeaderOrg = ({
           setShowMenu,
           userName,
           userPhoto,
-          loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts),
+          loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts, showConfigTabs),
           logout,
           login,
           referral,
@@ -130,7 +131,7 @@ const HeaderOrg = ({
       >
         <HeaderMenu
           mobile={isMobile}
-          linksH={loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts)}
+          linksH={loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts, showConfigTabs)}
           logout={logout}
         />
       </NavAside>
@@ -260,6 +261,8 @@ HeaderOrg.propTypes = {
   typeAdministrator: Proptypes.bool,
   /** Determines if the levelAccount is a subAdmin*/
   typeSubAdministrator: Proptypes.bool,
+  /** Show config tabs */
+  showConfigTabs: Proptypes.bool,
 };
 
 export default injectSheet(styles)(HeaderOrg);

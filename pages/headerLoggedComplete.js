@@ -19,6 +19,7 @@ const defaultProps = {
   login: () => { },
   tabSelected: 0,
   organizationTabSelected: 0,
+  showConfigTabs: true,
 };
 
 export default function Home() {
