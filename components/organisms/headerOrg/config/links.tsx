@@ -51,7 +51,7 @@ export const localRoot = {
   basics: 'http://localhost:3005',
   talentSearch: 'http://localhost:3003',
   candidates: 'http://localhost:3010',
-  accountConfig: 'http://localhost:3050/configuracion',
+  accountConfig: 'http://localhost:3050',
   organizationConfig: 'http://localhost:7000',
   r12: 'http://localhost:8029',
   r11: 'http://localhost:64660',
