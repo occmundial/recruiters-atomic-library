@@ -24,7 +24,7 @@ const goTo = (url) => {
 };
 
 
-export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, referral = '', cartHasItems = false, chatHasItems = false, organizationLinks = [{}], isAdmin = false, validEmail = false, canReturn = false, typeAdministrator = false, typeSubadministrator = false, showCounts = false) => {
+export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, referral = '', cartHasItems = false, chatHasItems = false, organizationLinks = [{}], isAdmin = false, validEmail = false, canReturn = false, typeAdministrator = false, typeSubadministrator = false, showCounts = false, showConfigTabs = false) => {
   const cartLink = `${root.checkout}/${links.checkout}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
   const planLink = `${root.checkout}/${links.quotation}?utm_source=sight&utm_medium=referral&utm_campaign=${referral}`;
   const menu: Array<link> = [
@@ -44,12 +44,12 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
   }
   menu.push(
     {
-      url: ``, text: 'Configuración de tu cuenta', visible: true, selected: tabSelected === 3,
+      url: ``, text: 'Configuración de tu cuenta', visible: showConfigTabs, selected: tabSelected === 3,
     },
     {
-      url: ``, text: 'Buscar trabajo', visible: true, selected: tabSelected === 4,
+      url: ``, text: 'Buscar trabajo', visible: showConfigTabs, selected: tabSelected === 4,
     },
-    { separator: true, hide: false },
+    { separator: true, hide: !showConfigTabs },
     {
       url: ``, text: 'Configuración de organización', visible: true, selected: tabSelected === 5,
     },
