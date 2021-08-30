@@ -62,7 +62,7 @@ export const loggedMenu = (tabSelected = 0, mobile = false, root = localRoot, re
       url: `${root.basics}/${links.notes}`, text: 'Notas de CV\'s', visible: true, selected: tabSelected === 7,
     },
     {
-      url: `${links.indices}`, text: 'Índices salariales', visible: true, selected: tabSelected === 12,
+      url: `${links.indices}`, text: 'Índices salariales', visible: false, selected: tabSelected === 12,
     },
     { separator: true, hide: false },
     {
