@@ -1,6 +1,6 @@
 {
   "name": "@occmundial/recruiters-atomic-library",
-  "version": "0.7.0",
+  "version": "0.7.4",
   "private": false,
   "scripts": {
     "predeploy": "npm run build-storybook",
