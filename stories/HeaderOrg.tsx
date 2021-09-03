@@ -31,9 +31,25 @@ export interface HeaderProps {
    */
   logged?: boolean;
   /**
-   * Shows Covid contingency banner
+   * Shows banner
    */
-  showContingency?: boolean;
+  showBanner?: boolean;
+  /**
+   * Message displayed on banner
+   */
+  messageBanner?: string,
+  /**
+   * Shows banner call to action
+   */
+  showBannerCTA?: boolean,
+  /**
+   * Message displayed on banner call to action
+   */
+  messageBannerCTA?: string,
+  /**
+   * Trigger action when banner call to action is clicked
+   */
+  bannerCTA?: Function,
   /**
    * Determines what to do when a user is logged out
    */
@@ -139,7 +155,11 @@ const HeaderOrg: FC<HeaderProps> = ({
   showCenter = false,
   showCounts = false,
   logged = false,
-  showContingency = false,
+  showBanner = false,
+  messageBanner = '',
+  showBannerCTA = false,
+  messageBannerCTA = '',
+  bannerCTA = () => {},
   cartItems = 0,
   chatItems = 0,
   userName = '',
@@ -166,7 +186,7 @@ const HeaderOrg: FC<HeaderProps> = ({
   showConfigTabs = false,
 }: HeaderProps) => {
   const [scroll, toggleScroll] = useState(false);
-  const [contingency, setContingency] = useState(false);
+  const [banner, setBanner] = useState(false);
   const width: number = windowSize();
   const [showModal, toggleContigencyModal] = useState(false);
   const [asideMenu, setAsideMenu] = useState(false);
@@ -188,16 +208,16 @@ const HeaderOrg: FC<HeaderProps> = ({
   }, []);
 
   useEffect(() => {
-    if (showContingency) {
+    if (showBanner) {
       const cookieBannerValue: string = getCookie(cookieBanner);
       if (cookieBannerValue === null) {
-        setContingency(true);
+        setBanner(true);
         setCookie(cookieBanner, true, local, dev, prod);
-      } else if (cookieBannerValue === 'true') setContingency(true);
+      } else if (cookieBannerValue === 'true') setBanner(true);
     } else {
-      setContingency(false);
+      setBanner(false);
     }
-  }, [showContingency]);
+  }, [showBanner]);
 
   return (
     <Fragment>
@@ -251,17 +271,21 @@ const HeaderOrg: FC<HeaderProps> = ({
           logout={logout}
         />
       </NavAside>
-      {contingency && (
-        <Banner onClose={(): void => { setCookie(cookieBanner, false, local, dev, prod); setContingency(false); }}>
+      {banner && (
+        <Banner onClose={(): void => { setCookie(cookieBanner, false, local, dev, prod); setBanner(false); }}>
           <Fragment>
-            Estas son las medidas de apoyo a nuestros clientes ante la contingencia del COVID-19.
-            <a
-              style={{ textDecoration: 'underline', marginLeft: '8px', cursor: 'pointer' }}
-              role="presentation"
-              onClick={(): void => { toggleContigencyModal(true); }}
-            >
-              Conócelas aquí
-            </a>
+            {messageBanner}
+            {
+              showBannerCTA && (
+                <a
+                  style={{ textDecoration: 'underline', marginLeft: '8px', cursor: 'pointer' }}
+                  role="presentation"
+                  onClick={(): void => { bannerCTA(); }}
+                >
+                  {messageBannerCTA}
+                </a>
+              )
+            }
           </Fragment>
         </Banner>
       )}
@@ -329,11 +353,19 @@ HeaderOrg.propTypes = {
   showCenter: Proptypes.bool,
   /** user is logged or not */
   logged: Proptypes.bool,
-  /** Shows Covid contingency banner */
-  showContingency: Proptypes.bool,
-  /** Shows Covid contingency banner */
+  /** Shows banner */
+  showBanner: Proptypes.bool,
+  /** Message displayed on banner */
+  messageBanner: Proptypes.string,
+  /** Shows banner call to action */
+  showBannerCTA: Proptypes.bool,
+  /** Message displayed on banner call to action */
+  messageBannerCTA: Proptypes.string,
+  /** Trigger action when banner call to action is clicked */
+  bannerCTA: Proptypes.func,
+  /** Trigger action when logout button is clicked */
   logout: Proptypes.func.isRequired,
-  /** trigger action when login button is clicked **/
+  /** Trigger action when login button is clicked **/
   login: Proptypes.func.isRequired,
   /** Determines cart items */
   cartItems: Proptypes.number,

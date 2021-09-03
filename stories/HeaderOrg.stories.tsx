@@ -24,7 +24,7 @@ const defaultProps = {
   showCenter: true,
   showCounts: true,
   logged: false,
-  showContingency: false,
+  showBanner: false,
   userName: 'Moises Rojas',
   userPhoto: 'https://i.imgur.com/I80W1Q0.png',
   email: 'irojas@occ.com.mx',
