@@ -24,7 +24,11 @@ const HeaderOrg = ({
   showCenter = false,
   showCounts = false,
   logged = false,
-  showContingency = false,
+  showBanner = false,
+  messageBanner = '',
+  showBannerCTA = false,
+  messageBannerCTA = '',
+  bannerCTA = () => {},
   cartItems = 0,
   chatItems = 0,
   userName = '',
@@ -50,7 +54,7 @@ const HeaderOrg = ({
   showConfigTabs = false,
 }) => {
   const [scroll, toggleScroll] = useState(false);
-  const [contingency, setContingency] = useState(false);
+  const [banner, setBanner] = useState(false);
   const width = windowSize();
   const [showModal, toggleContigencyModal] = useState(false);
   const [asideMenu, setAsideMenu] = useState(false);
@@ -73,14 +77,14 @@ const HeaderOrg = ({
   }, []);
 
   useEffect(() => {
-    if (showContingency) {
+    if (showBanner) {
       const cookieBannerValue = getCookie(cookieBanner);
       if (cookieBannerValue === null) {
-        setContingency(true);
+        setBanner(true);
         setCookie(cookieBanner, true, local, dev, prod);
-      } else if (cookieBannerValue === 'true') setContingency(true);
+      } else if (cookieBannerValue === 'true') setBanner(true);
     }
-  }, [showContingency]);
+  }, [showBanner]);
 
   return (
     <Fragment>
@@ -136,18 +140,21 @@ const HeaderOrg = ({
         />
       </NavAside>
       <div className={logged ? classes.spaceLogged : classes.space} />
-      {contingency && (
-        <Banner onClose={() => { setCookie(cookieBanner, false, local, dev, prod); setContingency(false); }}>
+      {banner && (
+        <Banner onClose={() => { setCookie(cookieBanner, false, local, dev, prod); setBanner(false); }}>
           <Fragment>
-            <b>3 y 6 Meses Sin Intereses</b> en tus compras.
-            <a
-              style={{ textDecoration: 'underline', marginLeft: '8px', cursor: 'pointer', color: colors.bgWhite }}
-              role="presentation"
-              // onClick={() => { toggleContigencyModal(true); }}
-              href={`${linksRoot.checkout}/${links.quotation}`}
-            >
-              Aprovecha ahora &gt;
-            </a>
+            {messageBanner}
+            {
+              showBannerCTA && (
+                <a
+                  style={{ textDecoration: 'underline', marginLeft: '8px', cursor: 'pointer', color: colors.bgWhite }}
+                  role="presentation"
+                  onClick={() => { bannerCTA(); }}
+                >
+                  {messageBannerCTA}
+                </a>
+              )
+            }
           </Fragment>
         </Banner>
       )}
@@ -215,11 +222,19 @@ HeaderOrg.propTypes = {
   showCenter: Proptypes.bool,
   /** user is logged or not */
   logged: Proptypes.bool,
-  /** Shows Covid contingency banner */
-  showContingency: Proptypes.bool,
-  /** Shows Covid contingency banner */
+  /** Shows banner */
+  showBanner: Proptypes.bool,
+  /** Message displayed on banner */
+  messageBanner: Proptypes.string,
+  /** Shows banner call to action */
+  showBannerCTA: Proptypes.bool,
+  /** Message displayed on banner call to action */
+  messageBannerCTA: Proptypes.string,
+  /** Trigger action when banner call to action is clicked */
+  bannerCTA: Proptypes.func,
+  /** Trigger action when logout button is clicked **/
   logout: Proptypes.func.isRequired,
-  /** trigger action when login button is clicked **/
+  /** Trigger action when login button is clicked **/
   login: Proptypes.func.isRequired,
   /** Determines cart items */
   cartItems: Proptypes.number,
