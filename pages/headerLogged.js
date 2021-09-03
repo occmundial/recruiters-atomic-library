@@ -8,7 +8,7 @@ import {
 const defaultProps = {
   showCenter: true,
   logged: true,
-  showContingency: false,
+  showBanner: false,
   cartItems: 0,
   chatItems: 0,
   userName: 'Moises Rojas',

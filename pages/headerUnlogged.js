@@ -9,7 +9,7 @@ const defaultProps = {
   showCenter: true,
   showCounts: true,
   logged: false,
-  showContingency: false,
+  showBanner: false,
   userName: 'Moises Rojas',
   email: 'irojas@occ.com.mx',
   logout: () => { },
