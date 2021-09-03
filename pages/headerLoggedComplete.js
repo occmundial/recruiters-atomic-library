@@ -1,6 +1,4 @@
-import {
-  Grid, Text,
-} from '@occmundial/occ-atomic';
+import { Grid } from '@occmundial/occ-atomic';
 import {
   HeaderOrg
 } from '../components/index';
@@ -9,7 +7,11 @@ import { dummyOrganizations } from '../components/organisms/headerOrg/config/lin
 const defaultProps = {
   showCenter: true,
   logged: true,
-  showContingency: true,
+  showBanner: true,
+  messageBanner: 'Ejemplo de texto para el banner',
+  showBannerCTA: true,
+  messageBannerCTA: 'CTA',
+  bannerCTA: () => { alert('¡Action!'); },
   cartItems: 0,
   chatItems: 0,
   userName: 'Moises Rojas',
