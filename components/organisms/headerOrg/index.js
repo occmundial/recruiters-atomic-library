@@ -225,7 +225,7 @@ HeaderOrg.propTypes = {
   /** Shows banner */
   showBanner: Proptypes.bool,
   /** Message displayed on banner */
-  messageBanner: Proptypes.string,
+  messageBanner: Proptypes.any,
   /** Shows banner call to action */
   showBannerCTA: Proptypes.bool,
   /** Message displayed on banner call to action */

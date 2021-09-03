@@ -37,7 +37,7 @@ export interface HeaderProps {
   /**
    * Message displayed on banner
    */
-  messageBanner?: string,
+  messageBanner?: any,
   /**
    * Shows banner call to action
    */
@@ -356,7 +356,7 @@ HeaderOrg.propTypes = {
   /** Shows banner */
   showBanner: Proptypes.bool,
   /** Message displayed on banner */
-  messageBanner: Proptypes.string,
+  messageBanner: Proptypes.any,
   /** Shows banner call to action */
   showBannerCTA: Proptypes.bool,
   /** Message displayed on banner call to action */

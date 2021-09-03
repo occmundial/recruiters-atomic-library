@@ -1,14 +1,16 @@
-import { Grid } from '@occmundial/occ-atomic';
+import { Fragment } from 'react';
+import { Grid, Text } from '@occmundial/occ-atomic';
 import {
   HeaderOrg
 } from '../components/index';
 import { dummyOrganizations } from '../components/organisms/headerOrg/config/links';
 
+const messageBanner = <Fragment>Ejemplo de texto para el <b>banner</b></Fragment>;
 const defaultProps = {
   showCenter: true,
   logged: true,
   showBanner: true,
-  messageBanner: 'Ejemplo de texto para el banner',
+  messageBanner,
   showBannerCTA: true,
   messageBannerCTA: 'CTA',
   bannerCTA: () => { alert('¡Action!'); },
