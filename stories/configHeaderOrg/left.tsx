@@ -35,10 +35,9 @@ const asideMenuUnLogged = (menuUnlogged = false, setMenuUnlogged, root = localRo
         <div className="verticalSeparator" />
         <NavItem selected={tabSelected === 0} className="topTiny" link={`${root.home}/`}>Inicio</NavItem>
         <NavItem selected={tabSelected === 1} className="topTiny" link={`${root.home}/${links.sSight}`}>Productos</NavItem>
-        <NavItem selected={tabSelected === 2} className="topTiny" link={`${root.home}/${links.prices}`}>Precios y paquetes</NavItem>
-        <NavItem selected={tabSelected === 3} className="topTiny" link={`${root.home}/${links.aboutUs}`}>Acerca de OCCMundial</NavItem>
-        <NavItem selected={tabSelected === 4} className="topTiny" link={`${root.home}/${links.faqs}`}>Preguntas Frecuentes</NavItem>
-        <NavItem selected={tabSelected === 5} className="topTiny" link={`${links.buscoEmpleo}`}>Busco Empleo</NavItem>
+        <NavItem selected={tabSelected === 2} className="topTiny" link={`${root.home}/${links.aboutUs}`}>Acerca de OCCMundial</NavItem>
+        <NavItem selected={tabSelected === 3} className="topTiny" link={`${root.home}/${links.faqs}`}>Preguntas Frecuentes</NavItem>
+        <NavItem selected={tabSelected === 4} className="topTiny" link={`${links.buscoEmpleo}`}>Busco Empleo</NavItem>
       </div>
     </NavAside>
   </Fragment>
@@ -135,23 +134,16 @@ export const left = (mobile, logged, tabSelected = 0, root, asideMenu, setAsideM
             {
               key: 2,
               type: 'link',
-              text: 'Precios y paquetes',
-              link: `${root.home}/${links.prices}`,
+              text: 'Acerca de OCCMundial',
+              link: `${root.home}/${links.aboutUs}`,
               selected: tabSelected === 2,
             },
             {
               key: 3,
               type: 'link',
-              text: 'Acerca de OCCMundial',
-              link: `${root.home}/${links.aboutUs}`,
-              selected: tabSelected === 3,
-            },
-            {
-              key: 4,
-              type: 'link',
               text: 'Preguntas frecuentes',
               link: `${root.home}/${links.faqs}`,
-              selected: tabSelected === 4,
+              selected: tabSelected === 3,
             },
           ]
         )
