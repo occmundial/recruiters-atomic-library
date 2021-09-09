@@ -25,7 +25,6 @@ export const links = {
   talentSearch: 'busqueda-de-talento/',
   quotation: 'personaliza-tu-plan/',
   checkout: 'checkout/',
-  prices: 'precios-paquetes/',
   faqs: 'preguntas-frecuentes/',
   aboutUs: 'acerca-de-occmundial/',
   chat: 'chat/',
