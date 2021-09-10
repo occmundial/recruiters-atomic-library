@@ -1,9 +1,15 @@
-import React, {
-  Fragment, FC, useEffect, useState,
-} from 'react';
+import React, { Fragment, FC, useEffect, useState, useMemo } from 'react';
 import injectSheet from 'react-jss';
 import {
-  NavTab, NavAside, Text, grid, Modal, Banner, colors, Avatar, Flexbox,
+  NavTab,
+  NavAside,
+  Text,
+  grid,
+  Modal,
+  Banner,
+  colors,
+  Avatar,
+  Flexbox
 } from '@occmundial/occ-atomic';
 import styles from '../../../styles/HeaderOrg.module.ts';
 import { left } from './config/left';
@@ -17,7 +23,8 @@ import Proptypes from 'prop-types';
 import windowSize from '../../common/useWindowSize';
 import HeaderMenu from '../../molecules/menu';
 
-const contingencyModal = 'https://cdn-shop.occ.com.mx/recruiters-home-page/img/contingencyModal.png';
+const contingencyModal =
+  'https://cdn-shop.occ.com.mx/recruiters-home-page/img/contingencyModal.png';
 
 const HeaderOrg = ({
   classes,
@@ -51,7 +58,7 @@ const HeaderOrg = ({
   isAdmin = false,
   validEmail = false,
   canReturn = false,
-  showConfigTabs = false,
+  showConfigTabs = false
 }) => {
   const [scroll, toggleScroll] = useState(false);
   const [banner, setBanner] = useState(false);
@@ -60,6 +67,7 @@ const HeaderOrg = ({
   const [asideMenu, setAsideMenu] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const linksRoot = getRoot(local, dev, prod);
+  const enviroments = useMemo(() => ({ local, dev, prod }), [local, dev, prod]);
 
   const handleScroll = () => {
     if (window.pageYOffset === 0) {
@@ -89,17 +97,50 @@ const HeaderOrg = ({
   return (
     <Fragment>
       <NavTab
-        top={scroll || logged ? undefined : top(isMobile, getRoot(local, dev, prod))}
-        left={left(classes, isMobile, logged, tabSelected, getRoot(local, dev, prod), asideMenu, setAsideMenu, organizationName, teamName, orgMenuLinks)}
-        center={showCenter && center(isMobile, logged, getRoot(local, dev, prod), tabSelected)}
+        top={
+          scroll || logged
+            ? undefined
+            : top(isMobile, getRoot(local, dev, prod))
+        }
+        left={left(
+          classes,
+          isMobile,
+          logged,
+          tabSelected,
+          getRoot(local, dev, prod),
+          asideMenu,
+          setAsideMenu,
+          organizationName,
+          teamName,
+          orgMenuLinks
+        )}
+        center={
+          showCenter &&
+          center(isMobile, logged, getRoot(local, dev, prod), tabSelected)
+        }
         right={right(
-          classes, 
+          classes,
           isMobile,
           logged,
           setShowMenu,
           userName,
           userPhoto,
-          loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts, showConfigTabs),
+          loggedMenu(
+            rightTabSelected,
+            isMobile,
+            getRoot(local, dev, prod),
+            referral,
+            cartItems > 0,
+            chatItems > 0,
+            orgMenuLinks,
+            isAdmin,
+            validEmail,
+            canReturn,
+            typeAdministrator,
+            typeSubAdministrator,
+            showCounts,
+            showConfigTabs
+          ),
           logout,
           login,
           referral,
@@ -108,6 +149,7 @@ const HeaderOrg = ({
           getRoot(local, dev, prod),
           rightTabSelected,
           showCounts,
+          enviroments
         )}
         fixed
         hideOnScroll
@@ -120,94 +162,138 @@ const HeaderOrg = ({
         />
       )}
       <NavAside
-        show={showMenu && (width <= grid.lg - 1)}
+        show={showMenu && width <= grid.lg - 1}
         onClose={() => setShowMenu(false)}
         right
-        top={(
+        top={
           <Flexbox display="flex">
             <Avatar name={userName} photo={userPhoto && userPhoto} size={48} />
             <div className={classes.mobileData}>
               <Text subheading>{userName}</Text>
-              <Text small mid>{email}</Text>
+              <Text small mid>
+                {email}
+              </Text>
             </div>
           </Flexbox>
-        )}
+        }
       >
         <HeaderMenu
           mobile={isMobile}
-          linksH={loggedMenu(rightTabSelected, isMobile, getRoot(local, dev, prod), referral, cartItems > 0, chatItems > 0, orgMenuLinks, isAdmin, validEmail, canReturn, typeAdministrator, typeSubAdministrator, showCounts, showConfigTabs)}
+          linksH={loggedMenu(
+            rightTabSelected,
+            isMobile,
+            getRoot(local, dev, prod),
+            referral,
+            cartItems > 0,
+            chatItems > 0,
+            orgMenuLinks,
+            isAdmin,
+            validEmail,
+            canReturn,
+            typeAdministrator,
+            typeSubAdministrator,
+            showCounts,
+            showConfigTabs
+          )}
           logout={logout}
         />
       </NavAside>
       <div className={logged ? classes.spaceLogged : classes.space} />
       {banner && (
-        <Banner onClose={() => { setCookie(cookieBanner, false, local, dev, prod); setBanner(false); }}>
+        <Banner
+          onClose={() => {
+            setCookie(cookieBanner, false, local, dev, prod);
+            setBanner(false);
+          }}
+        >
           <Fragment>
             {messageBanner}
-            {
-              showBannerCTA && (
-                <a
-                  style={{ textDecoration: 'underline', marginLeft: '8px', cursor: 'pointer', color: colors.bgWhite }}
-                  role="presentation"
-                  onClick={() => { bannerCTA(); }}
-                >
-                  {messageBannerCTA}
-                </a>
-              )
-            }
+            {showBannerCTA && (
+              <a
+                style={{
+                  textDecoration: 'underline',
+                  marginLeft: '8px',
+                  cursor: 'pointer',
+                  color: colors.bgWhite
+                }}
+                role="presentation"
+                onClick={() => {
+                  bannerCTA();
+                }}
+              >
+                {messageBannerCTA}
+              </a>
+            )}
           </Fragment>
         </Banner>
       )}
       <Modal
         show={showModal}
-        onClose={() => { toggleContigencyModal(false); }}
+        onClose={() => {
+          toggleContigencyModal(false);
+        }}
         size="lg"
         imgTop={{
-          img: contingencyModal, position: 'center', size: 'cover', color: colors.bgWhite,
+          img: contingencyModal,
+          position: 'center',
+          size: 'cover',
+          color: colors.bgWhite
         }}
       >
         <div>
           <Text>
-            Desde hace 24 años, por empresas como la tuya, es que hoy  somos la bolsa de trabajo en línea líder en México. Has estado con nosotros siempre. Ahora nos toca apoyarte.
+            Desde hace 24 años, por empresas como la tuya, es que hoy somos la
+            bolsa de trabajo en línea líder en México. Has estado con nosotros
+            siempre. Ahora nos toca apoyarte.
           </Text>
           <Text topSmall>
-            Es por esto que queremos comunicarte las nuevas y diversas acciones que hemos creado para apoyar a tu compañía en los próximos días:
+            Es por esto que queremos comunicarte las nuevas y diversas acciones
+            que hemos creado para apoyar a tu compañía en los próximos días:
           </Text>
           <ul>
             <Text topSmall tag="li">
               Nuestros servicios están funcionando al 100% y te atendemos 24/7.
             </Text>
             <Text tag="li">
-              Adquiere tus vacantes con hasta 6 meses sin intereses con tarjetas Mastercard y Visa.*
+              Adquiere tus vacantes con hasta 6 meses sin intereses con tarjetas
+              Mastercard y Visa.*
             </Text>
             <Text tag="li">
-              Si adquieres nuevos créditos desde nuestro carrito en línea, tendrás 90 días de vigencia para hacer uso de ellos.**
+              Si adquieres nuevos créditos desde nuestro carrito en línea,
+              tendrás 90 días de vigencia para hacer uso de ellos.**
             </Text>
             <Text tag="li">
-              Extensión de la visibilidad de vacantes en el sitio por 60 días (el doble de lo habitual).
+              Extensión de la visibilidad de vacantes en el sitio por 60 días
+              (el doble de lo habitual).
             </Text>
             <Text tag="li">
-              Tips y contenido estratégico para liderar a tu empresa durante la contingencia.
+              Tips y contenido estratégico para liderar a tu empresa durante la
+              contingencia.
             </Text>
             <Text tag="li">
-              Certificación sin costo y 100% en línea sobre el uso de nuestra plataforma.
+              Certificación sin costo y 100% en línea sobre el uso de nuestra
+              plataforma.
             </Text>
           </ul>
           <Text topSmall>
-            Te invitamos a contactar a tu ejecutivo de cuenta para que juntos, determinemos los apoyos que pueden beneficiar más a tu empresa.
+            Te invitamos a contactar a tu ejecutivo de cuenta para que juntos,
+            determinemos los apoyos que pueden beneficiar más a tu empresa.
           </Text>
           <Text strong topSmall>
             No te detengas, nosotros no lo hemos hecho.
           </Text>
           <Text strong>
-            ¡Continuemos generando empleo y mejores oportunidades a millones de mexicanos, juntos lo vamos a lograr!
+            ¡Continuemos generando empleo y mejores oportunidades a millones de
+            mexicanos, juntos lo vamos a lograr!
           </Text>
           <Text micro topBase low>
-            *3 y 6 meses sin intereses disponibles para adquirir desde 2 vacantes hasta 10 vacantes básicas,
-            destacadas o premium con tarjeta Visa y Mastercard.
-            ** Aplica únicamente en productos adquiridos en línea desde 1 y hasta 10 vacantes. Válido para cualquier tipo de
-            vacante: básica, destacada o premium. Vigencia del 1o de julio del 2020 al 31 de diciembre del 2020.
-            *** Promoción sujeta a disponibilidad y cambio sin previo aviso.
+            *3 y 6 meses sin intereses disponibles para adquirir desde 2
+            vacantes hasta 10 vacantes básicas, destacadas o premium con tarjeta
+            Visa y Mastercard. ** Aplica únicamente en productos adquiridos en
+            línea desde 1 y hasta 10 vacantes. Válido para cualquier tipo de
+            vacante: básica, destacada o premium. Vigencia del 1o de julio del
+            2020 al 31 de diciembre del 2020. *** Promoción sujeta a
+            disponibilidad y cambio sin previo aviso.
           </Text>
         </div>
       </Modal>
@@ -244,7 +330,7 @@ HeaderOrg.propTypes = {
   userName: Proptypes.string,
   /** user's photo  */
   userPhoto: Proptypes.string,
-   /** user's email  */
+  /** user's email  */
   email: Proptypes.string,
   /** Determines if isMobile */
   isMobile: Proptypes.bool,
@@ -277,7 +363,7 @@ HeaderOrg.propTypes = {
   /** Determines if the levelAccount is a subAdmin*/
   typeSubAdministrator: Proptypes.bool,
   /** Show config tabs */
-  showConfigTabs: Proptypes.bool,
+  showConfigTabs: Proptypes.bool
 };
 
 export default injectSheet(styles)(HeaderOrg);

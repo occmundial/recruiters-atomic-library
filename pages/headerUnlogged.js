@@ -1,9 +1,5 @@
-import {
-  Grid,
-} from '@occmundial/occ-atomic';
-import {
-  HeaderOrg
-} from '../components/index';
+import { Grid } from '@occmundial/occ-atomic';
+import { HeaderOrg } from '../components/index';
 
 const defaultProps = {
   showCenter: true,
@@ -12,8 +8,9 @@ const defaultProps = {
   showBanner: false,
   userName: 'Moises Rojas',
   email: 'irojas@occ.com.mx',
-  logout: () => { },
-  login: () => { }
+  dev: true,
+  logout: () => {},
+  login: () => {}
 };
 
 export default function Home() {
@@ -21,5 +18,5 @@ export default function Home() {
     <Grid>
       <HeaderOrg {...defaultProps} />
     </Grid>
-  )
+  );
 }
