@@ -11,7 +11,7 @@ import {
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
 import { localRoot, r12links, links } from '../config/links';
-import { IEnviroments, getCreateAccountUrl } from '../../../../scripts/common';
+import { IEnviroments, getCreateAccountUrl } from '../../../../components/common/getCreateAccountUrl';
 
 const asideMenuUnLogged = (
   classes,

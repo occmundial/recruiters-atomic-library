@@ -12,7 +12,7 @@ import ButtonDropDown from './molecules/buttonDropDown';
 import Menu from './molecules/menu';
 import { localRoot, r12links, links } from './links';
 import '../HeaderOrg.css';
-import { IEnviroments, getCreateAccountUrl } from '../../scripts/common';
+import { IEnviroments, getCreateAccountUrl } from '../../components/common/getCreateAccountUrl';
 
 const asideMenuUnLogged = (
   menuUnlogged = false,

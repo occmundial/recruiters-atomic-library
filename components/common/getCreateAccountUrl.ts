@@ -1,4 +1,4 @@
-import { linksAccountEnv } from '../components/organisms/headerOrg/config/links';
+import { linksAccountEnv } from '../organisms/headerOrg/config/links';
 
 export interface IEnviroments {
   local?: boolean;
