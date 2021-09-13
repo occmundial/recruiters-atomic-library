@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
 import { localRoot, r11links, links } from '../config/links';
-import { IEnviroments, getCreateAccountUrl } from '../../../../scripts/common';
+import { IEnviroments, getCreateAccountUrl } from '../../../../components/common/getCreateAccountUrl';
 
 interface link {
   url?: string;
@@ -32,10 +32,8 @@ export const loggedMenu = (
   chatHasItems = false,
   organizationLinks = [{}],
   isAdmin = false,
-  validEmail = false,
   canReturn = false,
   typeAdministrator = false,
-  typeSubadministrator = false,
   showCounts = false,
   showConfigTabs = false
 ) => {

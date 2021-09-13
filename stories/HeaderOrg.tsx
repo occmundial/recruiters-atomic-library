@@ -185,7 +185,6 @@ const HeaderOrg: FC<HeaderProps> = ({
   teamName = '',
   orgMenuLinks = [],
   typeAdministrator = false,
-  typeSubAdministrator = false,
   referral = '',
   isAdmin = false,
   validEmail = false,
@@ -266,10 +265,8 @@ const HeaderOrg: FC<HeaderProps> = ({
             chatItems > 0,
             orgMenuLinks,
             isAdmin,
-            validEmail,
             canReturn,
             typeAdministrator,
-            typeSubAdministrator,
             showCounts,
             showConfigTabs
           ),
@@ -319,11 +316,9 @@ const HeaderOrg: FC<HeaderProps> = ({
             cartItems > 0,
             chatItems > 0,
             orgMenuLinks,
-            isAdmin,
             validEmail,
             canReturn,
             typeAdministrator,
-            typeSubAdministrator,
             showCounts,
             showConfigTabs
           )}
