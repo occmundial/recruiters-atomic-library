@@ -74,7 +74,7 @@ export const devRoot = {
   accountConfig: 'https://master.occdev.com.mx/configuracion',
   organizationConfig: 'https://master.occdev.com.mx/empresas/organizaciones',
   r12: 'https://master.occdev.com.mx/empresas/hirer-center',
-  r11: 'http://devrecluta1.occdev.com.mx'
+  r11: 'https://recluta11.occdev.com.mx'
 };
 
 export const prodRoot = {
