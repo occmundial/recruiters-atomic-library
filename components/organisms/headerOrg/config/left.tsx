@@ -42,7 +42,7 @@ const asideMenuUnLogged = (
                 enviroments
               )}`}
             >
-              CREAR CUENTA
+              PUBLICAR AHORA
             </Button>
           </div>
           <Button

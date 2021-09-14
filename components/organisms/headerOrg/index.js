@@ -134,10 +134,8 @@ const HeaderOrg = ({
             chatItems > 0,
             orgMenuLinks,
             isAdmin,
-            validEmail,
             canReturn,
             typeAdministrator,
-            typeSubAdministrator,
             showCounts,
             showConfigTabs
           ),
@@ -188,10 +186,8 @@ const HeaderOrg = ({
             chatItems > 0,
             orgMenuLinks,
             isAdmin,
-            validEmail,
             canReturn,
             typeAdministrator,
-            typeSubAdministrator,
             showCounts,
             showConfigTabs
           )}

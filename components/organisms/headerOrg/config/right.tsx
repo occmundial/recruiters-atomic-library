@@ -304,7 +304,7 @@ export const right = (
         {
           key: 0,
           type: 'button',
-          text: 'CUENTA',
+          text: 'PUBLICAR AHORA',
           theme: 'ghostPink',
           href: `${root.accounts}/${links.newAccount}${getCreateAccountUrl(
             enviroments

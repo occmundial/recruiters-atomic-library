@@ -24,6 +24,9 @@ const defaultProps = {
   tabSelected: 0,
   organizationTabSelected: 0,
   showConfigTabs: true,
+  canReturn: true,
+  isAdmin: true,
+  typeAdministrator: true,
 };
 
 export default function Home() {
