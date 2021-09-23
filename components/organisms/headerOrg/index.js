@@ -1,5 +1,6 @@
 import React, { Fragment, FC, useEffect, useState, useMemo } from 'react';
 import injectSheet from 'react-jss';
+import Proptypes from 'prop-types';
 import {
   NavTab,
   NavAside,
@@ -18,8 +19,9 @@ import { getCookie, setCookie, cookieBanner } from './config/cookies';
 import { top } from './config/top';
 import { center, centerMobile } from './config/center';
 import { right, loggedMenu } from './config/right';
-import Proptypes from 'prop-types';
 
+import { ctaCreateAccountTracking } from '../../../actions/trackingActions';
+import { getCreateAccountUrl } from '../../common/getCreateAccountUrl';
 import windowSize from '../../common/useWindowSize';
 import HeaderMenu from '../../molecules/menu';
 
@@ -94,6 +96,11 @@ const HeaderOrg = ({
     }
   }, [showBanner]);
 
+  const createAccount = () => {
+    ctaCreateAccountTracking('header');
+    window.location.href = `${linksRoot.accounts}/${links.newAccount}?btn=header&${getCreateAccountUrl(enviroments)}`;
+  };
+
   return (
     <Fragment>
       <NavTab
@@ -112,7 +119,8 @@ const HeaderOrg = ({
           setAsideMenu,
           organizationName,
           teamName,
-          orgMenuLinks
+          orgMenuLinks,
+          createAccount
         )}
         center={
           showCenter &&
@@ -147,7 +155,7 @@ const HeaderOrg = ({
           getRoot(local, dev, prod),
           rightTabSelected,
           showCounts,
-          enviroments
+          createAccount,
         )}
         fixed
         hideOnScroll

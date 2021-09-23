@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
 import { localRoot, r11links, links } from '../config/links';
-import { IEnviroments, getCreateAccountUrl } from '../../../../components/common/getCreateAccountUrl';
 
 interface link {
   url?: string;
@@ -248,7 +247,7 @@ export const right = (
   root = localRoot,
   tabSelected = 0,
   showCounts = false,
-  enviroments: IEnviroments = { local: true }
+  createAccount
 ) =>
   mobile
     ? logged
@@ -306,9 +305,7 @@ export const right = (
           type: 'button',
           text: 'PUBLICAR AHORA',
           theme: 'ghostPink',
-          href: `${root.accounts}/${links.newAccount}${getCreateAccountUrl(
-            enviroments
-          )}`
+          onClick: () => createAccount()
         },
         {
           key: 1,
