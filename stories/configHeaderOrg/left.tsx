@@ -12,14 +12,13 @@ import ButtonDropDown from './molecules/buttonDropDown';
 import Menu from './molecules/menu';
 import { localRoot, r12links, links } from './links';
 import '../HeaderOrg.css';
-import { IEnviroments, getCreateAccountUrl } from '../../components/common/getCreateAccountUrl';
 
 const asideMenuUnLogged = (
   menuUnlogged = false,
   setMenuUnlogged,
   root = localRoot,
   tabSelected = 0,
-  enviroments: IEnviroments = { local: true }
+  createAccount
 ) => (
   <Fragment>
     <Icon iconName="bars" onClick={() => setMenuUnlogged(true)} />
@@ -38,9 +37,7 @@ const asideMenuUnLogged = (
             <Button
               theme="ghostPink"
               size="sm"
-              href={`${root.accounts}/${links.newAccount}${getCreateAccountUrl(
-                enviroments
-              )}`}
+              onClick={() => createAccount()}
             >
               PUBLICAR AHORA
             </Button>
@@ -154,7 +151,7 @@ export const left = (
   organizationName = '',
   teamName = '',
   orgMenuLinks = [{}],
-  enviroments: IEnviroments = { local: true }
+  createAccount
 ) =>
   mobile
     ? logged
@@ -180,7 +177,7 @@ export const left = (
               setAsideMenu,
               root,
               tabSelected,
-              enviroments
+              createAccount
             )
           }
         ]
