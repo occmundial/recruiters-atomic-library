@@ -74,7 +74,7 @@ const ButtonDropDown = ({
             <Icon
               style={{ marginLeft: arrowLeft }}
               iconName="arrowDown"
-              colors={[colors.black]}
+              colors={[colors.ink]}
               className={show ? classes.iconStyleActive : classes.iconStyleDisable}
               width={arrowWidth}
               height={arrowHeight}
