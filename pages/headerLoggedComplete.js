@@ -32,7 +32,7 @@ const defaultProps = {
 export default function Home() {
   return (
     <Grid>
-      <HeaderOrg {...defaultProps} cartItems={101} chatItems={101} showCounts organizationName="NOMBRE DE ORGANIZACIÓN" orgMenuLinks={dummyOrganizations()} />
+      <HeaderOrg {...defaultProps} cartItems={101} chatItems={101} showCounts organizationName="Nombre de organización" orgMenuLinks={dummyOrganizations()} />
     </Grid>
   )
 }
