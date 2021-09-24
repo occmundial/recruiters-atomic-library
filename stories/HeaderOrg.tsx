@@ -250,7 +250,7 @@ const HeaderOrg: FC<HeaderProps> = ({
           asideMenu,
           setAsideMenu,
           orgMenu,
-          organizationName,
+          organizationName.toUpperCase(),
           teamName,
           orgMenuLinks,
           createAccount

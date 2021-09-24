@@ -86,7 +86,7 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
             <Icon
               style={{ marginLeft: arrowLeft }}
               iconName="arrowDown"
-              colors={[colors.black]}
+              colors={[colors.ink]}
               className={show ? "iconStyleActive" : "iconStyleDisable"}
               width={arrowWidth}
               height={arrowHeight}

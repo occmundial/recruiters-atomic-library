@@ -121,8 +121,9 @@ const buttonMenu = (
           <Avatar name={username} photo={userPhoto && userPhoto} size={32} />
         }
         arrow
-        arrowWidth={24}
-        arrowHeight={24}
+        arrowWidth={16}
+        arrowHeight={16}
+        arrowLeft={6}
         renderComp={
           <Fragment>
             <Card raised className="cardMenu">
