@@ -15,9 +15,9 @@ export const r11links = {
 };
 
 export const linksAccountEnv = {
-  local: '?returnurl=http://localhost:3002/nueva/?origin=CAJA&type=1',
-  dev: '?returnurl=https://master.occdev.com.mx/empresas/vacantes/nueva/?origin=CAJA&type=1',
-  prod: '?returnurl=https://www.occ.com.mx/empresas/vacantes/nueva/?origin=CAJA&type=1'
+  local: 'returnurl=http://localhost:3002/nueva/?origin=CAJA&type=1',
+  dev: 'returnurl=https://master.occdev.com.mx/empresas/vacantes/nueva/?origin=CAJA&type=1',
+  prod: 'returnurl=https://www.occ.com.mx/empresas/vacantes/nueva/?origin=CAJA&type=1'
 };
 
 export const links = {

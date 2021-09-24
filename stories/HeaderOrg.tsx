@@ -1,4 +1,5 @@
 import React, { Fragment, FC, useEffect, useState, useMemo } from 'react';
+import Proptypes from 'prop-types';
 import {
   NavTab,
   NavAside,
@@ -12,13 +13,14 @@ import {
 } from '@occmundial/occ-atomic';
 import './HeaderOrg.css';
 import { left } from './configHeaderOrg/left';
-import { getRoot } from './configHeaderOrg/links';
+import { getRoot, links } from './configHeaderOrg/links';
 import { getCookie, setCookie, cookieBanner } from './configHeaderOrg/cookies';
 import { top } from './configHeaderOrg/top';
 import { center, centerMobile } from './configHeaderOrg/center';
 import { right, loggedMenu } from './configHeaderOrg/right';
-import Proptypes from 'prop-types';
 
+import { ctaCreateAccountTracking } from '../actions/trackingActions';
+import { getCreateAccountUrl } from '../components/common/getCreateAccountUrl';
 import windowSize from '../components/common/useWindowSize';
 import HeaderMenu from '../stories/configHeaderOrg/molecules/menu';
 
@@ -197,7 +199,9 @@ const HeaderOrg: FC<HeaderProps> = ({
   const [showModal, toggleContigencyModal] = useState(false);
   const [asideMenu, setAsideMenu] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const linksRoot = getRoot(local, dev, prod);
   const enviroments = useMemo(() => ({ local, dev, prod }), [local, dev, prod]);
+
   const handleScroll = (): void => {
     if (window.pageYOffset === 0) {
       toggleScroll(false);
@@ -225,6 +229,11 @@ const HeaderOrg: FC<HeaderProps> = ({
     }
   }, [showBanner]);
 
+  const createAccount = () => {
+    ctaCreateAccountTracking('header');
+    window.location.href = `${linksRoot.accounts}/${links.newAccount}?btn=header&${getCreateAccountUrl(enviroments)}`;
+  };
+
   return (
     <Fragment>
       <NavTab
@@ -241,10 +250,10 @@ const HeaderOrg: FC<HeaderProps> = ({
           asideMenu,
           setAsideMenu,
           orgMenu,
-          organizationName,
+          organizationName.toUpperCase(),
           teamName,
           orgMenuLinks,
-          enviroments
+          createAccount
         )}
         center={
           showCenter &&
@@ -278,7 +287,7 @@ const HeaderOrg: FC<HeaderProps> = ({
           getRoot(local, dev, prod),
           rightTabSelected,
           showCounts,
-          enviroments
+          createAccount
         )}
         fixed
         hideOnScroll

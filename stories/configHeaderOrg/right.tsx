@@ -5,7 +5,6 @@ import ButtonDropDown from './molecules/buttonDropDown';
 import Menu from './molecules/menu';
 import { localRoot, r11links, links } from '../configHeaderOrg/links';
 import '../HeaderOrg.css';
-import { IEnviroments, getCreateAccountUrl } from '../../components/common/getCreateAccountUrl';
 
 interface link {
   url?: string;
@@ -122,8 +121,9 @@ const buttonMenu = (
           <Avatar name={username} photo={userPhoto && userPhoto} size={32} />
         }
         arrow
-        arrowWidth={24}
-        arrowHeight={24}
+        arrowWidth={16}
+        arrowHeight={16}
+        arrowLeft={6}
         renderComp={
           <Fragment>
             <Card raised className="cardMenu">
@@ -241,7 +241,7 @@ export const right = (
   root = localRoot,
   tabSelected = 0,
   showCounts = false,
-  enviroments: IEnviroments = { local: true }
+  createAccount
 ) =>
   mobile
     ? logged
@@ -285,10 +285,7 @@ export const right = (
           type: 'button',
           text: 'PUBLICAR AHORA',
           theme: 'ghostPink',
-
-          href: `${root.accounts}/${links.newAccount}${getCreateAccountUrl(
-            enviroments
-          )}`
+          onClick: () => createAccount()
         },
         {
           key: 1,
