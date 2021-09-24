@@ -117,7 +117,7 @@ const HeaderOrg = ({
           getRoot(local, dev, prod),
           asideMenu,
           setAsideMenu,
-          organizationName,
+          organizationName.toUpperCase(),
           teamName,
           orgMenuLinks,
           createAccount
