@@ -10,7 +10,7 @@ export const ctaCreateAccountTracking = (button: string): void => {
     if (dataLayer) {
       const info: object = { button, action: 'clic' };
       dataLayer.push({
-        action: 'ctaCreateAccount', ctaCreateAccountInfo: info
+        event: 'ctaCreateAccount', ctaCreateAccountInfo: info
       });
     }
   }
