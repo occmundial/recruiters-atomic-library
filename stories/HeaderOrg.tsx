@@ -237,11 +237,6 @@ const HeaderOrg: FC<HeaderProps> = ({
   return (
     <Fragment>
       <NavTab
-        top={
-          scroll || logged
-            ? undefined
-            : top(isMobile, getRoot(local, dev, prod))
-        }
         left={left(
           isMobile,
           logged,

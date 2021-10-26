@@ -68,19 +68,12 @@ const asideMenuUnLogged = (
         <NavItem
           selected={tabSelected === 2}
           className={classes.topTiny}
-          link={`${root.home}/${links.aboutUs}`}
-        >
-          Acerca de OCCMundial
-        </NavItem>
-        <NavItem
-          selected={tabSelected === 3}
-          className={classes.topTiny}
           link={`${root.home}/${links.faqs}`}
         >
           Preguntas Frecuentes
         </NavItem>
         <NavItem
-          selected={tabSelected === 4}
+          selected={tabSelected === 3}
           className={classes.topTiny}
           link={`${links.buscoEmpleo}`}
         >
@@ -234,14 +227,14 @@ export const left = (
         {
           key: 2,
           type: 'link',
-          text: 'Acerca de OCCMundial',
-          link: `${root.home}/${links.aboutUs}`,
+          text: 'Dudas frecuentes',
+          link: `${root.home}/${links.faqs}`,
           selected: tabSelected === 2
         },
         {
           key: 3,
           type: 'link',
-          text: 'Preguntas frecuentes',
+          text: 'Busco empleo',
           link: `${root.home}/${links.faqs}`,
           selected: tabSelected === 3
         }

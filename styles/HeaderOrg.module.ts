@@ -53,7 +53,7 @@ export default {
   },
   space: {
     width: '100%',
-    height: '96px',
+    height: '64px',
     backgroundColor: bgGrey,
     [`@media screen and (max-width:991px)`]: {
       height: '64px',
