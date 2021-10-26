@@ -104,11 +104,6 @@ const HeaderOrg = ({
   return (
     <Fragment>
       <NavTab
-        top={
-          scroll || logged
-            ? undefined
-            : top(isMobile, getRoot(local, dev, prod))
-        }
         left={left(
           classes,
           isMobile,
