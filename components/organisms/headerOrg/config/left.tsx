@@ -227,7 +227,7 @@ export const left = (
         {
           key: 2,
           type: 'link',
-          text: 'Dudas frecuentes',
+          text: 'Preguntas frecuentes',
           link: `${root.home}/${links.faqs}`,
           selected: tabSelected === 2
         },
@@ -235,7 +235,7 @@ export const left = (
           key: 3,
           type: 'link',
           text: 'Busco empleo',
-          link: `${root.home}/${links.faqs}`,
+          link: `${links.buscoEmpleo}`,
           selected: tabSelected === 3
         }
       ];
