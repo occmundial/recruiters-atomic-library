@@ -16,7 +16,7 @@ const defaultProps = {
   bannerCTA: () => { alert('¡Action!'); },
   cartItems: 0,
   chatItems: 0,
-  userName: 'Moises Rojas',
+  userName: 'Hirer Center User',
   userPhoto: 'https://i.imgur.com/I80W1Q0.png',
   email: 'irojas@occ.com.mx',
   logout: () => { },

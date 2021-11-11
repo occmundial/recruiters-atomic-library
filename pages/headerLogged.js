@@ -11,7 +11,7 @@ const defaultProps = {
   showBanner: false,
   cartItems: 0,
   chatItems: 0,
-  userName: 'Moises Rojas',
+  userName: 'Hirer Center User',
   userPhoto: '',
   email: 'irojas@occ.com.mx',
   logout: () => { },
