@@ -38,7 +38,7 @@ export const links = {
   loginPage: 'login/',
   newAccount: 'crear-cuenta/',
   indices: 'https://h3.occ.com.mx/Mercer/MisPerfiles',
-  ayuda: 'https://occayuda.zendesk.com/hc/es',
+  ayuda: 'https://occmundialcommunity.force.com/ayudareclutadores/s/',
   RUE: ' https://www.occ.com.mx/rue/contacto/'
 };
 

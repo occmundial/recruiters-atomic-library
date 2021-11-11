@@ -317,7 +317,7 @@ export default function Home() {
                           <div className={styles.menuText}>
                             <a
                               className={styles.navItemLink}
-                              href="https://occayuda.zendesk.com/hc/es"
+                              href="https://occmundialcommunity.force.com/ayudareclutadores/s/"
                             >
                               <span
                                 className={`

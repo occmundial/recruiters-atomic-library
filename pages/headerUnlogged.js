@@ -6,7 +6,7 @@ const defaultProps = {
   showCounts: true,
   logged: false,
   showBanner: false,
-  userName: 'Moises Rojas',
+  userName: 'Hirer Center User',
   email: 'irojas@occ.com.mx',
   dev: true,
   logout: () => {},
