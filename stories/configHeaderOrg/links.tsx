@@ -39,7 +39,8 @@ export const links = {
   newAccount: 'crear-cuenta/',
   indices: 'https://h3.occ.com.mx/Mercer/MisPerfiles',
   ayuda: 'https://occmundialcommunity.force.com/ayudareclutadores/s/',
-  RUE: ' https://www.occ.com.mx/rue/contacto/'
+  RUE: ' https://www.occ.com.mx/rue/contacto/',
+  create: '/api/create'
 };
 
 export const r12links = {
@@ -56,7 +57,8 @@ export const localRoot = {
   talentSearch: 'http://localhost:3003',
   candidates: 'http://localhost:3010',
   r12: 'http://localhost:8029',
-  r11: 'http://localhost:64660'
+  r11: 'http://localhost:64660',
+  scrappy: 'http://localhost:3020'
 };
 
 export const devRoot = {
@@ -68,7 +70,8 @@ export const devRoot = {
   talentSearch: 'https://master.occdev.com.mx/empresas/talento',
   candidates: 'https://master.occdev.com.mx/empresas/candidatos',
   r12: 'https://master.occdev.com.mx/empresas/hirer-center',
-  r11: 'http://devrecluta1.occdev.com.mx'
+  r11: 'http://devrecluta1.occdev.com.mx',
+  scrappy: 'https://backendlogin.occdev.com.mx'
 };
 
 export const prodRoot = {
@@ -80,7 +83,8 @@ export const prodRoot = {
   talentSearch: 'https://occ.com.mx/empresas/talento',
   candidates: 'https://occ.com.mx/empresas/candidatos',
   r12: 'https://occ.com.mx/empresas/hirer-center',
-  r11: 'https://recluta11.occ.com.mx'
+  r11: 'https://recluta11.occ.com.mx',
+  scrappy: 'https://scrappy.occ.com.mx'
 };
 
 export const getRoot = (

@@ -41,7 +41,8 @@ export const links = {
   ayuda: 'https://occayuda.zendesk.com/hc/es',
   RUE: ' https://www.occ.com.mx/rue/contacto/',
   profile: 'perfil/',
-  settings: 'ajustes/'
+  settings: 'ajustes/',
+  create: '/api/create'
 };
 
 export const r12links = {
@@ -60,7 +61,8 @@ export const localRoot = {
   accountConfig: 'http://localhost:3050',
   organizationConfig: 'http://localhost:7000',
   r12: 'http://localhost:8029',
-  r11: 'http://localhost:64660'
+  r11: 'http://localhost:64660',
+  scrappy: 'http://localhost:3020'
 };
 
 export const devRoot = {
@@ -74,7 +76,8 @@ export const devRoot = {
   accountConfig: 'https://master.occdev.com.mx/configuracion',
   organizationConfig: 'https://master.occdev.com.mx/empresas/organizaciones',
   r12: 'https://master.occdev.com.mx/empresas/hirer-center',
-  r11: 'https://recluta11.occdev.com.mx'
+  r11: 'https://recluta11.occdev.com.mx',
+  scrappy: 'https://backendlogin.occdev.com.mx'
 };
 
 export const prodRoot = {
@@ -88,7 +91,8 @@ export const prodRoot = {
   accountConfig: 'https://www.occ.com.mx/configuracion',
   organizationConfig: 'https://www.occ.com.mx/empresas/organizaciones',
   r12: 'https://occ.com.mx/empresas/hirer-center',
-  r11: 'https://recluta11.occ.com.mx'
+  r11: 'https://recluta11.occ.com.mx',
+  scrappy: 'https://scrappy.occ.com.mx'
 };
 
 export const getRoot = (
