@@ -20,7 +20,7 @@ import { top } from './config/top';
 import { center, centerMobile } from './config/center';
 import { right, loggedMenu } from './config/right';
 
-import { ctaCreateAccountTracking } from '../../../actions/trackingActions';
+import { ctaCreateAccountTracking, ctaPublishNowTracking } from '../../../actions/trackingActions';
 import { getCreateAccountUrl } from '../../common/getCreateAccountUrl';
 import windowSize from '../../common/useWindowSize';
 import HeaderMenu from '../../molecules/menu';
@@ -98,6 +98,7 @@ const HeaderOrg = ({
 
   const createAccount = () => {
     ctaCreateAccountTracking('header');
+    ctaPublishNowTracking();
     window.location.href = `${linksRoot.scrappy}${links.create}`;
   };
 
