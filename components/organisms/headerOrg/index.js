@@ -60,7 +60,8 @@ const HeaderOrg = ({
   isAdmin = false,
   validEmail = false,
   canReturn = false,
-  showConfigTabs = false
+  showConfigTabs = false,
+  createAccountURL = '',
 }) => {
   const [scroll, toggleScroll] = useState(false);
   const [banner, setBanner] = useState(false);
@@ -98,7 +99,7 @@ const HeaderOrg = ({
 
   const createAccount = () => {
     ctaCreateAccountTracking('header');
-    window.location.href = `${linksRoot.accounts}/${links.newAccount}?btn=header&${getCreateAccountUrl(enviroments)}`;
+    window.location.href = createAccountURL=!'' ? createAccountURL : `${linksRoot.accounts}/${links.newAccount}?btn=header&${getCreateAccountUrl(enviroments)}`;
   };
 
   return (
@@ -362,7 +363,9 @@ HeaderOrg.propTypes = {
   /** Determines if the levelAccount is a subAdmin*/
   typeSubAdministrator: Proptypes.bool,
   /** Show config tabs */
-  showConfigTabs: Proptypes.bool
+  showConfigTabs: Proptypes.bool,
+  /** Determines if the user refer to FirstJobAd */
+  createAccountURL: Proptypes.string,
 };
 
 export default injectSheet(styles)(HeaderOrg);
