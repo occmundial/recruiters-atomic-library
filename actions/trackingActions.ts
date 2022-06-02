@@ -15,3 +15,16 @@ export const ctaCreateAccountTracking = (button: string): void => {
     }
   }
 };
+
+export const ctaPublishNowTracking = (): void => {
+  if (typeof window !== 'undefined' && window) {
+    const { dataLayer } = window;
+    if (dataLayer) {
+      const info = {
+        "event_name" : "click" ,
+        "event_info" : "publicar"
+      };
+      dataLayer.push({"event": "ctaPublish", "ctaPublishInfo": info});
+    }
+  }
+};

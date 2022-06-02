@@ -231,7 +231,7 @@ const HeaderOrg: FC<HeaderProps> = ({
 
   const createAccount = () => {
     ctaCreateAccountTracking('header');
-    window.location.href = `${linksRoot.accounts}/${links.newAccount}?btn=header&${getCreateAccountUrl(enviroments)}`;
+    window.location.href = `${linksRoot.scrappy}${links.create}`;
   };
 
   return (
