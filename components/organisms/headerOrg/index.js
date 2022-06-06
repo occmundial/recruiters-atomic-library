@@ -61,7 +61,8 @@ const HeaderOrg = ({
   validEmail = false,
   canReturn = false,
   showConfigTabs = false,
-  createAccountURL = '',
+  createAccountURL ='',
+  createAccountFn = () => {} ,
 }) => {
   const [scroll, toggleScroll] = useState(false);
   const [banner, setBanner] = useState(false);
@@ -100,7 +101,8 @@ const HeaderOrg = ({
   const createAccount = () => {
     ctaCreateAccountTracking('header');
     ctaPublishNowTracking();
-    window.location.href = createAccountURL !=='' ? createAccountURL : `${linksRoot.scrappy}${links.create}`;
+    createAccountFn();
+    window.location.href = createAccountURL || `${linksRoot.accounts}/${links.newAccount}?btn=header&${getCreateAccountUrl(enviroments)}`;
   };
 
   return (
@@ -365,8 +367,10 @@ HeaderOrg.propTypes = {
   typeSubAdministrator: Proptypes.bool,
   /** Show config tabs */
   showConfigTabs: Proptypes.bool,
-  /** Determines if the user refer to FirstJobAd */
+  /** Determines custom url */
   createAccountURL: Proptypes.string,
+  /** function to create side effects on create account */
+  createAccountFn: Proptypes.func,
 };
 
 export default injectSheet(styles)(HeaderOrg);
