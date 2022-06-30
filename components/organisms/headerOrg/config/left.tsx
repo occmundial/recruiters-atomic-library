@@ -63,7 +63,7 @@ const asideMenuUnLogged = (
           className={classes.topTiny}
           link={`${root.home}/${links.sSight}`}
         >
-          Productos
+          Precios
         </NavItem>
         <NavItem
           selected={tabSelected === 2}
@@ -220,7 +220,7 @@ export const left = (
         {
           key: 1,
           type: 'link',
-          text: 'Productos',
+          text: 'Precios',
           link: `${root.home}/${links.sSight}`,
           selected: tabSelected === 1
         },
