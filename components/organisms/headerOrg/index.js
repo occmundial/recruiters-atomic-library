@@ -122,8 +122,8 @@ const HeaderOrg = ({
           createAccount
         )}
         center={
-          showCenter &&
-          center(isMobile, logged, getRoot(local, dev, prod), tabSelected)
+          showCenter ?
+          center(isMobile, logged, getRoot(local, dev, prod), tabSelected) : []
         }
         right={right(
           classes,
@@ -322,9 +322,9 @@ HeaderOrg.propTypes = {
   /** Trigger action when banner call to action is clicked */
   bannerCTA: Proptypes.func,
   /** Trigger action when logout button is clicked **/
-  logout: Proptypes.func.isRequired,
+  logout: Proptypes.func,
   /** Trigger action when login button is clicked **/
-  login: Proptypes.func.isRequired,
+  login: Proptypes.func,
   /** Determines cart items */
   cartItems: Proptypes.number,
   /** Determines chat items */
