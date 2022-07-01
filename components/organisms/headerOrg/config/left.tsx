@@ -68,13 +68,6 @@ const asideMenuUnLogged = (
         <NavItem
           selected={tabSelected === 2}
           className={classes.topTiny}
-          link={`${root.home}/${links.faqs}`}
-        >
-          Preguntas Frecuentes
-        </NavItem>
-        <NavItem
-          selected={tabSelected === 3}
-          className={classes.topTiny}
           link={`${links.buscoEmpleo}`}
         >
           Busco Empleo
@@ -227,15 +220,8 @@ export const left = (
         {
           key: 2,
           type: 'link',
-          text: 'Preguntas frecuentes',
-          link: `${root.home}/${links.faqs}`,
-          selected: tabSelected === 2
-        },
-        {
-          key: 3,
-          type: 'link',
           text: 'Busco empleo',
           link: `${links.buscoEmpleo}`,
-          selected: tabSelected === 3
+          selected: tabSelected === 2
         }
       ];
