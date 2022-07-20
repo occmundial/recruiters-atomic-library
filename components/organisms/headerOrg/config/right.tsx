@@ -232,6 +232,16 @@ const menuBars = (classes, setShowMenu) => (
   </div>
 );
 
+const searchJob = (classes) => (
+  <Fragment>
+    <div className={classes.separatorSearchJob}>
+      <a href={links.buscoEmpleo} className={classes.linkSearchJob}>
+        <Text>Busco empleo</Text>
+      </a>
+    </div>
+  </Fragment>
+);
+
 export const right = (
   classes,
   mobile,
@@ -263,7 +273,7 @@ export const right = (
           {
             key: 0,
             type: 'button',
-            text: 'INICIAR SESIÓN',
+            text: 'INICIA SESIÓN',
             theme: 'ghostGrey',
             onClick: () => login()
           }
@@ -304,15 +314,20 @@ export const right = (
         {
           key: 0,
           type: 'button',
-          text: 'PUBLICAR AHORA',
-          theme: 'ghostPink',
+          text: 'REGÍSTRATE',
+          theme: 'ghostGrey',
           onClick: () => createAccount()
         },
         {
           key: 1,
           type: 'button',
-          text: 'INICIAR SESIÓN',
-          theme: 'ghostGrey',
+          text: 'INICIA SESIÓN',
+          theme: 'ghostPink',
           onClick: () => login()
+        },
+        {
+          key: 2,
+          type: 'custom',
+          custom: searchJob(classes)
         }
       ];

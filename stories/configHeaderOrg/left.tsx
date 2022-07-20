@@ -35,19 +35,19 @@ const asideMenuUnLogged = (
         <div className="divButtons">
           <div className="leftElement">
             <Button
-              theme="ghostPink"
+              theme="ghostGrey"
               size="sm"
               onClick={() => createAccount()}
             >
-              PUBLICAR AHORA
+              REGÍSTRATE
             </Button>
           </div>
           <Button
-            theme="ghostGrey"
+            theme="ghostPink"
             size="sm"
             href={`${root.accounts}/${links.loginPage}`}
           >
-            INICIAR SESIÓN
+            INICIA SESIÓN
           </Button>
         </div>
         <div className="verticalSeparator" />
@@ -64,13 +64,6 @@ const asideMenuUnLogged = (
           link={`${root.home}/${links.sSight}`}
         >
           Precios
-        </NavItem>
-        <NavItem
-          selected={tabSelected === 2}
-          className="topTiny"
-          link={`${links.buscoEmpleo}`}
-        >
-          Busco Empleo
         </NavItem>
       </div>
     </NavAside>
@@ -208,12 +201,5 @@ export const left = (
           text: 'Precios',
           link: `${root.home}/${links.sSight}`,
           selected: tabSelected === 1
-        },
-        {
-          key: 2,
-          type: 'link',
-          text: 'Busco empleo',
-          link: `${root.home}/${links.buscoEmpleo}`,
-          selected: tabSelected === 2
         }
       ];

@@ -1,7 +1,7 @@
 import { spacing, colors } from '@occmundial/occ-atomic';
 
 const { xTiny, tiny, small, gutter, base, large } = spacing;
-const { grey200, bgWhite, sec, bgGrey } = colors;
+const { grey200, bgWhite, sec, bgGrey, inkLighter } = colors;
 export default {
   verticalSeparator: {
     width: '100%',
@@ -107,5 +107,14 @@ export default {
     letterSpacing: '0.86px !important',
     textAlign: 'left !important',
     color: '#222222 !important',
+  },
+  separatorSearchJob: {
+    paddingLeft: small,
+    marginLeft: small,
+    borderLeft: `1px solid ${inkLighter}`,
+    height: base
+  },
+  linkSearchJob: {
+    textDecoration: 'none'
   },
 };
