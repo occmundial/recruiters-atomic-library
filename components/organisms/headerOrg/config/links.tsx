@@ -42,7 +42,8 @@ export const links = {
   RUE: ' https://www.occ.com.mx/rue/contacto/',
   profile: 'perfil/',
   settings: 'ajustes/',
-  create: '/api/create'
+  create: '/api/create',
+  billingData: '/datos-facturacion/',
 };
 
 export const r12links = {
@@ -62,7 +63,7 @@ export const localRoot = {
   organizationConfig: 'http://localhost:7000',
   r12: 'http://localhost:8029',
   r11: 'http://localhost:64660',
-  scrappy: 'http://localhost:3020'
+  scrappy: 'http://localhost:3020',
 };
 
 export const devRoot = {
@@ -77,7 +78,7 @@ export const devRoot = {
   organizationConfig: 'https://master.occdev.com.mx/empresas/organizaciones',
   r12: 'https://master.occdev.com.mx/empresas/hirer-center',
   r11: 'https://recluta11.occdev.com.mx',
-  scrappy: 'https://backendlogin.occdev.com.mx'
+  scrappy: 'https://backendlogin.occdev.com.mx',
 };
 
 export const prodRoot = {
@@ -92,7 +93,7 @@ export const prodRoot = {
   organizationConfig: 'https://www.occ.com.mx/empresas/organizaciones',
   r12: 'https://occ.com.mx/empresas/hirer-center',
   r11: 'https://recluta11.occ.com.mx',
-  scrappy: 'https://scrappy.occ.com.mx'
+  scrappy: 'https://scrappy.occ.com.mx',
 };
 
 export const getRoot = (

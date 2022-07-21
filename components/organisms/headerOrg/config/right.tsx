@@ -94,6 +94,12 @@ export const loggedMenu = (
       selected: tabSelected === 7
     },
     {
+      url: `${root.accounts}${links.billingData}`,
+      text: "Datos de facturación",
+      visible: true,
+      selected: tabSelected === 8
+    },
+    {
       url: `${links.indices}`,
       text: 'Índices salariales',
       visible: false,
