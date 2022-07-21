@@ -40,7 +40,8 @@ export const links = {
   indices: 'https://h3.occ.com.mx/Mercer/MisPerfiles',
   ayuda: 'https://occmundialcommunity.force.com/ayudareclutadores/s/',
   RUE: ' https://www.occ.com.mx/rue/contacto/',
-  create: '/api/create'
+  create: '/api/create',
+  billingData: '/datos-facturacion/',
 };
 
 export const r12links = {
