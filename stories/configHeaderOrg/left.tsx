@@ -65,6 +65,13 @@ const asideMenuUnLogged = (
         >
           Precios
         </NavItem>
+        <NavItem
+          selected={tabSelected === 2}
+          className="topTiny"
+          link={`${links.buscoEmpleo}`}
+        >
+          Busco Empleo
+        </NavItem>
       </div>
     </NavAside>
   </Fragment>
