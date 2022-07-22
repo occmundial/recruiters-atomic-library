@@ -295,22 +295,6 @@ export default function Home() {
                               </span>
                             </a>
                           </div>
-                          <div className={styles.menuText}>
-                            <a
-                              className={styles.navItemLink}
-                              href=""
-                            >
-                              <span
-                                className={`
-                                  ${styles.text}
-                                  ${styles.textStandard}
-                                  ${styles.textNoEmphasis}
-                                `}
-                              >
-                                Índices salariales
-                              </span>
-                            </a>
-                          </div>
                           <div>
                             <div className={styles.menuSeparator}></div>
                           </div>

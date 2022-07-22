@@ -96,12 +96,6 @@ export const loggedMenu = (
       visible: true,
       selected: tabSelected === 8
     },
-    {
-      url: `${links.indices}`,
-      text: 'Índices salariales',
-      visible: true,
-      selected: tabSelected === 12
-    },
     { separator: true, hide: false },
     {
       url: `${links.ayuda}`,
