@@ -70,7 +70,7 @@ const asideMenuUnLogged = (
           className="topTiny"
           link={`${links.buscoEmpleo}`}
         >
-          Busco Empleo
+          Busco empleo
         </NavItem>
       </div>
     </NavAside>
@@ -204,6 +204,13 @@ export const left = (
         },
         {
           key: 1,
+          type: 'link',
+          text: 'Inicio',
+          link: `${root.home}/`,
+          selected: tabSelected === 0
+        },
+        {
+          key: 2,
           type: 'link',
           text: 'Precios',
           link: `${root.home}/${links.sSight}`,
