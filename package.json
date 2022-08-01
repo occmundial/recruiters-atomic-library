@@ -1,6 +1,6 @@
 {
   "name": "@occmundial/recruiters-atomic-library",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "private": false,
   "scripts": {
     "predeploy": "npm run build-storybook",
@@ -10,7 +10,7 @@
     "start": "next start",
     "export": "next export",
     "serve": "next build && next export && serve out",
-    "publish": "npm publish --access public",
+    "publishVersion": "npm publish --access public",
     "deploy": "rimraf -rf node_modules/.cache && rimraf out && next build && next export && touch out/.nojekyll && gh-pages -d out -t true",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
