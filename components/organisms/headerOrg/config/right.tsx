@@ -80,6 +80,12 @@ export const loggedMenu = (
       visible: isAdmin && typeAdministrator && canReturn,
       selected: tabSelected === 5
     },
+    {
+      url: `${root.accounts}${links.billingData}`,
+      text: "Datos de facturación",
+      visible: isAdmin,
+      selected: tabSelected === 8
+    },
     { separator: true, hide: false },
     {
       url: `${root.r11}/${r11links.classifications}`,
@@ -92,12 +98,6 @@ export const loggedMenu = (
       text: "Notas de CV's",
       visible: true,
       selected: tabSelected === 7
-    },
-    {
-      url: `${root.accounts}${links.billingData}`,
-      text: "Datos de facturación",
-      visible: isAdmin,
-      selected: tabSelected === 8
     },
     { separator: true, hide: false },
     {

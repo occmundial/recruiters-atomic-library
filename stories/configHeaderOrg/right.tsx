@@ -83,18 +83,18 @@ export const loggedMenu = (
       visible: isAdmin && typeAdministrator && canReturn,
       selected: tabSelected === 6
     },
+    {
+      url: `${root.accounts}${links.billingData}`,
+      text: "Datos de facturación",
+      visible: isAdmin,
+      selected: tabSelected === 8
+    },
     { separator: true, hide: false },
     {
       url: ``,
       text: "Clasificaciones de CV's",
       visible: true,
       selected: tabSelected === 7
-    },
-    {
-      url: `${root.accounts}${links.billingData}`,
-      text: "Datos de facturación",
-      visible: isAdmin,
-      selected: tabSelected === 8
     },
     { separator: true, hide: false },
     {
