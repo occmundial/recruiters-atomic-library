@@ -93,7 +93,7 @@ export const loggedMenu = (
     {
       url: `${root.accounts}${links.billingData}`,
       text: "Datos de facturación",
-      visible: true,
+      visible: isAdmin,
       selected: tabSelected === 8
     },
     { separator: true, hide: false },
