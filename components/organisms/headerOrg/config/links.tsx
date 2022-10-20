@@ -35,7 +35,6 @@ export const links = {
   faqs: 'preguntas-frecuentes/',
   aboutUs: 'acerca-de-occmundial/',
   chat: 'chat/',
-  loginPage: 'login/',
   newAccount: 'crear-cuenta/',
   ayuda: 'https://occayuda.zendesk.com/hc/es',
   RUE: ' https://www.occ.com.mx/rue/contacto/',

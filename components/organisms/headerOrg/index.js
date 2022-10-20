@@ -119,7 +119,8 @@ const HeaderOrg = ({
           organizationName.toUpperCase(),
           teamName,
           orgMenuLinks,
-          createAccount
+          createAccount,
+          login
         )}
         center={
           showCenter ?
