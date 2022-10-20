@@ -18,7 +18,8 @@ const asideMenuUnLogged = (
   setMenuUnlogged,
   root = localRoot,
   tabSelected = 0,
-  createAccount
+  createAccount,
+  login
 ) => (
   <Fragment>
     <Icon iconName="bars" onClick={() => setMenuUnlogged(true)} />
@@ -45,7 +46,7 @@ const asideMenuUnLogged = (
           <Button
             theme="ghostPink"
             size="sm"
-            href={`${root.accounts}/${links.loginPage}`}
+            onClick={() => login()}
           >
             INICIA SESIÓN
           </Button>
@@ -142,7 +143,8 @@ export const left = (
   organizationName = '',
   teamName = '',
   orgMenuLinks = [{}],
-  createAccount
+  createAccount,
+  login
 ) =>
   mobile
     ? logged
@@ -170,7 +172,8 @@ export const left = (
               setAsideMenu,
               root,
               tabSelected,
-              createAccount
+              createAccount,
+              login
             )
           }
         ]
