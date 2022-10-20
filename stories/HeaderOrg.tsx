@@ -248,7 +248,8 @@ const HeaderOrg: FC<HeaderProps> = ({
           organizationName.toUpperCase(),
           teamName,
           orgMenuLinks,
-          createAccount
+          createAccount,
+          login
         )}
         center={
           showCenter &&
