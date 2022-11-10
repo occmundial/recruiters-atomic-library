@@ -39,6 +39,7 @@ const asideMenuUnLogged = (
               theme="ghostGrey"
               size="sm"
               onClick={() => createAccount()}
+              testId='sidebar__signup'
             >
               REGÍSTRATE
             </Button>
@@ -47,6 +48,7 @@ const asideMenuUnLogged = (
             theme="ghostPink"
             size="sm"
             onClick={() => login()}
+            testId='sidebar__signin'
           >
             INICIA SESIÓN
           </Button>
@@ -114,6 +116,7 @@ const organizationMenu = (
           arrowHeight={14}
           arrowLeft={4}
           noMenu
+          testId='header__user-menu'
           renderComp={
             <Fragment>
               <Card raised className={classes.cardOrgMenu}>

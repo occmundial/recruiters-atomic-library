@@ -20,7 +20,14 @@ const Menu = ({ classes, mobile = false, linksH, logout = false }) => (
     ))}
     {logout && (
       <Text secondary className={mobile ? classes.bottomSmall : classes.bottomTiny}>
-        <a role="presentation" onClick={() => logout()} className={classes.logout}>Cerrar sesión</a>
+        <a 
+          role="presentation" 
+          onClick={() => logout()} 
+          className={classes.logout}
+          data-testid='header__logout'
+        >
+          Cerrar sesión
+        </a>
       </Text>
     )}
   </Fragment>
