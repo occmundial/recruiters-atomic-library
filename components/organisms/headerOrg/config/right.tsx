@@ -128,6 +128,7 @@ const buttonMenu = (
         arrowWidth={16}
         arrowHeight={16}
         arrowLeft={6}
+        testId='header__user-menu'
         renderComp={
           <Fragment>
             <Card raised className={classes.cardMenu}>
@@ -275,7 +276,8 @@ export const right = (
             type: 'button',
             text: 'INICIA SESIÓN',
             theme: 'ghostGrey',
-            onClick: () => login()
+            onClick: () => login(),
+            testId: 'header__signin'
           }
         ]
     : logged
@@ -316,14 +318,16 @@ export const right = (
           type: 'button',
           text: 'REGÍSTRATE',
           theme: 'ghostGrey',
-          onClick: () => createAccount()
+          onClick: () => createAccount(),
+          testId: 'header__signup'
         },
         {
           key: 1,
           type: 'button',
           text: 'INICIA SESIÓN',
           theme: 'ghostPink',
-          onClick: () => login()
+          onClick: () => login(),
+          testId: 'header__signin'
         },
         {
           key: 2,

@@ -1,13 +1,21 @@
-import React, {
-  useState, useEffect, useRef, FC, ReactElement,
-} from 'react';
+import React, { useState, useEffect, useRef, FC, ReactElement } from 'react';
 import injectSheet from 'react-jss';
 import { Text, Icon, colors } from '@occmundial/occ-atomic';
 import classNames from 'classnames';
 import styles from '../../../styles/ButtonDropDown.module.ts';
 
 const ButtonDropDown = ({
-  classes, renderComp, buttonText, mobile = false, arrow = false, onClose = false, arrowWidth = 14, arrowHeight = 14, arrowLeft = 0, noMenu = false,
+  classes,
+  renderComp,
+  buttonText,
+  mobile = false,
+  arrow = false,
+  onClose = false,
+  arrowWidth = 14,
+  arrowHeight = 14,
+  arrowLeft = 0,
+  noMenu = false,
+  testId = ''
 }) => {
   const [show, toggleShow] = useState(false);
   const [scroll, toggleScroll] = useState(false);
@@ -15,30 +23,24 @@ const ButtonDropDown = ({
   const [isMounted, toggleisMounted] = useState(false);
   const myRef = useRef(null);
 
-  const rotate = (bol) => {
+  const rotate = bol => {
     toggleShow(!bol);
     if (bol) {
-      setTimeout(
-        () => {
-          toggleisMounted(!bol);
-          if (onClose) onClose();
-        },
-        300,
-      );
+      setTimeout(() => {
+        toggleisMounted(!bol);
+        if (onClose) onClose();
+      }, 300);
     } else {
       toggleisMounted(!bol);
     }
   };
-  const handleClickOutside = (e) => {
+  const handleClickOutside = e => {
     if (myRef.current && !myRef.current.contains(e.target)) {
       toggleShow(false);
       if (show && onClose) onClose();
-      setTimeout(
-        () => {
-          toggleisMounted(false);
-        },
-        300,
-      );
+      setTimeout(() => {
+        toggleisMounted(false);
+      }, 300);
     }
   };
 
@@ -66,6 +68,7 @@ const ButtonDropDown = ({
       <div
         className={classes.divText}
         onClick={() => rotate(show)}
+        data-testid={testId}
         role="presentation"
       >
         <div className={classes.divFlex}>
@@ -75,33 +78,44 @@ const ButtonDropDown = ({
               style={{ marginLeft: arrowLeft }}
               iconName="arrowDown"
               colors={[colors.ink]}
-              className={show ? classes.iconStyleActive : classes.iconStyleDisable}
+              className={
+                show ? classes.iconStyleActive : classes.iconStyleDisable
+              }
               width={arrowWidth}
               height={arrowHeight}
             />
           )}
         </div>
       </div>
-      {mobile
-        ? (
-          <div
-            className={
-              show ? classNames(
-                scroll ? classes.showElementActiveMovScroll : classes.showElementActiveMov,
-              ) : classNames(
-                scroll ? classes.showElementDisableMovScroll : classes.showElementDisableMov,
-              )
-            }
-          >
-            {isMounted || show ? renderComp : null}
-          </div>
-        )
-        : (
-          <div className={show ? classNames(noMenu && classes.noMenu, classes.showElementActive) : classNames(noMenu && classes.noMenu, classes.showElementDisable)}>
-            {isMounted || show ? renderComp : null}
-          </div>
-        )
-      }
+      {mobile ? (
+        <div
+          className={
+            show
+              ? classNames(
+                  scroll
+                    ? classes.showElementActiveMovScroll
+                    : classes.showElementActiveMov
+                )
+              : classNames(
+                  scroll
+                    ? classes.showElementDisableMovScroll
+                    : classes.showElementDisableMov
+                )
+          }
+        >
+          {isMounted || show ? renderComp : null}
+        </div>
+      ) : (
+        <div
+          className={
+            show
+              ? classNames(noMenu && classes.noMenu, classes.showElementActive)
+              : classNames(noMenu && classes.noMenu, classes.showElementDisable)
+          }
+        >
+          {isMounted || show ? renderComp : null}
+        </div>
+      )}
     </div>
   );
 };

@@ -16,7 +16,6 @@ import styles from '../../../styles/HeaderOrg.module.ts';
 import { left } from './config/left';
 import { getRoot, links } from './config/links';
 import { getCookie, setCookie, cookieBanner } from './config/cookies';
-import { top } from './config/top';
 import { center, centerMobile } from './config/center';
 import { right, loggedMenu } from './config/right';
 
