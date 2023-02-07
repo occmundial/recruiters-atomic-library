@@ -14,6 +14,7 @@ interface link {
   alert?: boolean;
   selected?: boolean;
   unclickable?: boolean;
+  isId?: boolean
 }
 
 const goTo = url => {
@@ -116,7 +117,8 @@ const buttonMenu = (
   userPhoto = '',
   MenuMobile = true,
   Menulinks,
-  Menulogout
+  Menulogout,
+  isId=false,
 ) => (
   <Fragment>
     <div className={classes.tabButton}>
@@ -129,6 +131,7 @@ const buttonMenu = (
         arrowHeight={16}
         arrowLeft={6}
         testId='header__user-menu'
+        id={isId? 'Hirercenter_dashboard_usuario': ''}
         renderComp={
           <Fragment>
             <Card raised className={classes.cardMenu}>
@@ -151,7 +154,7 @@ const cart = (
   referral = '',
   root = localRoot,
   tabSelected = 0,
-  showCounts = false
+  showCounts = false,
 ) => (
   <Fragment>
     <a
@@ -233,10 +236,10 @@ const menuBars = (classes, setShowMenu) => (
   </div>
 );
 
-const searchJob = (classes) => (
+const searchJob = (classes, isId) => (
   <Fragment>
     <div className={classes.separatorSearchJob}>
-      <a href={links.buscoEmpleo} className={classes.linkSearchJob}>
+      <a id={isId? 'homehirers_inicio_redireccioncandidatos': ''} href={links.buscoEmpleo} className={classes.linkSearchJob}>
         <Text>Busco empleo</Text>
       </a>
     </div>
@@ -259,7 +262,8 @@ export const right = (
   root = localRoot,
   tabSelected = 0,
   showCounts = false,
-  createAccount
+  createAccount,
+  isId=false
 ) =>
   mobile
     ? logged
@@ -291,7 +295,7 @@ export const right = (
             referral,
             root,
             tabSelected,
-            showCounts
+            showCounts,
           )
         },
         {
@@ -308,7 +312,8 @@ export const right = (
             userPhoto,
             mobile,
             menuLinks,
-            logout
+            logout,
+            isId,
           )
         }
       ]
@@ -319,7 +324,8 @@ export const right = (
           text: 'REGÍSTRATE',
           theme: 'ghostGrey',
           onClick: () => createAccount(),
-          testId: 'header__signup'
+          testId: 'header__signup',
+          id: isId? 'homehirers_inicio_registro': ''
         },
         {
           key: 1,
@@ -327,11 +333,12 @@ export const right = (
           text: 'INICIA SESIÓN',
           theme: 'ghostPink',
           onClick: () => login(),
-          testId: 'header__signin'
+          testId: 'header__signin',
+          id: isId? 'homehirers_inicio_signup': ''
         },
         {
           key: 2,
           type: 'custom',
-          custom: searchJob(classes)
+          custom: searchJob(classes, isId)
         }
       ];
