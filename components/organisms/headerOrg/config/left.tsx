@@ -147,7 +147,8 @@ export const left = (
   teamName = '',
   orgMenuLinks = [{}],
   createAccount,
-  login
+  login,
+  isId=false
 ) =>
   mobile
     ? logged
@@ -211,7 +212,7 @@ export const left = (
           key: 0,
           type: 'logo',
           logo: (
-            <a href={`${root.home}/`}>
+            <a id={isId? 'homehirers_inicio_headerlogo': ''} href={`${root.home}/`}>
               <Icon iconName="occHorizontalGrey" />
             </a>
           )

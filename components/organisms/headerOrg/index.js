@@ -61,6 +61,7 @@ const HeaderOrg = ({
   canReturn = false,
   showConfigTabs = false,
   createAccountURL ='',
+  isId = false,
   createAccountFn = () => {} ,
 }) => {
   const [scroll, toggleScroll] = useState(false);
@@ -119,11 +120,12 @@ const HeaderOrg = ({
           teamName,
           orgMenuLinks,
           createAccount,
-          login
+          login,
+          isId
         )}
         center={
           showCenter ?
-          center(isMobile, logged, getRoot(local, dev, prod), tabSelected) : []
+          center(isMobile, logged, getRoot(local, dev, prod), tabSelected, isId,) : []
         }
         right={right(
           classes,
@@ -155,6 +157,7 @@ const HeaderOrg = ({
           rightTabSelected,
           showCounts,
           createAccount,
+          isId,
         )}
         fixed
         hideOnScroll
@@ -371,6 +374,8 @@ HeaderOrg.propTypes = {
   createAccountURL: Proptypes.string,
   /** function to create side effects on create account */
   createAccountFn: Proptypes.func,
+  /** Determines if isId */
+  isId: Proptypes.bool
 };
 
 export default injectSheet(styles)(HeaderOrg);

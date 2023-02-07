@@ -15,7 +15,8 @@ const ButtonDropDown = ({
   arrowHeight = 14,
   arrowLeft = 0,
   noMenu = false,
-  testId = ''
+  testId = '',
+  id=''
 }) => {
   const [show, toggleShow] = useState(false);
   const [scroll, toggleScroll] = useState(false);
@@ -69,6 +70,7 @@ const ButtonDropDown = ({
         className={classes.divText}
         onClick={() => rotate(show)}
         data-testid={testId}
+        id={id}
         role="presentation"
       >
         <div className={classes.divFlex}>
