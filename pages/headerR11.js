@@ -113,6 +113,7 @@ export default function Home() {
                     href="http://localhost:5002/checkout/?utm_source=sight&utm_medium=referral&utm_campaign="
                     rel="nofollow"
                     id="cart"
+                    data-testid="header__checkout"
                   >
                     <div className={styles.cartButton}>
                       <p

@@ -165,6 +165,7 @@ const cart = (
       }
       rel="nofollow"
       id="cart"
+      data-testid="header__checkout"
     >
       <div title="Carrito" className={classes.cartBtn}>
         <Text
