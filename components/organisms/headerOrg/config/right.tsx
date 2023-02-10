@@ -118,7 +118,6 @@ const buttonMenu = (
   MenuMobile = true,
   Menulinks,
   Menulogout,
-  isId=false,
 ) => (
   <Fragment>
     <div className={classes.tabButton}>
@@ -131,7 +130,6 @@ const buttonMenu = (
         arrowHeight={16}
         arrowLeft={6}
         testId='header__user-menu'
-        id={isId? 'Hirercenter_dashboard_usuario': ''}
         renderComp={
           <Fragment>
             <Card raised className={classes.cardMenu}>
@@ -313,7 +311,6 @@ export const right = (
             mobile,
             menuLinks,
             logout,
-            isId,
           )
         }
       ]
