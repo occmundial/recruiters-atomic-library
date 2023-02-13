@@ -139,8 +139,7 @@ export const left = (
   teamName = '',
   orgMenuLinks = [{}],
   createAccount,
-  login,
-  isId = false
+  login
 ) =>
   mobile
     ? logged
@@ -218,7 +217,6 @@ export const left = (
           type: 'link',
           text: 'Precios',
           link: `${root.home}/${links.sSight}`,
-          selected: tabSelected === 1,
-          id: isId? 'homehirers_inicio_precios': '',
+          selected: tabSelected === 1
         }
       ];
