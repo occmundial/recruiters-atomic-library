@@ -1,3 +1,4 @@
 module.exports = {
-  "presets": ["next/babel"]
+  "presets": ["next/babel"],
+  "plugins": ["@occmundial/atomic/plugin/babel"]
 }

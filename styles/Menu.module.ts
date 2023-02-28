@@ -1,4 +1,4 @@
-import { spacing, colors } from '@occmundial/occ-atomic';
+import { spacing, colors } from '@occmundial/atomic/tokens';
 
 const { tiny, small } = spacing;
 const { ink, sec } = colors;

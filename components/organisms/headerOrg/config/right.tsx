@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
-import { Avatar, Text, Card, NavIcon, Icon } from '@occmundial/occ-atomic';
+import { Avatar, Text, Card, NavIcon, Icon } from '@occmundial/atomic/components';
 import classNames from 'classnames';
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
 import { localRoot, r11links, links } from '../config/links';
+import { NavPosition } from '@occmundial/atomic/components/NavTab';
 
 interface link {
   url?: string;
@@ -127,7 +128,6 @@ const buttonMenu = (
         }
         arrow
         arrowWidth={16}
-        arrowHeight={16}
         arrowLeft={6}
         testId='header__user-menu'
         renderComp={
@@ -228,8 +228,7 @@ const menuBars = (classes, setShowMenu) => (
     <Icon
       iconName="bars"
       onClick={() => setShowMenu(true)}
-      width={18}
-      height={18}
+      size={18}
     />
   </div>
 );
@@ -262,7 +261,7 @@ export const right = (
   showCounts = false,
   createAccount,
   isId=false
-) =>
+): NavPosition =>
   mobile
     ? logged
       ? [
@@ -286,8 +285,8 @@ export const right = (
     ? [
         {
           key: 0,
-          type: 'logo',
-          logo: cart(
+          type: 'custom',
+          custom: cart(
             classes,
             cartItems,
             referral,
@@ -321,8 +320,7 @@ export const right = (
           text: 'REGÍSTRATE',
           theme: 'ghostGrey',
           onClick: () => createAccount(),
-          testId: 'header__signup',
-          id: isId? 'homehirers_inicio_registro': ''
+          testId: 'header__signup'
         },
         {
           key: 1,
@@ -330,8 +328,7 @@ export const right = (
           text: 'INICIA SESIÓN',
           theme: 'ghostPink',
           onClick: () => login(),
-          testId: 'header__signin',
-          id: isId? 'homehirers_inicio_signup': ''
+          testId: 'header__signin'
         },
         {
           key: 2,

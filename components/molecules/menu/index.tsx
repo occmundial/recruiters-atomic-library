@@ -2,10 +2,10 @@ import React, { Fragment, FC } from 'react';
 import uuid from 'react-uuid';
 import classnames from 'classnames';
 import injectSheet from 'react-jss';
-import { Text, NavItem } from '@occmundial/occ-atomic';
-import styles from '../../../styles/Menu.module.ts';
+import { Text, NavItem } from '@occmundial/atomic/components';
+import styles from '../../../styles/Menu.module';
 
-const Menu = ({ classes, mobile = false, linksH, logout = false }) => (
+const Menu = ({ classes, mobile = false, linksH, logout = () => {} }) => (
   <Fragment>
     {linksH.map((link) => (
       <div key={uuid()} className={link.visible ? classes.cardText : ''}>

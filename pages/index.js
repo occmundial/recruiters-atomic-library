@@ -1,7 +1,7 @@
 import styles from '../styles/Home.module.css'
 import {
   Grid, Text,
-} from '@occmundial/occ-atomic';
+} from '@occmundial/atomic/components';
 import Link from 'next/link';
 
 export default function Home() {

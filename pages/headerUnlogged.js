@@ -1,4 +1,4 @@
-import { Grid } from '@occmundial/occ-atomic';
+import { Grid } from '@occmundial/atomic';
 import { HeaderOrg } from '../components/index';
 
 const defaultProps = {

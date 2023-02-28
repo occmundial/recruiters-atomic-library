@@ -1,7 +1,8 @@
 import React, {
   useState, useEffect, useRef, FC, ReactElement,
 } from 'react';
-import { Text, Icon, colors } from '@occmundial/occ-atomic';
+import { Text, Icon } from '@occmundial/atomic/components';
+import { colors } from '@occmundial/atomic/tokens'
 import classNames from 'classnames';
 import './ButtonDropDown.css';
 
@@ -19,7 +20,7 @@ export interface ButtonDropDownProps {
 }
 
 const ButtonDropDown: FC<ButtonDropDownProps> = ({
-  toggle = false, renderComp, buttonText, mobile = false, arrow = false, onClose, arrowWidth = 14, arrowHeight = 14, arrowLeft = 0, noMenu = false,
+  toggle = false, renderComp, buttonText, mobile = false, arrow = false, onClose, arrowWidth = 14, arrowLeft = 0, noMenu = false,
 }: ButtonDropDownProps) => {
   const [show, toggleShow] = useState<boolean>(toggle);
   const [scroll, toggleScroll] = useState<boolean>(false);
@@ -86,10 +87,9 @@ const ButtonDropDown: FC<ButtonDropDownProps> = ({
             <Icon
               style={{ marginLeft: arrowLeft }}
               iconName="arrowDown"
-              colors={[colors.ink]}
+              color={colors.ink}
               className={show ? "iconStyleActive" : "iconStyleDisable"}
-              width={arrowWidth}
-              height={arrowHeight}
+              size={arrowWidth}
             />
           )}
         </div>

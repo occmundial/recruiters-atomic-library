@@ -4,25 +4,22 @@ import {
   NavTab,
   NavAside,
   Text,
-  grid,
   Modal,
-  Banner,
-  colors,
   Avatar,
   Flexbox
-} from '@occmundial/occ-atomic';
+} from '@occmundial/atomic/components';
+import { colors, grid } from '@occmundial/atomic/tokens';
 import './HeaderOrg.css';
 import { left } from './configHeaderOrg/left';
 import { getRoot, links } from './configHeaderOrg/links';
 import { getCookie, setCookie, cookieBanner } from './configHeaderOrg/cookies';
-import { top } from './configHeaderOrg/top';
 import { center, centerMobile } from './configHeaderOrg/center';
 import { right, loggedMenu } from './configHeaderOrg/right';
 
 import { ctaCreateAccountTracking } from '../actions/trackingActions';
-import { getCreateAccountUrl } from '../components/common/getCreateAccountUrl';
 import windowSize from '../components/common/useWindowSize';
 import HeaderMenu from '../stories/configHeaderOrg/molecules/menu';
+import Banner from '../components/molecules/banner';
 
 const contingencyModal: string =
   'https://cdn-shop.occ.com.mx/recruiters-home-page/img/contingencyModal.png';
@@ -251,10 +248,8 @@ const HeaderOrg: FC<HeaderProps> = ({
           createAccount,
           login
         )}
-        center={
-          showCenter &&
-          center(isMobile, logged, getRoot(local, dev, prod), tabSelected)
-        }
+        {...((showCenter || (isMobile && !logged) || (!isMobile && logged)) &&
+          center(isMobile, getRoot(local, dev, prod), tabSelected))}
         right={right(
           isMobile,
           logged,
@@ -357,76 +352,81 @@ const HeaderOrg: FC<HeaderProps> = ({
           </Fragment>
         </Banner>
       )}
-      <Modal
-        show={showModal}
-        onClose={(): void => {
-          toggleContigencyModal(false);
-        }}
-        size="lg"
-        imgTop={{
-          img: contingencyModal,
-          position: 'center',
-          size: 'cover',
-          color: colors.bgWhite
-        }}
-      >
-        <div>
-          <Text>
-            Desde hace 24 años, por empresas como la tuya, es que hoy somos la
-            bolsa de trabajo en línea líder en México. Has estado con nosotros
-            siempre. Ahora nos toca apoyarte.
-          </Text>
-          <Text topSmall>
-            Es por esto que queremos comunicarte las nuevas y diversas acciones
-            que hemos creado para apoyar a tu compañía en los próximos días:
-          </Text>
-          <ul>
-            <Text topSmall tag="li">
-              Nuestros servicios están funcionando al 100% y te atendemos 24/7.
+      {showModal && (
+        <Modal
+          show={showModal}
+          onClose={(): void => {
+            toggleContigencyModal(false);
+          }}
+          size="lg"
+          imgTop={{
+            img: contingencyModal,
+            position: 'center',
+            size: 'cover',
+            color: colors.bgWhite,
+            height: 128
+          }}
+        >
+          <div>
+            <Text>
+              Desde hace 24 años, por empresas como la tuya, es que hoy somos la
+              bolsa de trabajo en línea líder en México. Has estado con nosotros
+              siempre. Ahora nos toca apoyarte.
             </Text>
-            <Text tag="li">
-              Adquiere tus vacantes con hasta 6 meses sin intereses con tarjetas
-              Mastercard y Visa.*
+            <Text topSmall>
+              Es por esto que queremos comunicarte las nuevas y diversas
+              acciones que hemos creado para apoyar a tu compañía en los
+              próximos días:
             </Text>
-            <Text tag="li">
-              Si adquieres nuevos créditos desde nuestro carrito en línea,
-              tendrás 90 días de vigencia para hacer uso de ellos.**
+            <ul>
+              <Text topSmall tag="li">
+                Nuestros servicios están funcionando al 100% y te atendemos
+                24/7.
+              </Text>
+              <Text tag="li">
+                Adquiere tus vacantes con hasta 6 meses sin intereses con
+                tarjetas Mastercard y Visa.*
+              </Text>
+              <Text tag="li">
+                Si adquieres nuevos créditos desde nuestro carrito en línea,
+                tendrás 90 días de vigencia para hacer uso de ellos.**
+              </Text>
+              <Text tag="li">
+                Extensión de la visibilidad de vacantes en el sitio por 60 días
+                (el doble de lo habitual).
+              </Text>
+              <Text tag="li">
+                Tips y contenido estratégico para liderar a tu empresa durante
+                la contingencia.
+              </Text>
+              <Text tag="li">
+                Certificación sin costo y 100% en línea sobre el uso de nuestra
+                plataforma.
+              </Text>
+            </ul>
+            <Text topSmall>
+              Te invitamos a contactar a tu ejecutivo de cuenta para que juntos,
+              determinemos los apoyos que pueden beneficiar más a tu empresa.
             </Text>
-            <Text tag="li">
-              Extensión de la visibilidad de vacantes en el sitio por 60 días
-              (el doble de lo habitual).
+            <Text strong topSmall>
+              No te detengas, nosotros no lo hemos hecho.
             </Text>
-            <Text tag="li">
-              Tips y contenido estratégico para liderar a tu empresa durante la
-              contingencia.
+            <Text strong>
+              ¡Continuemos generando empleo y mejores oportunidades a millones
+              de mexicanos, juntos lo vamos a lograr!
             </Text>
-            <Text tag="li">
-              Certificación sin costo y 100% en línea sobre el uso de nuestra
-              plataforma.
+            <Text micro topBase low>
+              *3 y 6 meses sin intereses disponibles para adquirir desde 2
+              vacantes hasta 10 vacantes básicas, destacadas o premium con
+              tarjeta Visa y Mastercard. ** Aplica únicamente en productos
+              adquiridos en línea desde 1 y hasta 10 vacantes. Válido para
+              cualquier tipo de vacante: básica, destacada o premium. Vigencia
+              del 1o de julio del 2020 al 31 de diciembre del 2020. ***
+              Promoción sujeta a disponibilidad y cambio sin previo aviso.
             </Text>
-          </ul>
-          <Text topSmall>
-            Te invitamos a contactar a tu ejecutivo de cuenta para que juntos,
-            determinemos los apoyos que pueden beneficiar más a tu empresa.
-          </Text>
-          <Text strong topSmall>
-            No te detengas, nosotros no lo hemos hecho.
-          </Text>
-          <Text strong>
-            ¡Continuemos generando empleo y mejores oportunidades a millones de
-            mexicanos, juntos lo vamos a lograr!
-          </Text>
-          <Text micro topBase low>
-            *3 y 6 meses sin intereses disponibles para adquirir desde 2
-            vacantes hasta 10 vacantes básicas, destacadas o premium con tarjeta
-            Visa y Mastercard. ** Aplica únicamente en productos adquiridos en
-            línea desde 1 y hasta 10 vacantes. Válido para cualquier tipo de
-            vacante: básica, destacada o premium. Vigencia del 1o de julio del
-            2020 al 31 de diciembre del 2020. *** Promoción sujeta a
-            disponibilidad y cambio sin previo aviso.
-          </Text>
-        </div>
-      </Modal>
+          </div>
+        </Modal>
+      )}
     </Fragment>
   );
 };

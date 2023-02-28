@@ -1,7 +1,7 @@
 import React, { Fragment, FC } from 'react';
 import uuid from 'react-uuid';
 import classnames from 'classnames';
-import { Text, NavItem } from '@occmundial/occ-atomic';
+import { Text, NavItem } from '@occmundial/atomic/components';
 import './Menu.css';
 interface link {
   url?: string;

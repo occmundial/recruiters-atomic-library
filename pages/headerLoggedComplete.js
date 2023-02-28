@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { Grid, Text } from '@occmundial/occ-atomic';
+import { Grid } from '@occmundial/atomic/components';
 import {
   HeaderOrg
 } from '../components/index';

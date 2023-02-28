@@ -6,11 +6,13 @@ import {
   Flexbox,
   Button,
   NavItem,
-  Card
-} from '@occmundial/occ-atomic';
+  Card,
+  Logo
+} from '@occmundial/atomic/components';
 import ButtonDropDown from '../../../molecules/buttonDropDown';
 import Menu from '../../../molecules/menu';
 import { localRoot, r12links, links } from '../config/links';
+import { NavPosition } from '@occmundial/atomic/components/NavTab';
 
 const asideMenuUnLogged = (
   classes,
@@ -22,76 +24,71 @@ const asideMenuUnLogged = (
   login
 ) => (
   <Fragment>
-    <Icon iconName="bars" onClick={() => setMenuUnlogged(true)} />
-    <NavAside
-      show={menuUnlogged}
-      onClose={() => setMenuUnlogged(false)}
-      top={
-        <Flexbox display="flex" justifyContent="start" alignItems="start">
-          <Text heading>Menú</Text>
-        </Flexbox>
-      }
-    >
-      <div>
-        <div className={classes.divButtons}>
-          <div className={classes.leftElement}>
+    <Icon iconName="menu-o" onClick={() => setMenuUnlogged(true)} />
+    {menuUnlogged && (
+      <NavAside
+        show={menuUnlogged}
+        onClose={() => setMenuUnlogged(false)}
+        top={
+          <Flexbox display="flex" justifyContent="start" alignItems="start">
+            <Text heading>Menú</Text>
+          </Flexbox>
+        }
+      >
+        <div>
+          <div className={classes.divButtons}>
+            <div className={classes.leftElement}>
+              <Button
+                theme="ghostGrey"
+                size="sm"
+                onClick={() => createAccount()}
+                testId="sidebar__signup"
+              >
+                REGÍSTRATE
+              </Button>
+            </div>
             <Button
-              theme="ghostGrey"
+              theme="ghostPink"
               size="sm"
-              onClick={() => createAccount()}
-              testId='sidebar__signup'
+              onClick={() => login()}
+              testId="sidebar__signin"
             >
-              REGÍSTRATE
+              INICIA SESIÓN
             </Button>
           </div>
-          <Button
-            theme="ghostPink"
-            size="sm"
-            onClick={() => login()}
-            testId='sidebar__signin'
+          <div className={classes.verticalSeparator} />
+          <NavItem
+            selected={tabSelected === 0}
+            className={classes.topTiny}
+            link={`${root.home}/`}
           >
-            INICIA SESIÓN
-          </Button>
+            Inicio
+          </NavItem>
+          <NavItem
+            selected={tabSelected === 1}
+            className={classes.topTiny}
+            link={`${root.home}/${links.sSight}`}
+          >
+            Precios
+          </NavItem>
+          <NavItem
+            selected={tabSelected === 2}
+            className={classes.topTiny}
+            link={`${links.buscoEmpleo}`}
+          >
+            Busco empleo
+          </NavItem>
         </div>
-        <div className={classes.verticalSeparator} />
-        <NavItem
-          selected={tabSelected === 0}
-          className={classes.topTiny}
-          link={`${root.home}/`}
-        >
-          Inicio
-        </NavItem>
-        <NavItem
-          selected={tabSelected === 1}
-          className={classes.topTiny}
-          link={`${root.home}/${links.sSight}`}
-        >
-          Precios
-        </NavItem>
-        <NavItem
-          selected={tabSelected === 2}
-          className={classes.topTiny}
-          link={`${links.buscoEmpleo}`}
-        >
-          Busco empleo
-        </NavItem>
-      </div>
-    </NavAside>
+      </NavAside>
+    )}
   </Fragment>
 );
 
-const logoContainer = (
-  classes,
-  width = 146,
-  height = 34,
-  style: Object,
-  iconName: String,
-  root
-) => (
+const logoContainer = (classes, root) => (
   <Fragment>
     <div className={classes.logoSpacing}>
       <a href={`${root.r12}/${r12links.sightMainPage}`}>
-        <Icon width={width} height={height} style={style} iconName={iconName} />
+        <Logo variant="horizontal" theme="grey" width={120} height={28} />
       </a>
     </div>
   </Fragment>
@@ -113,10 +110,9 @@ const organizationMenu = (
           }
           arrow
           arrowWidth={14}
-          arrowHeight={14}
           arrowLeft={4}
           noMenu
-          testId='header__user-menu'
+          testId="header__user-menu"
           renderComp={
             <Fragment>
               <Card raised className={classes.cardOrgMenu}>
@@ -149,28 +145,21 @@ export const left = (
   createAccount,
   login,
   isId = false
-) =>
+): NavPosition =>
   mobile
     ? logged
       ? [
           {
             key: 0,
             type: 'custom',
-            custom: logoContainer(
-              classes,
-              146,
-              34,
-              { backgroundRepeat: 'no-repeat' },
-              'occHorizontalGrey',
-              root
-            )
+            custom: logoContainer(classes, root)
           }
         ]
       : [
           {
             key: 0,
-            type: 'logo',
-            logo: asideMenuUnLogged(
+            type: 'custom',
+            custom: asideMenuUnLogged(
               classes,
               asideMenu,
               setAsideMenu,
@@ -186,14 +175,7 @@ export const left = (
         {
           key: 0,
           type: 'custom',
-          custom: logoContainer(
-            classes,
-            146,
-            34,
-            { backgroundRepeat: 'no-repeat' },
-            'occHorizontalGrey',
-            root
-          )
+          custom: logoContainer(classes, root)
         },
         {
           key: 1,
@@ -210,11 +192,21 @@ export const left = (
     : [
         {
           key: 0,
-          type: 'logo',
-          logo: (
-            <a id={isId? 'homehirers_inicio_headerlogo': ''} href={`${root.home}/`}>
-              <Icon iconName="occHorizontalGrey" />
-            </a>
+          type: 'custom',
+          custom: (
+            <div className={classes.logoSpacing}>
+              <a
+                id={isId ? 'homehirers_inicio_headerlogo' : ''}
+                href={`${root.home}/`}
+              >
+                <Logo
+                  variant="horizontal"
+                  theme="grey"
+                  width={120}
+                  height={28}
+                />
+              </a>
+            </div>
           )
         },
         {
@@ -230,6 +222,6 @@ export const left = (
           text: 'Precios',
           link: `${root.home}/${links.sSight}`,
           selected: tabSelected === 1,
-          id: isId? 'homehirers_inicio_precios': '',
+          testId: isId ? 'homehirers_inicio_precios' : ''
         }
       ];

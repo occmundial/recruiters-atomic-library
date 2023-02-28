@@ -1,8 +1,9 @@
-import { spacing, colors } from '@occmundial/occ-atomic';
+import { createUseStyles } from 'react-jss'
+import { spacing, colors } from '@occmundial/atomic/tokens';
 
 const { xTiny, tiny, small, gutter, base, large } = spacing;
 const { grey200, bgWhite, sec, bgGrey, inkLighter } = colors;
-export default {
+export default createUseStyles({
   verticalSeparator: {
     width: '100%',
     height: '1px',
@@ -117,4 +118,4 @@ export default {
   linkSearchJob: {
     textDecoration: 'none'
   },
-};
+});

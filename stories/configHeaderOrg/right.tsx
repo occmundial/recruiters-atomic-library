@@ -1,10 +1,17 @@
 import React, { Fragment } from 'react';
-import { Icon, Avatar, Text, Card, NavIcon } from '@occmundial/occ-atomic';
+import {
+  Icon,
+  Avatar,
+  Text,
+  Card,
+  NavIcon
+} from '@occmundial/atomic/components';
 import classNames from 'classnames';
 import ButtonDropDown from './molecules/buttonDropDown';
 import Menu from './molecules/menu';
 import { localRoot, r11links, links } from '../configHeaderOrg/links';
 import '../HeaderOrg.css';
+import { NavPosition } from '@occmundial/atomic/components/NavTab';
 
 interface link {
   url?: string;
@@ -85,7 +92,7 @@ export const loggedMenu = (
     },
     {
       url: `${root.accounts}${links.billingData}`,
-      text: "Datos de facturación",
+      text: 'Datos de facturación',
       visible: isAdmin,
       selected: tabSelected === 8
     },
@@ -122,7 +129,6 @@ const buttonMenu = (
         }
         arrow
         arrowWidth={16}
-        arrowHeight={16}
         arrowLeft={6}
         renderComp={
           <Fragment>
@@ -217,12 +223,7 @@ const getChatItem = (
 
 const menuBars = setShowMenu => (
   <div className="menuBarSpacing">
-    <Icon
-      iconName="bars"
-      onClick={() => setShowMenu(true)}
-      width={18}
-      height={18}
-    />
+    <Icon iconName="bars" onClick={() => setShowMenu(true)} size={18} />
   </div>
 );
 
@@ -252,7 +253,7 @@ export const right = (
   tabSelected = 0,
   showCounts = false,
   createAccount
-) =>
+): NavPosition =>
   mobile
     ? logged
       ? [
@@ -275,8 +276,8 @@ export const right = (
     ? [
         {
           key: 0,
-          type: 'logo',
-          logo: cart(cartItems, referral, root, tabSelected, showCounts)
+          type: 'custom',
+          custom: cart(cartItems, referral, root, tabSelected, showCounts)
         },
         {
           key: 1,

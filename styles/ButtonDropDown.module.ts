@@ -1,4 +1,4 @@
-import { spacing } from '@occmundial/occ-atomic';
+import { spacing } from '@occmundial/atomic/tokens';
 
 const { gutter } = spacing;
 export default {

@@ -6,12 +6,14 @@ import {
   Flexbox,
   Button,
   NavItem,
-  Card
-} from '@occmundial/occ-atomic';
+  Card,
+  Logo
+} from '@occmundial/atomic/components';
 import ButtonDropDown from './molecules/buttonDropDown';
 import Menu from './molecules/menu';
 import { localRoot, r12links, links } from './links';
 import '../HeaderOrg.css';
+import { NavPosition } from '@occmundial/atomic/components/NavTab';
 
 const asideMenuUnLogged = (
   menuUnlogged = false,
@@ -35,19 +37,11 @@ const asideMenuUnLogged = (
       <div>
         <div className="divButtons">
           <div className="leftElement">
-            <Button
-              theme="ghostGrey"
-              size="sm"
-              onClick={() => createAccount()}
-            >
+            <Button theme="ghostGrey" size="sm" onClick={() => createAccount()}>
               REGÍSTRATE
             </Button>
           </div>
-          <Button
-            theme="ghostPink"
-            size="sm"
-            onClick={() => login()}
-          >
+          <Button theme="ghostPink" size="sm" onClick={() => login()}>
             INICIA SESIÓN
           </Button>
         </div>
@@ -78,17 +72,11 @@ const asideMenuUnLogged = (
   </Fragment>
 );
 
-const logoContainer = (
-  width = 146,
-  height = 34,
-  style: Object,
-  iconName: String,
-  root
-) => (
+const logoContainer = root => (
   <Fragment>
     <div className="logoSpacing">
       <a href={`${root.r12}/${r12links.sightMainPage}`}>
-        <Icon width={width} height={height} style={style} iconName={iconName} />
+        <Logo variant="horizontal" theme="grey" width={120} height={28} />
       </a>
     </div>
   </Fragment>
@@ -111,7 +99,6 @@ const organizationMenu = (
           }
           arrow
           arrowWidth={14}
-          arrowHeight={14}
           arrowLeft={4}
           noMenu
           renderComp={
@@ -140,27 +127,21 @@ export const left = (
   orgMenuLinks = [{}],
   createAccount,
   login
-) =>
+): NavPosition =>
   mobile
     ? logged
       ? [
           {
             key: 0,
             type: 'custom',
-            custom: logoContainer(
-              146,
-              34,
-              { backgroundRepeat: 'no-repeat' },
-              'occHorizontalGrey',
-              root
-            )
+            custom: logoContainer(root)
           }
         ]
       : [
           {
             key: 0,
-            type: 'logo',
-            logo: asideMenuUnLogged(
+            type: 'custom',
+            custom: asideMenuUnLogged(
               asideMenu,
               setAsideMenu,
               root,
@@ -175,13 +156,7 @@ export const left = (
         {
           key: 0,
           type: 'custom',
-          custom: logoContainer(
-            146,
-            34,
-            { backgroundRepeat: 'no-repeat' },
-            'occHorizontalGrey',
-            root
-          )
+          custom: logoContainer(root)
         },
         {
           key: 1,
@@ -198,10 +173,10 @@ export const left = (
     : [
         {
           key: 0,
-          type: 'logo',
-          logo: (
+          type: 'custom',
+          custom: (
             <a href={`${root.home}/`}>
-              <Icon iconName="occHorizontalGrey" />
+              <Logo variant="horizontal" theme="grey" width={120} height={28} />
             </a>
           )
         },
