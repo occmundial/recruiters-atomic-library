@@ -148,7 +148,8 @@ export const left = (
   orgMenuLinks = [{}],
   createAccount,
   login,
-  isId = false
+  isId = false,
+  rebranding = false,
 ) =>
   mobile
     ? logged
@@ -161,7 +162,7 @@ export const left = (
               146,
               34,
               { backgroundRepeat: 'no-repeat' },
-              'occHorizontalGrey',
+              rebranding ? 'occLogoGrey' : 'occHorizontalGrey',
               root
             )
           }
@@ -191,7 +192,7 @@ export const left = (
             146,
             34,
             { backgroundRepeat: 'no-repeat' },
-            'occHorizontalGrey',
+            rebranding ? 'occLogoGrey' : 'occHorizontalGrey',
             root
           )
         },
@@ -213,7 +214,7 @@ export const left = (
           type: 'logo',
           logo: (
             <a id={isId? 'homehirers_inicio_headerlogo': ''} href={`${root.home}/`}>
-              <Icon iconName="occHorizontalGrey" />
+              <Icon iconName={rebranding ? 'occLogoGrey' : 'occHorizontalGrey'} />
             </a>
           )
         },
