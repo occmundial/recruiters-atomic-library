@@ -63,7 +63,6 @@ const HeaderOrg = ({
   createAccountURL ='',
   isId = false,
   createAccountFn = () => {} ,
-  rebranding = false,
 }) => {
   const [scroll, toggleScroll] = useState(false);
   const [banner, setBanner] = useState(false);
@@ -123,7 +122,6 @@ const HeaderOrg = ({
           createAccount,
           login,
           isId,
-          rebranding,
         )}
         center={
           showCenter ?
